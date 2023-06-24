@@ -61,8 +61,8 @@
 <p>Padrão de Modelagem do Sistema: DDD (Driven Domin Design)</p>
 <p>Arquitetura: MVC - Model View Controller</p>
 <p>Frameworks e Bibliotecas: Spring Boot versão: 2.7.12 , LOMBOK versão default para a versão do Spring, Bean Validation versão default para a versão do Spring</p>
-<p>Ferramentas Colaborativas: Postman,GIT e Swagger</p>
-<p>Gestão de Dependências: Maven </p>
+<p>Ferramentas Colaborativas: Postman,GIT,MAVEN e Swagger</p>
+
 
 <h2>Relatório Técnico</h2>
 <p>O objetivo deste tópico é explicar as motivações e desafios desta fase do Tech Challenge.</p>
