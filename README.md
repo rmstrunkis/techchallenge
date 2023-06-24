@@ -1,11 +1,11 @@
 <html>
    <head></head>
-   <body>
+   <body >
 <h1 align="center"> <strong> Tech Challenge - Painel de Consumo de Energia</strong> </h1>
 
 ![Portal de Consumo de Energia](https://github.com/rmstrunkis/tech_challenge/assets/105131830/c0e3a5f4-0e07-447e-896e-3e3f2dee760d)
 
-<h2><strong>Descrição do projeto</strong>strong></h2>
+<h2><strong>Descrição do projeto</strong></h2>
 <p>Projeto Tech Challenge - FIAP Alura - 1º Fase</p>
 <p>APIs que serão disponibilizadas para um portal que irá demonstrar ao usuário o consumo de energia de seus eletrodomésticos.</p>
 
@@ -29,8 +29,8 @@
 <p><b>Body da Requisição: Formato JSON, exemplo abaixo e no swaggwer</p>
 <p><b>JSON de Exemplo de Entrada:</p>
 <p> Observação: O Campo de IdUsuario abstraímos neste momento que iremos receber da aplicação que irá consumir o cadastro de pessoas informando a qual usuário as pessoas estarão reclacionadas.</p>
-<p>{</p>
-   <p> "idUsuario": "1",</p>
+<pstyle="font-family:courier;" style="font-size:3px;">{</p>
+   <p style="font-family:courier;" style="font-size:3px;"> "idUsuario": "1",</p>
    <p> "cpf":"49397364073" ,</p>
    <p> "nome": "Zezinho",</p>
    <p> "nomePai": "Ze",</p>
@@ -205,6 +205,6 @@
 <p>Grupo 38</p>
 <p></p>
 
-<h2><strong>Conclusão</strong>strong></h2>
+<h2><strong>Conclusão</strong></h2>
  </body>
 </html>
