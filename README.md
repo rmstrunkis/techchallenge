@@ -66,8 +66,8 @@
 
 <h2>Relatório Técnico</h2>
 <p>O objetivo deste tópico é explicar as motivações e desafios das técnicas e tecnologias aplicadas nesta fase do Tech Challenge.</p>
-<h3>API Pessoas</h3>
-<h4>Spring Boot E API REST</h4>
+<p></p>
+<h3>Spring Boot E API REST</h3>
 <p> A Framework Spring é Open Source e foi criado pela PIVOTAL com o objetivo de facilitar o desenvolvimento de sistemas, descomplicando toda a parte de infraestrutura e algumas outras complexidades que existe na especificação JAVA EE.</p>
 <p></p>
 <p>A Framework Spring Boot é uma versão reduzida da Spring, ideal para o desevolvimento de aplicações WEB stand alone de forma rápida e simples, foi baseada no conceito de Injeção de Dependências e Inversão de Controle o que torna o código mais coeso e com menos acomplamento entre as classes, além de gerenciar bem todas as dependências iniciais internas e externas, ter de forma embracada o servidor de aplicação, sendo por padrão o Apache-Tomcat, mas podemos usar outros como o Jetty e Undertown , durante a descrição deste documento iremos registrar aonde são aplicados estes conceitos e facilidades com base em anotações e na estruturação das camadas,sendo estes o principais motivos de optarmos por esta framework.</p>
@@ -85,49 +85,62 @@
 
 <p></p> 
 
-<h4>Spring Initializer</h4>
+<h3>Spring Initializer</h3>
 <p></p> 
 <p>Utilizamos em nosso projeto da ferramenta Spring Initializer que facilita a configuração do nosso projeto e agiliza o desenvolvimento</p>
 <p>Acessamos a ferramenta através do site: https://start.spring.io/, porém caso queira poderá instalar na sua máquina e fazer de forma local</p>
-<p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagen: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: JAR (Não iremos fazer deploy em Conteiners) ou WAR (Iremos fazer deploy em Conteiners) </p>
-<p>Em nosso projeto estamos utilizando o padrão de deploy .jar, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o TOMCAT instalado e configurado</p>
+<p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagen: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: .JAR (Não iremos fazer deploy em Conteiners) ou .WAR (Iremos fazer deploy em Conteiners) </p>
+<p>Em nosso projeto estamos utilizando o padrão de deploy .jar, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o Conteiner TOMCAT instalado e configurado</p>
 
-<h4>Gestão de Dependências</h4>
+<h3>Gestão de Dependências</h3>
 <p></p>
 <p>Com a abordagem de reutilização de códigos, frameworks, padrões e pacotes com a o qual o Java foi pioneiro, uma ferramenta que nos auxilie a gerenciar todos estes aspectos é de suma importância, sendo que as mais comuns no mercado são: Maven: Linguagens Java ou Kotlin, Gradle:Linguagens Java ou Kotlin, NPM: linguagem java Script, NuGet: aplicações .NET e Pip: Aplicações Phython </p>
 <p></p>
-<h5>MAVEN</h5>
+<h4>MAVEN</h4>
 <p></p>
 <p>No nosso caso optamos pela ferramenta MAVEN pelas seguintes questões: </p>
-<p>* Estamos usando a liguagem JAVA</p>
-<p>* Não é necessário aprender uma tecnologia de programação adicional como no caso do Gradle que precisa ser escrite em Groove </p>
-<p>* OPEN source da APACHE </p>
-<p>* Estimula e auxilia na adoção de boas práticas, utilizando-se do conceito de programação por convenção (Estrutura de diretórios por padrão) </p>
-<p>* Gerencia todo download das dependências das dependências que estamos utilizando </p>
-<p>* Facilita e organiza o build da nossa aplicação </p>
-<p>* Pode incorporar novas dependências através do arquivo POM.XML, podemos pesquisar no site : https://mvnrepository.com/ que é um repositório central como acrescentar blbliotecas</p>
-<p>* Arquivo XML de fácil leitura</p>
-<p>* Familiaridade do time de desenvolvimento</p>
 <p></p>
-<p>Citamos acima os principais motivações para a utulização do MAVEN no nosso projeto, mas existem algumas desvatagens nos seguintes aspectos: </p>
-<p>* Necessita de Instalação</p>
-<p>* Arquivo XML de fácil leitura mas pode ser de dificil gravação</p>
+<p>* Estamos usando a liguagem JAVA</p>
+<p>* Não é necessário aprender uma tecnologia de programação adicional como no caso do Gradle que precisa ser escrite em Groove; </p>
+<p>* OPEN source da APACHE; </p>
+<p>* Estimula e auxilia na adoção de boas práticas, utilizando-se do conceito de programação por convenção (Estrutura de diretórios por padrão); </p>
+<p>* Gerencia todos os downloads das dependências das dependências que estamos utilizando; </p>
+<p>* Facilita e organiza o build da nossa aplicação; </p>
+<p>* Pode incorporar novas dependências através do arquivo POM.XML, podemos pesquisar no site : https://mvnrepository.com/ que é um repositório central;</p>
+<p>* Arquivo XML de fácil leitura;</p>
+<p>* Familiaridade do time de desenvolvimento.</p>
+<p></p>
+<p>Citamos acima os principais motivações para a utulização do MAVEN no nosso projeto, mas existem algumas desvantagens nos seguintes aspectos: </p>
+<p>* Necessita de Instalação;</p>
+<p>* Arquivo XML de fácil leitura mas pode ser de dificil gravação.</p>
+<p></p>
 <h6>Instalação</h6>
+<p></p>
 <p>O MAVEN é uma ferramenta OPEN Source da Apache Software Foundation e pode ser baixado pelo site: http://maven.apache.org/download.html, seguindo os seguintes passos: </p>
 <p>* Escolher a ultima versão de acordo com o seu sistema operacional</p>
 <p>* Fazer o download do arquivo .zip</p>
 <p>* Escolher um diretório para decompacta-lo</p>
 <p>* Adicionar uma variável de ambiente: M2_HOME apontando para o diretório que descompactou o arquivo até chegar no diretório /bin</p>
 <p>* Pode confirmar a instalação, executando o comando no prompt do sistema operacional : mvn - version, conforme imagem abaixo:</p>
-![image](https://github.com/rmstrunkis/api-pessoa/assets/105131830/903b666e-428f-4902-a5fe-e74a121c2a8b)
+![Comando de Versão](https://github.com/rmstrunkis/api-pessoa/assets/105131830/903b666e-428f-4902-a5fe-e74a121c2a8b)
+
 <p></p>
 <p>Observação: Na instalação do MAVEN alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
+<p></p>
+<h4>Configuração no Projeto</h4>
+<p></p>
 
-<h6>Configuração no Projeto</h6>
-<h6>Estutura de pastas no Projeto</h6>
-<h6>Principais Comandos</h6>
+<p></p>
+<h4>Estutura de pastas no Projeto</h4>
+<p></p>
+<p></p>
+<h4>Principais Comandos</h4>
+<p></p>
 
-<p><b>Anotações: </p> 
+<p></p>
+
+<h3>Classes e Anotações</h3> 
+<p></p>
 <p><b>@SpringBootApplication</p> Main em aplicações web....
 <p><b>@RestController</p>  padrão json
 <p><b>@RequestMapping</p> 
@@ -146,10 +159,9 @@
 <p><b>MAP</p> 
 <p><b>Generics</p> 
 
-
-<h4>MVC-DTO-Partners</h4>
-
-<p><b>Separação de Camadas</p> 
+<p></p>
+<h3>Separação de Camadas</h3>
+<p></p>
 
 <p><b>Controller</p> 
 <p><b>Service</p> 
@@ -160,14 +172,18 @@
 <p><b>Model</p> 
 <p><b>Padrao de nome de classes e metodos com linguagem Ubiqua.</p> 
 
-<h4>LOMBOK</h4>
+<p></p>
+<h3>LOMBOK</h3>
+<p></p>
 <p>Que utilizamos e o motivo</p> BODERPOILITE codigos comuns...
 <p><b>@Getter</p> 
 <p><b>@AllArgsConstructor</p> 
 <p><b>@EqualsAndHashCode</p> 
 <p>Passar pelas demais não utilizadas e porque</p>
 
-<h4>Bean Validation</h4>
+<p></p>
+<h3>Bean Validation</h3>
+<p></p>
 <p><b>Validação na camada de DTO</b>
   <p><b>@NotNull</p> 
   <p><b>@CPF</p> 
@@ -175,13 +191,16 @@
   <p><b>@Past</p> 
   <p><b>@Email</p> 
 
-<h4>Testes</h4>
+<p></p>
+<h3>Testes</h3>
+<p></p>
 <p><b>Postman</b>
 <p><b>CURL</b>
 <p><b>ARC</b>
 
-   
+<p></p>  
 <h2>Pessoas Desenvolvedoras do Projeto</h2>
 <p>Grupo 38</p>
+<p></p>
 
 <h2>Conclusão</h2>
