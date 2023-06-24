@@ -20,7 +20,7 @@
 <p><b>Funcionalidade : Cadastro de Pessoas relacionadas ao usuário</p>
 <p><b>Baixar via GIT : git clone https://github.com/rmstrunkis/tech_challenge.git </p> 
 <p><b>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p> 
-<p><b>Swaggwer da aplicação local: http://localhost:8080/swagger-ui/#/pessoa-controller/criarNovaPessoaUsingPOST </p>
+<p><b>Swagger da aplicação local: http://localhost:8080/swagger-ui/#/pessoa-controller/criarNovaPessoaUsingPOST </p>
 <p><b>Utilizamos nesta fase apenas o método (verbo): POST</p>
 <p><b>URL Local:http://localhost:8080/pessoas</p>
 <p><b>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
@@ -88,14 +88,44 @@
 <h4>Spring Initializer</h4>
 <p></p> 
 <p>Utilizamos em nosso projeto da ferramenta Spring Initializer que facilita a configuração do nosso projeto e agiliza o desenvolvimento</p>
-<p>Acessamos a ferramenta através do site: https://start.spring.io/</p>
+<p>Acessamos a ferramenta através do site: https://start.spring.io/, porém caso queira poderá instalar na sua máquina e fazer de forma local</p>
 <p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagen: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: JAR (Não iremos fazer deploy em Conteiners) ou WAR (Iremos fazer deploy em Conteiners) </p>
-<p>Em nosso projeto estamos utilizando o padrão de deploy .jar, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha ja tenha o TOMCAT instalado e configurado</p>
+<p>Em nosso projeto estamos utilizando o padrão de deploy .jar, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o TOMCAT instalado e configurado</p>
 
 <h4>Gestão de Dependências</h4>
-<p>MAVEN</p>
-<p>diretórios</p>
-<p>POM.XML</p>
+<p></p>
+<p>Com a abordagem de reutilização de códigos, frameworks, padrões e pacotes com a o qual o Java foi pioneiro, uma ferramenta que nos auxilie a gerenciar todos estes aspectos é de suma importância, sendo que as mais comuns no mercado são: Maven: Linguagens Java ou Kotlin, Gradle:Linguagens Java ou Kotlin, NPM: linguagem java Script, NuGet: aplicações .NET e Pip: Aplicações Phython </p>
+<p></p>
+<h5>MAVEN</h5>
+<p></p>
+<p>No nosso caso optamos pela ferramenta MAVEN pelas seguintes questões: </p>
+<p>* Estamos usando a liguagem JAVA</p>
+<p>* Não é necessário aprender uma tecnologia de programação adicional como no caso do Gradle que precisa ser escrite em Groove </p>
+<p>* OPEN source da APACHE </p>
+<p>* Estimula e auxilia na adoção de boas práticas, utilizando-se do conceito de programação por convenção (Estrutura de diretórios por padrão) </p>
+<p>* Gerencia todo download das dependências das dependências que estamos utilizando </p>
+<p>* Facilita e organiza o build da nossa aplicação </p>
+<p>* Pode incorporar novas dependências através do arquivo POM.XML, podemos pesquisar no site : https://mvnrepository.com/ que é um repositório central como acrescentar blbliotecas</p>
+<p>* Arquivo XML de fácil leitura</p>
+<p>* Familiaridade do time de desenvolvimento</p>
+<p></p>
+<p>Citamos acima os principais motivações para a utulização do MAVEN no nosso projeto, mas existem algumas desvatagens nos seguintes aspectos: </p>
+<p>* Necessita de Instalação</p>
+<p>* Arquivo XML de fácil leitura mas pode ser de dificil gravação</p>
+<h6>Instalação</h6>
+<p>O MAVEN é uma ferramenta OPEN Source da Apache Software Foundation e pode ser baixado pelo site: http://maven.apache.org/download.html, seguindo os seguintes passos: </p>
+<p>* Escolher a ultima versão de acordo com o seu sistema operacional</p>
+<p>* Fazer o download do arquivo .zip</p>
+<p>* Escolher um diretório para decompacta-lo</p>
+<p>* Adicionar uma variável de ambiente: M2_HOME apontando para o diretório que descompactou o arquivo até chegar no diretório /bin</p>
+<p>* Pode confirmar a instalação, executando o comando no prompt do sistema operacional : mvn - version, conforme imagem abaixo:</p>
+![image](https://github.com/rmstrunkis/api-pessoa/assets/105131830/903b666e-428f-4902-a5fe-e74a121c2a8b)
+<p></p>
+<p>Observação: Na instalação do MAVEN alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
+
+<h6>Configuração no Projeto</h6>
+<h6>Estutura de pastas no Projeto</h6>
+<h6>Principais Comandos</h6>
 
 <p><b>Anotações: </p> 
 <p><b>@SpringBootApplication</p> Main em aplicações web....
@@ -126,7 +156,7 @@
 <p><b>Respository</p> 
 <p><b>Config</p>
 <p><b>Factory</p> 
-<p><b>DTO</p> GRISP
+<p><b>DTO</p> GRASP
 <p><b>Model</p> 
 <p><b>Padrao de nome de classes e metodos com linguagem Ubiqua.</p> 
 
