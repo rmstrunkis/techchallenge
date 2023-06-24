@@ -65,7 +65,7 @@
 
 
 <h2>Relatório Técnico</h2>
-<p>O objetivo deste tópico é explicar as motivações e desafios desta fase do Tech Challenge.</p>
+<p>O objetivo deste tópico é explicar as motivações e desafios das técnicas e tecnologias aplicadas nesta fase do Tech Challenge.</p>
 <h3>API Pessoas</h3>
 <h4>Spring Boot E API REST</h4>
 <p> A Framework Spring é Open Source e foi criado pela PIVOTAL com o objetivo de facilitar o desenvolvimento de sistemas, descomplicando toda a parte de infraestrutura e algumas outras complexidades que existe na especificação JAVA EE.</p>
