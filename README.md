@@ -1,9 +1,11 @@
-
-<h1 align="center"> Tech Challenge - Painel de Consumo de Energia </h1>
+<html>
+   <head></head>
+   <body>
+<h1 align="center"> <strong> Tech Challenge - Painel de Consumo de Energia</strong>strong> </h1>
 
 ![Portal de Consumo de Energia](https://github.com/rmstrunkis/tech_challenge/assets/105131830/c0e3a5f4-0e07-447e-896e-3e3f2dee760d)
 
-<h2>Descrição do projeto</h2>
+<h2><strong>Descrição do projeto</strong>strong></h2>
 <p>Projeto Tech Challenge - FIAP Alura - 1º Fase</p>
 <p>APIs que serão disponibilizadas para um portal que irá demonstrar ao usuário o consumo de energia de seus eletrodomésticos.</p>
 
@@ -15,8 +17,8 @@
 <p>Neste momento as APIs terão a responsabilidade de cadastrar as informações de Endereços, Pessoas e Eletrodomésticos.</p>
 
 
-<h2>Funcionalidades e Demonstração da Aplicação</h2>
-<h3>API Pessoas</h3>
+<h2><strong>Funcionalidades e Demonstração da Aplicação</strong>strong></h2>
+<h3><strong>API Pessoas</strong>strong></h3>
 <p><b>Funcionalidade : Cadastro de Pessoas relacionadas ao usuário</p>
 <p><b>Baixar via GIT : git clone https://github.com/rmstrunkis/tech_challenge.git </p> 
 <p><b>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p> 
@@ -61,20 +63,20 @@
 <p>Padrão de Modelagem do Sistema: DDD (Driven Domin Design)</p>
 <p>Arquitetura: MVC - Model View Controller</p>
 <p>Frameworks e Bibliotecas: Spring Boot versão: 2.7.12 , LOMBOK versão default para a versão do Spring, Bean Validation versão default para a versão do Spring</p>
-<p>Ferramentas Colaborativas: Postman,GIT,MAVEN e Swagger</p>
+<p>Ferramentas Colaborativas: Postman,GIT,Maven e Swagger</p>
 
 
-<h2>Relatório Técnico</h2>
+<h2><strong>Relatório Técnico</strong>strong></h2>
 <p>O objetivo deste tópico é explicar as motivações e desafios das técnicas e tecnologias aplicadas nesta fase do Tech Challenge.</p>
 <p></p>
-<h3>Spring Boot E API REST</h3>
+<h3><strong>Spring Boot E API REST</strong>strong></h3>
 <p> A Framework Spring é Open Source e foi criado pela PIVOTAL com o objetivo de facilitar o desenvolvimento de sistemas, descomplicando toda a parte de infraestrutura e algumas outras complexidades que existe na especificação JAVA EE.</p>
 <p></p>
-<p>A Framework Spring Boot é uma versão reduzida da Spring, ideal para o desevolvimento de aplicações WEB stand alone de forma rápida e simples, foi baseada no conceito de Injeção de Dependências e Inversão de Controle o que torna o código mais coeso e com menos acomplamento entre as classes, além de gerenciar bem todas as dependências iniciais internas e externas, ter de forma embracada o servidor de aplicação, sendo por padrão o Apache-Tomcat, mas podemos usar outros como o Jetty e Undertown , durante a descrição deste documento iremos registrar aonde são aplicados estes conceitos e facilidades com base em anotações e na estruturação das camadas,sendo estes o principais motivos de optarmos por esta framework.</p>
+<p>A Framework Spring Boot é uma versão reduzida da Spring, ideal para o desevolvimento de aplicações WEB stand alone de forma rápida e simples, foi baseada no conceito de Injeção de Dependências e Inversão de Controle o que torna o código mais coeso e com menos acoplamento entre as classes, além de gerenciar bem todas as dependências iniciais internas e externas, ter de forma embracada o servidor de aplicação, sendo por padrão o Apache-Tomcat, mas podemos usar outros como o Jetty e Undertown , durante a descrição deste documento iremos registrar aonde são aplicados estes conceitos e facilidades com base em anotações e na estruturação das camadas, sendo estes o principais motivos de optarmos por esta framework.</p>
 <p></p>
 <p>Internamento o Spring Boot possui 4 componentes chaves na sua execução:</p>
 <p>1 - Spring Boot Starter: Utiliza a combinação de várias dependências para forma uma unica</p>
-<p>2 - Spring Boot CLI: software responsável por rodar e testar as aplicações na linha de comnando para isto executando o Spring Boot Starter e o Spring Boot Autocofigurator</p>
+<p>2 - Spring Boot CLI: software responsável por rodar e testar as aplicações na linha de comanndo para isto executando o Spring Boot Starter e o Spring Boot Autocofigurator</p>
 <p>3 - Spring Boot Autocofigurator: Gerencia as configurações de uma aplicação</p>
 <p>4 - Spring Boot Acutator: Prover o endpoints e as métricas da aplicação</p>
 <p></p>
@@ -85,18 +87,18 @@
 
 <p></p> 
 
-<h3>Spring Initializer</h3>
+<h3><strong>Spring Initializer</strong>strong></h3>
 <p></p> 
 <p>Utilizamos em nosso projeto da ferramenta Spring Initializer que facilita a configuração do nosso projeto e agiliza o desenvolvimento</p>
 <p>Acessamos a ferramenta através do site: https://start.spring.io/, porém caso queira poderá instalar na sua máquina e fazer de forma local</p>
 <p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagen: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: .JAR (Não iremos fazer deploy em Conteiners) ou .WAR (Iremos fazer deploy em Conteiners) </p>
 <p>Em nosso projeto estamos utilizando o padrão de deploy .jar, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o Conteiner TOMCAT instalado e configurado</p>
 
-<h3>Gestão de Dependências</h3>
+<h3><strong>Gestão de Dependências</strong>strong></h3>
 <p></p>
 <p>Com a abordagem de reutilização de códigos, frameworks, padrões e pacotes com a o qual o Java foi pioneiro, uma ferramenta que nos auxilie a gerenciar todos estes aspectos é de suma importância, sendo que as mais comuns no mercado são: Maven: Linguagens Java ou Kotlin, Gradle:Linguagens Java ou Kotlin, NPM: linguagem java Script, NuGet: aplicações .NET e Pip: Aplicações Phython </p>
 <p></p>
-<h4>MAVEN</h4>
+<h4><strong>MAVEN</strong>strong></h4>
 <p></p>
 <p>No nosso caso optamos pela ferramenta MAVEN pelas seguintes questões: </p>
 <p></p>
@@ -114,7 +116,7 @@
 <p>* Necessita de Instalação;</p>
 <p>* Arquivo XML de fácil leitura mas pode ser de dificil gravação.</p>
 <p></p>
-<h6>Instalação</h6>
+<h5><strong>Instalação</strong>strong></h5>
 <p></p>
 <p>O MAVEN é uma ferramenta OPEN Source da Apache Software Foundation e pode ser baixado pelo site: http://maven.apache.org/download.html, seguindo os seguintes passos: </p>
 <p>* Escolher a ultima versão de acordo com o seu sistema operacional</p>
@@ -127,19 +129,19 @@
 <p></p>
 <p>Observação: Na instalação do MAVEN alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
 <p></p>
-<h4>Configuração no Projeto</h4>
+<h5><strong>Configuração no Projeto</strong>strong></h5>
 <p></p>
 
 <p></p>
-<h4>Estutura de pastas no Projeto</h4>
+<h5><strong>Estutura de pastas no Projeto</strong></h5>
 <p></p>
 <p></p>
-<h4>Principais Comandos</h4>
-<p></p>
-
+<h5><strong>Principais Comandos</strong>strong></h>
 <p></p>
 
-<h3>Classes e Anotações</h3> 
+<p></p>
+
+<h3><strong>Classes e Anotações</strong>strong></h3> 
 <p></p>
 <p><b>@SpringBootApplication</p> Main em aplicações web....
 <p><b>@RestController</p>  padrão json
@@ -160,7 +162,7 @@
 <p><b>Generics</p> 
 
 <p></p>
-<h3>Separação de Camadas</h3>
+<h3><strong>Separação de Camadas</strong>strong></h3>
 <p></p>
 
 <p><b>Controller</p> 
@@ -173,7 +175,7 @@
 <p><b>Padrao de nome de classes e metodos com linguagem Ubiqua.</p> 
 
 <p></p>
-<h3>LOMBOK</h3>
+<h3><strong>LOMBOK</strong>strong></h3>
 <p></p>
 <p>Que utilizamos e o motivo</p> BODERPOILITE codigos comuns...
 <p><b>@Getter</p> 
@@ -182,7 +184,7 @@
 <p>Passar pelas demais não utilizadas e porque</p>
 
 <p></p>
-<h3>Bean Validation</h3>
+<h3><strong>Bean Validation</strong>strong></h3>
 <p></p>
 <p><b>Validação na camada de DTO</b>
   <p><b>@NotNull</p> 
@@ -192,15 +194,17 @@
   <p><b>@Email</p> 
 
 <p></p>
-<h3>Testes</h3>
+<h3><strong>Testes</strong>strong></h3>
 <p></p>
 <p><b>Postman</b>
 <p><b>CURL</b>
 <p><b>ARC</b>
 
 <p></p>  
-<h2>Pessoas Desenvolvedoras do Projeto</h2>
+<h2><strong>Pessoas Desenvolvedoras do Projeto</strong>strong></h2>
 <p>Grupo 38</p>
 <p></p>
 
-<h2>Conclusão</h2>
+<h2><strong>Conclusão</strong>strong></h2>
+ </body>
+</html>
