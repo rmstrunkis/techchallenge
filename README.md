@@ -17,7 +17,7 @@
 <p>Neste momento as APIs terão a responsabilidade de cadastrar as informações de Endereços, Pessoas e Eletrodomésticos.</p>
 
 
-<h2><strong>Funcionalidades e Demonstração da Aplicação</strong></h2>
+<h2><strong>Funcionalidades e Demonstração da Aplicação - 2º Item do Entregável</strong></h2>
 <h3><strong>API Pessoas</strong></h3>
 <p></p>
 <p>Funcionalidade : Cadastro de Pessoas relacionadas ao usuário</p>
@@ -27,7 +27,7 @@
 <p>Utilizamos nesta fase apenas o método (verbo): POST</p>
 <p>URL Local:http://localhost:8080/pessoas</p>
 <p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
-<p>Body da Requisição: Formato JSON, exemplo abaixo e no swaggwer</p>
+<p>Body da Requisição: Formato JSON, exemplo abaixo e no swagger</p>
 <p></p>
 <p>JSON de Exemplo de Entrada:</p>
 <p> Observação: O Campo de IdUsuario abstraímos neste momento que iremos receber da aplicação que irá consumir o cadastro de pessoas informando a qual usuário as pessoas estarão reclacionadas.</p>
@@ -70,7 +70,7 @@
 <p></p>
 
 
-<h2><strong>Relatório Técnico</strong></h2>
+<h2><strong>Relatório Técnico - 3º Item do Entregável</strong></h2>
 <p></p>
 <p>O objetivo deste tópico é explicar as motivações e desafios das técnicas e tecnologias aplicadas nesta fase do Tech Challenge.</p>
 <p></p>
@@ -81,8 +81,8 @@
 <p>A Framework Spring Boot é uma versão reduzida da Spring, ideal para o desevolvimento de aplicações WEB stand alone de forma rápida e simples, foi baseada no conceito de Injeção de Dependências e Inversão de Controle o que torna o código mais coeso e com menos acoplamento entre as classes, além de gerenciar bem todas as dependências iniciais internas e externas, ter de forma embracada o servidor de aplicação, sendo por padrão o Apache-Tomcat, mas podemos usar outros como o Jetty e Undertown , durante a descrição deste documento iremos registrar aonde são aplicados estes conceitos e facilidades com base em anotações e na estruturação das camadas, sendo estes o principais motivos de optarmos por esta framework.</p>
 <p></p>
 <p>Internamente o Spring Boot possui 4 componentes chaves na sua execução:</p>
-<p>1 - Spring Boot Starter: Utiliza a combinação de várias dependências para forma uma unica</p>
-<p>2 - Spring Boot CLI: software responsável por rodar e testar as aplicações na linha de comanndo para isto executando o Spring Boot Starter e o Spring Boot Autocofigurator</p>
+<p>1 - Spring Boot Starter: Utiliza a combinação de várias dependências para formar uma unica</p>
+<p>2 - Spring Boot CLI: software responsável por rodar e testar as aplicações na linha de comando para isto executando o Spring Boot Starter e o Spring Boot Autocofigurator</p>
 <p>3 - Spring Boot Autocofigurator: Gerencia as configurações de uma aplicação</p>
 <p>4 - Spring Boot Acutator: Prover o endpoints e as métricas da aplicação</p>
 <p></p>
@@ -95,10 +95,10 @@
 
 <h3><strong>Spring Initializer</strong></h3>
 <p></p> 
-<p>Utilizamos em nosso projeto da ferramenta Spring Initializer que facilita a configuração do nosso projeto e agiliza o desenvolvimento</p>
-<p>Acessamos a ferramenta através do site: https://start.spring.io/, porém caso queira poderá instalar na sua máquina e fazer de forma local</p>
-<p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagen: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: .JAR (Não iremos fazer deploy em Conteiners) ou .WAR (Iremos fazer deploy em Conteiners) </p>
-<p>Em nosso projeto estamos utilizando o padrão de deploy .jar, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o Conteiner TOMCAT instalado e configurado</p>
+<p>Utilizamos em nosso projeto da ferramenta Spring Initializer que facilita a configuração do nosso projeto e agiliza o desenvolvimento, adicionando todas as depedências que necessiatmos e formatando toda a sequência inicial do nosso build. </p>
+<p>Acessamos a ferramenta através do site: https://start.spring.io/, porém caso queira poderá instalar na sua máquina e fazer de forma local.</p>
+<p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagem: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: .JAR (Não iremos fazer deploy em Conteiners) ou .WAR (Iremos fazer deploy em Conteiners) </p>
+<p>Em nosso projeto estamos utilizando o padrão de deploy .JAR, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o Conteiner TOMCAT instalado e configurado</p>
 
 <p></p>
 <h3><strong>Gestão de Dependências</strong></h3>
@@ -119,7 +119,7 @@
 <p>* Arquivo XML de fácil leitura;</p>
 <p>* Familiaridade do time de desenvolvimento.</p>
 <p></p>
-<p>Citamos acima os principais motivações para a utilização do MAVEN no nosso projeto, mas existem algumas desvantagens nos seguintes aspectos: </p>
+<p>Citamos acima os principais motivações para a utilização do Maven no nosso projeto, mas existem algumas desvantagens nos seguintes aspectos: </p>
 <p>* Necessita de Instalação;</p>
 <p>* Arquivo XML de fácil leitura mas pode ser de dificil gravação.</p>
 <p></p>
@@ -128,20 +128,19 @@
 <p>O Maven é uma ferramenta OPEN Source da Apache Software Foundation e pode ser baixado pelo site: http://maven.apache.org/download.html, seguindo os seguintes passos: </p>
 <p>* Escolher a ultima versão de acordo com o seu sistema operacional</p>
 <p>* Fazer o download do arquivo .zip</p>
-<p>* Escolher um diretório para decompacta-lo</p>
+<p>* Escolher um diretório para descompacta-lo</p>
 <p>* Adicionar uma variável de ambiente: M2_HOME apontando para o diretório que descompactou o arquivo até chegar no diretório /bin</p>
-<p>* Pode confirmar a instalação, executando o comando no prompt do sistema operacional : mvn - version, conforme imagem abaixo:</p>
-![Comando de Versão](https://github.com/rmstrunkis/api-pessoa/assets/105131830/903b666e-428f-4902-a5fe-e74a121c2a8b)
+<p>* Podemos confirmar a instalação, executando o comando no prompt do sistema operacional : mvn - version</p>
 
 <p></p>
-<p>Observação: Na instalação do MAVEN alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
+<p>Observação: Na primeira utilização do Mavens alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
 <p></p>
 <h4><strong>Estutura de pastas no Projeto Maven</strong>strong></h4>
 <p></p>
-<p>Quando optamos por usar o Maven em nosso projeto, além de gerenciar as dependencias e o build, ele também como foi mencionado aplica conceito de programação por convenção (Estrutura de diretórios por padrão) e facilita a vida do desenvolvoder padronizando os projetos,seguindo no padrão básico as principais estruturas listadas abaixo (o que foi abordado até fase atual do curso): </p>
+<p>Quando optamos por usar o Maven em nosso projeto, além de gerenciar as dependências e o build, ele também como foi mencionado aplica conceito de programação por convenção (Estrutura de diretórios por padrão) e facilita a vida do desenvolvoder padronizando também os projetos,seguindo no padrão básico teremos as principais estruturas listadas abaixo (o que foi abordado até fase atual do curso): </p>
 <p></p>
 <p><b>src/main/java -</b>    Diretório onde está o código fonte Java da Aplicação e/ou Biblioteca</p>
-<p><b>src/main/resources -</b> Arquivos de configuração e outros arquivos devem ficar nesta pasta, como o application property (que veremos nas próximas fases do curso)</p>
+<p><b>src/main/resources -</b> Arquivos de configuração e outros arquivos devem ficar nesta pasta, como o application property (que veremos nas próximas fases do curso, especialmente na configuração com banco de dados)</p>
 <p><b>src/test/java -</b> Pasta que contém os arquivos de testes unitários</p>
 <p><b>src/test/resources -</b> Pasta com arquivos que serão utilizados pelas classes de testes unitários</p>
 <p><b>target -</b> As classes javas compiladas do nosso projeto</p>
@@ -151,9 +150,9 @@
 <h4><strong>Configuração do Projeto Maven - POM.xml</strong></h4>
 <p></p>
 <p> O que é o arquivo POM mencionado no item acima, é um arquivo XML que contém informações sobre o projeto e detalhes de configuração usados ​​pelo Maven para construir o projeto.</p>
-<p>Ele contém valores padrão para a maioria dos projetos. Exemplos disso são o diretório de construção, que é target; o diretório de origem, que é src/main/java; o diretório de origem do teste, que é src/test/java; e assim por diante.</p>
+<p>Ele contém valores padrão para a maioria dos projetos. Exemplos disso são o diretório de construção, que é target; o diretório de origem, que é src/main/java; o diretório de origem do teste, que é src/test/java; e assim por diante seguindo o conceito de programação por convenção.</p>
 <p>Ao executar uma tarefa ou objetivo, o Maven procura o POM no diretório atual. Ele lê o POM, obtém as informações de configuração necessárias e executa.</p>
-<p>Algumas das configurações que podem ser especificadas no POM são as dependências do projeto (exemplo: LOMBOK e Validation), os plugins ou objetivos que podem ser executados, os perfis de construção e assim por diante.</p>
+<p>Algumas das configurações que podem ser especificadas no POM são as dependências do projeto (exemplo: LOMBOK e Validation que usamos em nosso projeto), os plugins ou objetivos que podem ser executados, os perfis de construção e assim por diante.</p>
 <p>Outras informações como a versão do projeto, descrição, desenvolvedores, listas de discussão e outras também podem ser especificadas.</p>
 <p></p>
 <p>As principais tags são:</p>
@@ -161,8 +160,8 @@
 <p><b>groupId:</b> nome do pacote</p>
 <p><b>artifactId:</b> nome do projeto</p>
 <p><b>version:</b> versão</p>
-<p><b>properties-java.version: </b> com a versão do Java utulizada em nosso projeto</p>
-<p><b>dependencies-dependency: </b> com as dependências que serão caregadas em nosso projeto, aqui vale mencionar que o arquivo setting.xml irá consultar o repositório para buscar estas dependências, por padrão estamos neste projeto usamos default que é o repositório oficial do Maven e quando baixadas os arquivos ficarão na pasta M2 do usuário na nossa máquina local.</p>
+<p><b>properties-java.version: </b> com a versão do Java utilizada em nosso projeto</p>
+<p><b>dependencies-dependency: </b> com as dependências que serão caregadas em nosso projeto, aqui vale mencionar que o arquivo setting.xml irá consultar o repositório para buscar estas dependências, por padrão estamos neste projeto usandoi o default que é o repositório oficial do Maven e quando baixadas os arquivos ficarão na pasta M2 do usuário na nossa máquina local.</p>
 <p><b>build-builds-plugins: </b>Informações para o build de nossa aplicação que segue um conceito de fases,  podemos informar quais fases serão executadas ou serão ignoradas. As fases seguem uma ordem predefinida, você informa apenas quem será a última fase do build. Também é possível adicionar novas fases utilizando plugins, que precisam apenas ser configurados</p>
 
 <p></p>
@@ -170,7 +169,7 @@
 
 <h4><strong>Principais Comandos Maven</strong></h4>
 <p></p>
-<p>O Maven possui uma vasta lista de comandos para facilitar a nosa vida</p> 
+<p>O Maven possui uma vasta lista de comandos para facilitar a nosa vida:</p> 
 <p>Para compilar: mvn compile</p>
 <p>Para compilar off-line:mvn –o compile</p>
 <p>Para criar os pacotes: mvn package</p>
@@ -182,8 +181,19 @@
 <p>Startar uma aplicação: mvn spring-boot:run</p>
 
 <p></p>
-
-<h3><strong>Classes e Anotações</strong></h3> 
+<h3><strong>Separação de Camadas, Padrões de Projeto e DDD</strong></h3>
+<p></p>
+<p><b>Controller</p> 
+<p><b>Service</p> 
+<p><b>Respository</p> 
+<p><b>Config</p>
+<p><b>Model</p> 
+<p><b>Factory</p> 
+<p><b>DTO</p> GRASP\SOLID - nesta fase o S.
+<p><b>Padrao de nome de classes e metodos com linguagem Ubiqua.</p> 
+   
+<p></p>
+<h3><strong>Classes e Anotações utulizadas da Framework Spring Boot</strong></h3> 
 <p></p>
 <p><b>@SpringBootApplication</p> Main em aplicações web....
 <p><b>@RestController</p>  padrão json
@@ -193,28 +203,22 @@
 <p><b>@Service</p> 
 <p><b>RequestBody</p> 
 <p><b>@Autowired</p> injeção de dependencias
-<p><b>@Bean</p> 
+<p><b>@Bean</p> injeção de dependencias
 <p><b>@PostMapping</p> 
-<p><b>Biclioteca default Jackson :     @JsonIgnore,@JsonFormat</p> 
+<p><b>@RequestParam</p> 
+<p><b>@RequestBody</p> 
+<p><b>Biblioteca default Jackson :   anotações:  @JsonIgnore,@JsonFormat</p> 
 <p><b>ResponseEntity</p> 
 <p><b>HTTP Status</p> 
 <p><b>Enum</p> 
-<p><b>Set</p> 
+<p><b>Collections - Set</p> 
 <p><b>MAP</p> 
 <p><b>Generics</p> 
-
-<p></p>
-<h3><strong>Separação de Camadas</strong></h3>
 <p></p>
 
-<p><b>Controller</p> 
-<p><b>Service</p> 
-<p><b>Respository</p> 
-<p><b>Config</p>
-<p><b>Factory</p> 
-<p><b>DTO</p> GRASP
-<p><b>Model</p> 
-<p><b>Padrao de nome de classes e metodos com linguagem Ubiqua.</p> 
+<p></p>
+<h3><strong>JMapper vs ToObject </strong></h3>
+<p></p>
 
 <p></p>
 <h3><strong>LOMBOK</strong></h3>
@@ -238,9 +242,10 @@
 <p></p>
 <h3><strong>Testes</strong></h3>
 <p></p>
-<p><b>Postman</b>
+<p><b>Postman</b> -- collections, variaveis... 
 <p><b>CURL</b>
 <p><b>ARC</b>
+<p><b>Swagger</b>
 
 <p></p>  
 <h2><strong>Pessoas Desenvolvedoras do Projeto</strong></h2>
