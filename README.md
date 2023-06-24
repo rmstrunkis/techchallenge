@@ -170,6 +170,16 @@
 
 <h4><strong>Principais Comandos Maven</strong></h4>
 <p></p>
+<p>O Maven possui uma vasta lista de comandos para facilitar a nosa vida</p> 
+<p>Para compilar: mvn compile</p>
+<p>Para compilar off-line:mvn –o compile</p>
+<p>Para criar os pacotes: mvn package</p>
+<p>Instalar o pacote nos respectivos repositórios:mvn install</p>
+<p>Limpar a pasta target:mvn clean</p>
+<p>Executar os testes unitários:mvn test</p>
+<p>Gerar site de documentação para o projeto:mvn site</p>
+<p>Gerar Javadoc:mvn javadoc</p>
+<p>Startar uma aplicação: mvn spring-boot:run</p>
 
 <p></p>
 
