@@ -19,17 +19,20 @@
 
 <h2><strong>Funcionalidades e Demonstração da Aplicação</strong></h2>
 <h3><strong>API Pessoas</strong></h3>
-<p><b>Funcionalidade : Cadastro de Pessoas relacionadas ao usuário</p>
-<p><b>Baixar via GIT : git clone https://github.com/rmstrunkis/tech_challenge.git </p> 
-<p><b>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p> 
-<p><b>Swagger da aplicação local: http://localhost:8080/swagger-ui/#/pessoa-controller/criarNovaPessoaUsingPOST </p>
-<p><b>Utilizamos nesta fase apenas o método (verbo): POST</p>
-<p><b>URL Local:http://localhost:8080/pessoas</p>
-<p><b>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
-<p><b>Body da Requisição: Formato JSON, exemplo abaixo e no swaggwer</p>
-<p><b>JSON de Exemplo de Entrada:</p>
+<p></p>
+<p>Funcionalidade : Cadastro de Pessoas relacionadas ao usuário</p>
+<p>Baixar via GIT : git clone https://github.com/rmstrunkis/tech_challenge.git </p> 
+<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p> 
+<p>Swagger da aplicação local: http://localhost:8080/swagger-ui/#/pessoa-controller/criarNovaPessoaUsingPOST </p>
+<p>Utilizamos nesta fase apenas o método (verbo): POST</p>
+<p>URL Local:http://localhost:8080/pessoas</p>
+<p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
+<p>Body da Requisição: Formato JSON, exemplo abaixo e no swaggwer</p>
+<p></p>
+<p>JSON de Exemplo de Entrada:</p>
 <p> Observação: O Campo de IdUsuario abstraímos neste momento que iremos receber da aplicação que irá consumir o cadastro de pessoas informando a qual usuário as pessoas estarão reclacionadas.</p>
-<pstyle="font-family:courier;" style="font-size:3px;">{</p>
+<p></p>
+<p style="font-family:courier;" style="font-size:3px;">{</p>
    <p style="font-family:courier;" style="font-size:3px;"> "idUsuario": "1",</p>
    <p> "cpf":"49397364073" ,</p>
    <p> "nome": "Zezinho",</p>
@@ -43,7 +46,7 @@
    <p> "sexo":"MASCULINO"</p>
 <p>}</p>
 <p></p>
-<p><b></b>Retorno:</p>
+<p>Retorno:</p>
 <p> O Campo de Id será gerado de forma automática a cada novo cadastro, porém não permitimos que um mesmo CPF seja relacionado mais de uma vez ao mesmo usuário, mas permitimos em outro usuário, assumindo que nesta fase uma mesma pessoa pode estar relacionada a N usuários</p>
 <p> Ocorrendo o cadastro do usuário receberemos o HTTP STATUS 201 - CREATED, caso não seja criado o usuário por algum erro no preecnhimento do JSON será retornado o Status HTTP 401 com a mensagem do(s) campo(s) que foram preenchidos de forma errada ou que a pessoa ja esta relacionada ao usuário</p>
 <p>Sucesso na Criação:</p>
@@ -64,17 +67,20 @@
 <p>Arquitetura: MVC - Model View Controller</p>
 <p>Frameworks e Bibliotecas: Spring Boot versão: 2.7.12 , LOMBOK versão default para a versão do Spring, Bean Validation versão default para a versão do Spring</p>
 <p>Ferramentas Colaborativas: Postman,GIT,Maven e Swagger</p>
+<p></p>
 
 
 <h2><strong>Relatório Técnico</strong></h2>
+<p></p>
 <p>O objetivo deste tópico é explicar as motivações e desafios das técnicas e tecnologias aplicadas nesta fase do Tech Challenge.</p>
 <p></p>
 <h3><strong>Spring Boot E API REST</strong></h3>
+<p></p>
 <p> A Framework Spring é Open Source e foi criado pela PIVOTAL com o objetivo de facilitar o desenvolvimento de sistemas, descomplicando toda a parte de infraestrutura e algumas outras complexidades que existe na especificação JAVA EE.</p>
 <p></p>
 <p>A Framework Spring Boot é uma versão reduzida da Spring, ideal para o desevolvimento de aplicações WEB stand alone de forma rápida e simples, foi baseada no conceito de Injeção de Dependências e Inversão de Controle o que torna o código mais coeso e com menos acoplamento entre as classes, além de gerenciar bem todas as dependências iniciais internas e externas, ter de forma embracada o servidor de aplicação, sendo por padrão o Apache-Tomcat, mas podemos usar outros como o Jetty e Undertown , durante a descrição deste documento iremos registrar aonde são aplicados estes conceitos e facilidades com base em anotações e na estruturação das camadas, sendo estes o principais motivos de optarmos por esta framework.</p>
 <p></p>
-<p>Internamento o Spring Boot possui 4 componentes chaves na sua execução:</p>
+<p>Internamente o Spring Boot possui 4 componentes chaves na sua execução:</p>
 <p>1 - Spring Boot Starter: Utiliza a combinação de várias dependências para forma uma unica</p>
 <p>2 - Spring Boot CLI: software responsável por rodar e testar as aplicações na linha de comanndo para isto executando o Spring Boot Starter e o Spring Boot Autocofigurator</p>
 <p>3 - Spring Boot Autocofigurator: Gerencia as configurações de uma aplicação</p>
@@ -94,15 +100,16 @@
 <p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagen: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: .JAR (Não iremos fazer deploy em Conteiners) ou .WAR (Iremos fazer deploy em Conteiners) </p>
 <p>Em nosso projeto estamos utilizando o padrão de deploy .jar, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o Conteiner TOMCAT instalado e configurado</p>
 
+<p></p>
 <h3><strong>Gestão de Dependências</strong></h3>
 <p></p>
 <p>Com a abordagem de reutilização de códigos, frameworks, padrões e pacotes com a o qual o Java foi pioneiro, uma ferramenta que nos auxilie a gerenciar todos estes aspectos é de suma importância, sendo que as mais comuns no mercado são: Maven: Linguagens Java ou Kotlin, Gradle:Linguagens Java ou Kotlin, NPM: linguagem java Script, NuGet: aplicações .NET e Pip: Aplicações Phython </p>
 <p></p>
-<h4><strong>MAVEN</strong></h4>
+<h4><strong>Maven</strong></h4>
 <p></p>
-<p>No nosso caso optamos pela ferramenta MAVEN pelas seguintes questões: </p>
+<p>No nosso caso optamos pela ferramenta Maven pelas seguintes questões: </p>
 <p></p>
-<p>* Estamos usando a liguagem JAVA</p>
+<p>* Estamos usando a liguagem JAVA;</p>
 <p>* Não é necessário aprender uma tecnologia de programação adicional como no caso do Gradle que precisa ser escrite em Groove; </p>
 <p>* OPEN source da APACHE; </p>
 <p>* Estimula e auxilia na adoção de boas práticas, utilizando-se do conceito de programação por convenção (Estrutura de diretórios por padrão); </p>
@@ -112,13 +119,13 @@
 <p>* Arquivo XML de fácil leitura;</p>
 <p>* Familiaridade do time de desenvolvimento.</p>
 <p></p>
-<p>Citamos acima os principais motivações para a utulização do MAVEN no nosso projeto, mas existem algumas desvantagens nos seguintes aspectos: </p>
+<p>Citamos acima os principais motivações para a utilização do MAVEN no nosso projeto, mas existem algumas desvantagens nos seguintes aspectos: </p>
 <p>* Necessita de Instalação;</p>
 <p>* Arquivo XML de fácil leitura mas pode ser de dificil gravação.</p>
 <p></p>
-<h5><strong>Instalação</strong></h5>
+<h4><strong>Instalação Maven</strong></h4>
 <p></p>
-<p>O MAVEN é uma ferramenta OPEN Source da Apache Software Foundation e pode ser baixado pelo site: http://maven.apache.org/download.html, seguindo os seguintes passos: </p>
+<p>O Maven é uma ferramenta OPEN Source da Apache Software Foundation e pode ser baixado pelo site: http://maven.apache.org/download.html, seguindo os seguintes passos: </p>
 <p>* Escolher a ultima versão de acordo com o seu sistema operacional</p>
 <p>* Fazer o download do arquivo .zip</p>
 <p>* Escolher um diretório para decompacta-lo</p>
@@ -129,14 +136,39 @@
 <p></p>
 <p>Observação: Na instalação do MAVEN alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
 <p></p>
-<h5><strong>Configuração no Projeto</strong>strong></h5>
+<h4><strong>Estutura de pastas no Projeto Maven</strong>strong></h4>
 <p></p>
+<p>Quando optamos por usar o Maven em nosso projeto, além de gerenciar as dependencias e o build, ele também como foi mencionado aplica conceito de programação por convenção (Estrutura de diretórios por padrão) e facilita a vida do desenvolvoder padronizando os projetos,seguindo no padrão básico as principais estruturas listadas abaixo (o que foi abordado até fase atual do curso): </p>
+<p></p>
+<p><b>src/main/java -</b>    Diretório onde está o código fonte Java da Aplicação e/ou Biblioteca</p>
+<p><b>src/main/resources -</b> Arquivos de configuração e outros arquivos devem ficar nesta pasta, como o application property (que veremos nas próximas fases do curso)</p>
+<p><b>src/test/java -</b> Pasta que contém os arquivos de testes unitários</p>
+<p><b>src/test/resources -</b> Pasta com arquivos que serão utilizados pelas classes de testes unitários</p>
+<p><b>target -</b> As classes javas compiladas do nosso projeto</p>
+<p><b>pom.xml -</b> Arquivo de Configuração do Maven com dados sobre o build e dependências</p>
+<p><b>README.md -</b> Arquivo que fala de como configurar e os recursos utilizados no projeto</p>
+<p></p>
+<h4><strong>Configuração do Projeto Maven - POM.xml</strong></h4>
+<p></p>
+<p> O que é o arquivo POM mencionado no item acima, é um arquivo XML que contém informações sobre o projeto e detalhes de configuração usados ​​pelo Maven para construir o projeto.</p>
+<p>Ele contém valores padrão para a maioria dos projetos. Exemplos disso são o diretório de construção, que é target; o diretório de origem, que é src/main/java; o diretório de origem do teste, que é src/test/java; e assim por diante.</p>
+<p>Ao executar uma tarefa ou objetivo, o Maven procura o POM no diretório atual. Ele lê o POM, obtém as informações de configuração necessárias e executa.</p>
+<p>Algumas das configurações que podem ser especificadas no POM são as dependências do projeto (exemplo: LOMBOK e Validation), os plugins ou objetivos que podem ser executados, os perfis de construção e assim por diante.</p>
+<p>Outras informações como a versão do projeto, descrição, desenvolvedores, listas de discussão e outras também podem ser especificadas.</p>
+<p></p>
+<p>As principais tags são:</p>
+<p></p>
+<p><b>groupId:</b> nome do pacote</p>
+<p><b>artifactId:</b> nome do projeto</p>
+<p><b>version:</b> versão</p>
+<p><b>properties-java.version: </b> com a versão do Java utulizada em nosso projeto</p>
+<p><b>dependencies-dependency: </b> com as dependências que serão caregadas em nosso projeto, aqui vale mencionar que o arquivo setting.xml irá consultar o repositório para buscar estas dependências, por padrão estamos neste projeto usamos default que é o repositório oficial do Maven e quando baixadas os arquivos ficarão na pasta M2 do usuário na nossa máquina local.</p>
+<p><b>build-builds-plugins: </b>Informações para o build de nossa aplicação que segue um conceito de fases,  podemos informar quais fases serão executadas ou serão ignoradas. As fases seguem uma ordem predefinida, você informa apenas quem será a última fase do build. Também é possível adicionar novas fases utilizando plugins, que precisam apenas ser configurados</p>
 
 <p></p>
-<h5><strong>Estutura de pastas no Projeto</strong></h5>
-<p></p>
-<p></p>
-<h5><strong>Principais Comandos</strong></h>
+
+
+<h4><strong>Principais Comandos Maven</strong></h4>
 <p></p>
 
 <p></p>
