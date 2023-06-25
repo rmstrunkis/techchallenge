@@ -21,13 +21,11 @@ public class PessoaController {
     PessoaService pessoaService;
     @PostMapping
     public ResponseEntity criarNovaPessoa(@RequestBody PessoaDTO pessoaDTO){
-        Long id;
-        id = new Random().nextLong();
-        pessoaDTO.SetId(id);
+
 
         Map<Path, String> validar = pessoaService.validar(pessoaDTO);
         if(!validar.isEmpty()) return ResponseEntity.badRequest().body(validar);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.criarNovaPessoa(pessoaDTO));
+        return pessoaService.criarNovaPessoa(pessoaDTO);
     }
 }

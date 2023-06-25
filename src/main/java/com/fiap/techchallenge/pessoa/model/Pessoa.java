@@ -19,11 +19,14 @@ public class Pessoa  {
     private String nomePai;
     private String nomeMae;
     private String telefone;
-    @JsonIgnore
     private String senha;
     private LocalDate dataNascimento;
     private String email;
     private PessoaParentesco parentesco;
     private PessoaSexo sexo;
 
+    public boolean identificadaPor(Long idUsuario, String cpf) {
+        return  this.cpf.equals(cpf)
+                && this.idUsuario.equals(idUsuario);
+    }
 }
