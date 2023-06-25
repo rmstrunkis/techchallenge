@@ -263,41 +263,57 @@
 <p></p>
 <h3><strong>Separação de Camadas, Padrões de Projeto, Anotações, Classes  e DDD</strong></h3>
 <p></p>
-<p>Em nosso projeto, pensando na separação de responsabilidades, melhores práticas e na arquitetura MCV, criamos os pacotes\pastas abaixo: </p> 
+<p>Em nosso projeto, pensando na separação de responsabilidades, melhores práticas e na arquitetura MCV, criamos os pacotes\pastas abaixo em negrito: </p> 
 
-<p><b>Controller:</b>  Contêm as classes PessoaController,EnderecoController e EletrodomesticoController que serão as responsaveis por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo serviço com chamada via metódo POST</p> 
+<p><b>Pasta: Controller:</b>  Contêm as classes PessoaController,EnderecoController e EletrodomesticoController que serão as responsaveis por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo serviço com chamada via metódo POST</p> 
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-<p>Anotação @RestController: Que indica que é esta é camada de controller do tipo Rest com informações no padrão JSON.</p>
-<p>Anotação @RequestMapping: Irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
+<p>Anotação @RestController: anotação no nível de classe que indica que é esta é camada de controller do tipo Rest com informações no padrão JSON.</p>
+<p>Anotação @RequestMapping: anotação no nível de classe\ atributo que irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
 <p>Anotação @Autowired: Que fará a injeção de dependência da classe Service, usamos a injenção de dependência para evitarmos o Acoplamento, um aspecto importante podemos apenas fazer a injeção nas classes que possuem as anotações:  @Component, @Service, @Repository, @Controller e @RestController  que serão mapeadas na inicialização da aplicação pelo Spring Boot</p>
-<p>Anotação @PostMapping: Indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
-<p>Anotação @PostMapping: Indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
-<p>Anotação @RequestBody: indica que o valor do objeto virá do corpo da requisição, em nosso projeto usamos como paramêtro de entrada para o método que estamos vinculando ao verbo POST da requisição</p>
+<p>Anotação @PostMapping: anotação no nível de método que indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
+<p>Anotação @RequestBody: anotação no nível de parametros de método que indica que o valor do objeto virá do corpo da requisição, em nosso projeto usamos como paramêtro de entrada para o método que estamos vinculando ao verbo POST da requisição</p>
 <p>Classe ResponseEntity: representa toda a resposta HTTP: código de status, cabeçalhos e corpo, em nosso projeto estamos utilizando no retorno do método que estamos vinculado ao método POST mas poderia na ser resposta de qualquer outro tipo de requisição</p>
 <p></p>
 
-<p><b>Config:</b>Criamos esta package como boa prática para termos as classes de infra-estrutura da nossa aplicação, nesta fase do projeto, estamos utilizando duas:</p>
+<p><b>Pasta: Config:</b>Criamos esta package como boa prática para termos as classes de infra-estrutura da nossa aplicação, nesta fase do projeto, estamos utilizando duas:</p>
 <p>ValidatorBean:   Esta classe possui apenas um método com a anotação @Bean que retorna uma factory (padrão de software) de Bean Validations para que possamos, validar os dados das requisições.</p>
 <p>SpringFoxConfig: Esta classe possui apenas um método com a anotação @Bean retorna uma factory (padrão de software) de Docket para que possamos documentar e testar nossa API com a ferramenta Swagger</p>
 <p></p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-<p>Anotação @Configuration:</p>
+<p>Anotação @Configuration: anotação no nível de classe que indica que uma classe declara um ou mais @Bean-métodos e pode ser processada pelo contêiner Spring para gerar definições de bean e solicitações de serviço para esses beans em tempo de execução</p>
+<p>Anotação @Bean: Essa anotação é no nível do Método e indica que esse cria e retorna um “bean” que pode ser usado como dependência em outras classes.</p>
+<p>Classe Validation: Classe que possui diversos métodos estáticos, sendo que usamos um deles no projeto para o retorno de Validators que iremos utilizar para a valdiação de nossos objetos do tipo DTO, centralizando assim na entrada dos dados as regras de validações antes do processamento e persistência.</p>
+<p>Sobre o Swagger nesta fase do projeto não iremos detalhaer ainda.</p>
+<p><b>Pasta: DTO</p> 
+<p>Nesta pasta temos as classes que irão representar as Entidades que irão ser utilizadas nas interações entra a camada View e Controller, tendo apenas esta responsabilidade de trafegar os dados (Seguindo o que é conhecido como padrão de software DTO) e aqui podemos falar que aplicamos a 1º especificação do SOLID (Single Responsability Principle (Princípio da Responsabilidade Única); Open/Closed Principle (Princípio do “Aberto para Extensão/Fechado para Implementação); Liskov Substitution Principle (Princípio da Substituição de Liskov)), estas classes são muito similares as classes de entidade do negócio nos atributos, mas aqui podemos tirar alguns atributos que não devem ser expostos por questões de segurança, aplicamos as validações e no nosso caso utilizando as anotações do bean validation</p>
+<p> Para realizar o mapeamento dos atributos das classes DTO e das classes de Dominio que estão na nossa pasta MODEL, podemos utilizar diversas Classes, dentre elas a mais recomendada pela questão de performance e com o JMapper mas em nosso projeto pela simplicidade, criamos uma método na classe de DTO que retorna um objeto da nossa classe de Dominio\Negócio</p>
+<p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
+<p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
+<p>Anotação @ApiModelProperty: nível de atributo e classe para descrever as regras da nossa entidade ou atributo na documentação do swagger </p>
+<p>Anotação @NotBlank: anotação no nível de atributo do bean validation que não permite espaços em brancos ou não preenchimento do atributo, teremos também uma explcicação mais detalhada sobre o Bean validation em um novo tópico abaixo</p>
+<p>Anotação @Past: anotação no nível de atributo do bean validation que não permite que uma data seja menor que a data atual, ideal para preenchimento de datas de nascimento</p>
+<p>Anotação @JsonFormat: anotação em nível de atributo do jackson que já vem de maneira deafult em projetos Spring Boot que podemos usar parametrizações de padrões como no nosso caso de data</p>
+<p>Anotação @Email: anotação no nível de atributo do bean validation que valida se o email é válido</p>
+<p>Anotação @NotNull: anotação no nível de atributo do bean validation que valida se o campo esta nulo, cuidado na utilização em conjunto com a anotação @NotBlank, que irá apresentar uma exceção</p>
 <p></p>
 <p></p>
-<p></p>
-
-<p><b>Service: Package com a classe responsável em delegar para as classes de Negócio</p> 
+<p><b>Pasta: MODEL</p> 
+<p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estão falando do M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos de DDD (Domain Divre Design) devemos padronizar classes e metodos com nomes que fazem referencia ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo e etc</p>
+<p>Estas classes deveriam ser utilizadas a partir das classes da pasta Service e nas demais pastas que compõe o Model como Respository</p>
+<p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
+@Getter
+@AllArgsConstructor
+@EqualsAndHashCode
 <p><b>Respository</p> 
-<p><b>Config</p>
-<p><b>Model</p> 
-<p><b>Factory</p> 
-<p><b>DTO</p> GRASP\SOLID - nesta fase o S.
-<p><b>Padrao de nome de classes e metodos com linguagem Ubiqua.</p> 
+ 
+<p><b>Service: Package com a classe responsável em delegar para as classes de Negócio</p> 
+
+
+
+
+<p><b>Padrao de nome de classes e metodos com linguagem Ubiqua e DDD.</p> 
    
 
-<p></p>
-<h3><strong>JMapper vs ToObject </strong></h3>
-<p></p>
 
 <p></p>
 <h3><strong>LOMBOK</strong></h3>
