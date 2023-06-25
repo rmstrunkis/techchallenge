@@ -171,12 +171,12 @@
 <p></p>
 <p>Nas configurações abaixo, que foram geradas pela ferramenta Spring Initializer, informamos: que estamos herdando as funcionalidades de um Arquétipo de um projeto padrão Spring Boot a sua versão.</p>
 <p></p>
-<p><parent></p>
-		<p><groupId>org.springframework.boot</groupId></p>
-		<p><artifactId>spring-boot-starter-parent</artifactId></p>
-		<p><version>2.7.12</version></p>
-		<p><relativePath/> <!-- lookup parent from repository --></p>
-	<p></parent></p>
+        <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.12</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 <p></p>
 <p></p>
 <p>Seguem as dependencias que também adicionamos durante a utilização da ferramenta Spring Initialer, referentes as dependências, lembrando que como explicado anteriormente, caso nossas dependências possuam outras dependências o Maven já faz todo este gerenciamento</p>
