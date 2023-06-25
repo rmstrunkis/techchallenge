@@ -117,6 +117,7 @@
 <p>* Facilita e organiza o build da nossa aplicação; </p>
 <p>* Pode incorporar novas dependências através do arquivo POM.XML, podemos pesquisar no site : https://mvnrepository.com/ que é um repositório central;</p>
 <p>* Arquivo XML de fácil leitura;</p>
+<p>* Usando a ferramenta sprting initializer com algumas poucas configurações ficamos com todas as dependências já copnfiguradas e com a definição do arquétipo para o padrão\framework do Spring Boot;</p>
 <p>* Familiaridade do time de desenvolvimento.</p>
 <p></p>
 <p>Citamos acima os principais motivações para a utilização do Maven no nosso projeto, mas existem algumas desvantagens nos seguintes aspectos: </p>
@@ -157,21 +158,88 @@
 <p></p>
 <p>As principais tags são:</p>
 <p></p>
-<p><b>groupId:</b> nome do pacote</p>
-<p><b>artifactId:</b> nome do projeto</p>
-<p><b>version:</b> versão</p>
+<p><b>groupId:</b> nome do pacote e comum em quase todas as demais como dependências e build</p>
+<p><b>artifactId:</b> nome do projeto e comum em quase todas as demais como dependências e build</p>
+<p><b>version:</b> versão e comum em quase todas as demais como dependências e build</p>
+<p><b>parent:</b> Arquétipo Pai de nosso projeto</p>
 <p><b>properties-java.version: </b> com a versão do Java utilizada em nosso projeto</p>
 <p><b>dependencies-dependency: </b> com as dependências que serão caregadas em nosso projeto, aqui vale mencionar que o arquivo setting.xml irá consultar o repositório para buscar estas dependências, por padrão estamos neste projeto usandoi o default que é o repositório oficial do Maven e quando baixadas os arquivos ficarão na pasta M2 do usuário na nossa máquina local.</p>
 <p><b>build-builds-plugins: </b>Informações para o build de nossa aplicação que segue um conceito de fases,  podemos informar quais fases serão executadas ou serão ignoradas. As fases seguem uma ordem predefinida, você informa apenas quem será a última fase do build. Também é possível adicionar novas fases utilizando plugins, que precisam apenas ser configurados</p>
 
 <p></p>
+<h4><strong>POM de nosso projeto - Principais configurações</strong></h4>
+<p></p>
+<p>Nas configurações abaixo, que foram geradas pela ferramenta Spring Initializer, informamos: que estamos herdando as funcionalidades de um Arquétipo de um projeto padrão Spring Boot a sua versão.</p>
+<p></p>
+<p><parent></p>
+		<p><groupId>org.springframework.boot</groupId></p>
+		<p><artifactId>spring-boot-starter-parent</artifactId></p>
+		<p><version>2.7.12</version></p>
+		<p><relativePath/> <!-- lookup parent from repository --></p>
+	<p></parent></p>
+<p></p>
+<p></p>
+<p>Seguem as dependencias que também adicionamos durante a utilização da ferramenta Spring Initialer, referentes as dependências, lembrando que como explicado anteriormente, caso nossas dependências possuam outras dependências o Maven já faz todo este gerenciamento</p>
+<p> Outro aspecto interssante que na confguração de nosso projeto nesta fase optamos inicialmente em utilizar 4 dependências: Spring Web (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone e o padrão MVC), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação e Execução) </p>        
+<p></p>
+      <p><dependency></p>
+			<p><groupId>org.springframework.boot</groupId></p>
+			<p><artifactId>spring-boot-starter-validation</artifactId></p>
+		<p></dependency></p>
 
+		<p><dependency></p>
+			<p><groupId>org.springframework.boot</groupId></p>
+			<p><artifactId>spring-boot-starter-web</artifactId></p>
+		<p></dependency></p>
 
+		<p><dependency></p>
+			<p><groupId>org.springframework.boot</groupId></p>
+			<p><artifactId>spring-boot-starter-test</artifactId></p>
+			<p><scope>test</scope></p>
+		<p></dependency></p>
+
+		<p><dependency></p>
+			<p><groupId>org.projectlombok</groupId></p>
+			<p><artifactId>lombok</artifactId></p>
+		<p></dependency></p>
+
+		<p><dependency></p>
+			<p><groupId>io.springfox</groupId></p>
+			<p><artifactId>springfox-swagger2</artifactId></p>
+			<p><version>3.0.0</version></p>
+		<p></dependency></p>
+
+		<p><dependency></p>
+			<p><groupId>io.springfox</groupId></p>
+			<p><artifactId>springfox-boot-starter</artifactId></p>
+			<p><version>3.0.0</version></p>
+		<p></dependency></p>
+
+		<p><dependency></p>
+			<p><groupId>io.springfox</groupId></p>
+			<p><artifactId>springfox-swagger-ui</artifactId></p>
+			<p><version>3.0.0</version></p>
+		<p></dependency></p>
+
+	<p></dependencies><p></p>
+ <p></p>
+<p>Também temos as configurações de Plugins e Builds:</p>
+ <p></p>
+  <p><build></p>
+		<p><plugins></p>
+			<p><plugin></p>
+				<p><groupId>org.springframework.boot</groupId></p>
+				<p><artifactId>spring-boot-maven-plugin</artifactId></p>
+			<p></plugin></p>
+		<p></plugins></p>
+	<p></build></p>
+<p></p>
 <h4><strong>Principais Comandos Maven</strong></h4>
 <p></p>
 <p>O Maven possui uma vasta lista de comandos para facilitar a nosa vida:</p> 
 <p>Para compilar: mvn compile</p>
 <p>Para compilar off-line:mvn –o compile</p>
+<p>Executar todas as fases do Maven até o build: mvn clean install</p>
 <p>Para criar os pacotes: mvn package</p>
 <p>Instalar o pacote nos respectivos repositórios:mvn install</p>
 <p>Limpar a pasta target:mvn clean</p>
