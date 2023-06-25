@@ -297,26 +297,29 @@
 <p>Anotação @NotNull: anotação no nível de atributo do bean validation que valida se o campo esta nulo, cuidado na utilização em conjunto com a anotação @NotBlank, que irá apresentar uma exceção</p>
 <p></p>
 <p></p>
-<p><b>Pasta: MODEL</p> 
-<p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estão falando do M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos de DDD (Domain Divre Design) devemos padronizar classes e metodos com nomes que fazem referencia ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo e etc</p>
-<p>Estas classes deveriam ser utilizadas a partir das classes da pasta Service e nas demais pastas que compõe o Model como Respository</p>
+<p><b>Pasta</b>: MODEL</p> 
+<p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estão falando do M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos de DDD (Domain Divre Design) devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo e etc</p>
+<p>Estas classes deveriam ser chamadas a partir das classes da pasta Service e nas demais pastas que compõe o Model como Respository</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
 <p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
 <p>Anotação @AllArgsConstructor: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa um construtor com todos os atributos da classe, podemos usar esta anotação no nível da  classe.</p>
 <p>Anotação @EqualsAndHashCode: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa os metodos equals e hashcode sobrescritos de Object (podemos definir quais atributos devem ou não ser utilizados, através de parametros), podemos usar esta anotação no nível da classe</p>
 <p></p>
 <p></p>
-<p><b>Pasta: Respository</p> 
-<p>Nesta pasta temos as classes que irão representar as Classes de persistências e relacionamento com o banco de dados, dentro da arquitetura MVC estão falando do M-Model,  seguindo os conceitos de DDD (Domain Divre Design) devemos padronizar classes e metodos com nomes que fazem referencia ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como PessoaRepository, Salvar, Buscar e etc. Nesta fase do projeto ainda não estamos usando JPA e mesmo banco de dados, em alguns APIS persistimos em banco H2 e em outras seguimos a persistencia em Collections.</p>
+<p><b>Pasta: Respository</b></p> 
+<p>Nesta pasta temos as classes que irão representar as Classes de persistências e relacionamento com o banco de dados, dentro da arquitetura MVC estamos indicando que pertence ao M-Model também,  seguindo os conceitos de DDD  devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como PessoaRepository, Salvar, Buscar e etc. Nesta fase do projeto ainda não estamos usando JPA e mesmo banco de dados não estava obrigatório, mas em alguns APIS deste projeto persistimos em banco H2 e em outras seguimos a persistência em Collections do tipo Set.</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-	
-<p><b>Service: Package com a classe responsável em delegar para as classes de Negócio</p> 
+<p></p>
+<p>Anotação @Repository: Indica que uma classe anotada é um Repositório, originalmente definido por DDD como  um mecanismo para encapsular armazenamento, recuperação e comportamento de pesquisa que representa uma coleção de objetos", com base nesta anotação e seguindo o objetivo de evitarmos acomplamento pela injeção de dependências e inversão de controle, injetamos estas classes nas classes da pasta Service.</p>
+<p></p>
+<p></p>
+<p><b>Pasta: Service:</b> Pasta com as classes de serviço que contêm as regras de negócios comuns e as responsáveis em delegar para as classes de Negócioa s requisições da Controller, em nosso projeto ela é injetada na Controller e recebe a injeção das classes de negócio.</p> 
+<p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
+<p></p>
+<p>Anotação @Service: Indica que uma classe anotada é um Serviço</p>
+<p>Anotação @Autowired: Que fará a injeção de dependência da classe Repositório e da Config - Bean validation, usamos a injenção de dependência para evitarmos o Acoplamento.</p>
 
-
-
-
-<p><b>Padrao de nome de classes e metodos com linguagem Ubiqua e DDD.</p> 
-   
+ 
 
 
 <p></p>
