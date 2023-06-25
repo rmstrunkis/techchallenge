@@ -169,45 +169,54 @@
 <p></p>
 <h4><strong>POM de nosso projeto - Principais configurações</strong></h4>
 <p></p>
-<p>Nas configurações abaixo, que foram geradas pela ferramenta Spring Initializer, informamos: que estamos herdando as funcionalidades de um Arquétipo de um projeto padrão Spring Boot a sua versão.</p>
+<p>Nas configurações abaixo, que foram geradas pela ferramenta Spring Initializer, informamos: que estamos herdando as funcionalidades de um Arquétipo de um projeto padrão Spring Boot e a sua versão.</p>
 <p></p>
-        <parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.12</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+        
+
+                <parent>
+                	<groupId>org.springframework.boot</groupId>
+			<artifactId>pring-boot-starter-parent</artifactId>
+   		        <version>2.7.12</version>
+		        <relativePath/> <!-- lookup parent from repository -->
+		</parent>
+  		
+   
 <p></p>
 <p></p>
-<p>Seguem as dependencias que também adicionamos durante a utilização da ferramenta Spring Initialer, referentes as dependências, lembrando que como explicado anteriormente, caso nossas dependências possuam outras dependências o Maven já faz todo este gerenciamento</p>
-<p> Outro aspecto interssante que na confguração de nosso projeto nesta fase optamos inicialmente em utilizar 4 dependências: Spring Web (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone e o padrão MVC), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação e Execução) </p>        
+<p>Seguem as dependências que também adicionamos durante a utilização da ferramenta Spring Initializer, lembrando que como explicado anteriormente, caso nossas dependências possuam outras dependências o Maven já faz todo este gerenciamento</p>
+<p> Outro aspecto interessante é que na configuração de nosso projeto nesta fase optamos inicialmente em utilizar 4 dependências: Spring Web (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone e o padrão MVC), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação e Execução) </p>        
 <p></p>
-      <p><dependency></p>
-			<p><groupId>org.springframework.boot</groupId></p>
-			<p><artifactId>spring-boot-starter-validation</artifactId></p>
-		<p></dependency></p>
+			
+	   
 
-		<p><dependency></p>
-			<p><groupId>org.springframework.boot</groupId></p>
-			<p><artifactId>spring-boot-starter-web</artifactId></p>
-		<p></dependency></p>
+		
+  
+   	<dependencies>
+                <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
-		<p><dependency></p>
-			<p><groupId>org.springframework.boot</groupId></p>
-			<p><artifactId>spring-boot-starter-test</artifactId></p>
-			<p><scope>test</scope></p>
-		<p></dependency></p>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-		<p><dependency></p>
-			<p><groupId>org.projectlombok</groupId></p>
-			<p><artifactId>lombok</artifactId></p>
-		<p></dependency></p>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 
-		<p><dependency></p>
-			<p><groupId>io.springfox</groupId></p>
-			<p><artifactId>springfox-swagger2</artifactId></p>
-			<p><version>3.0.0</version></p>
-		<p></dependency></p>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 
 		<p><dependency></p>
 			<p><groupId>io.springfox</groupId></p>
@@ -221,18 +230,21 @@
 			<p><version>3.0.0</version></p>
 		<p></dependency></p>
 
-	<p></dependencies><p></p>
+	</dependencies>
  <p></p>
-<p>Também temos as configurações de Plugins e Builds:</p>
+<p>Também temos as configurações de Plugin para o Build:</p>
  <p></p>
-  <p><build></p>
-		<p><plugins></p>
-			<p><plugin></p>
-				<p><groupId>org.springframework.boot</groupId></p>
-				<p><artifactId>spring-boot-maven-plugin</artifactId></p>
-			<p></plugin></p>
-		<p></plugins></p>
-	<p></build></p>
+
+		
+
+                <build>
+		<plugins>
+			<plugin>
+                		<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+	      		</plugin>
+		</plugins>
+  		</build>
 <p></p>
 <h4><strong>Principais Comandos Maven</strong></h4>
 <p></p>
@@ -251,8 +263,18 @@
 <p></p>
 <h3><strong>Separação de Camadas, Padrões de Projeto e DDD</strong></h3>
 <p></p>
-<p><b>Controller</p> 
-<p><b>Service</p> 
+<p>Em nosso projeto, pensando na separação de responsabilidades e na arquitetura MCV, criamos os pacotes\pastas abaixo: </p> 
+
+<p><b></b>Controller:<b> Que será a responsável por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo chamadas via metódo POST</p> 
+<p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
+<p>@RestController: Que indica que é esta é camada de controller do tipo Rest com informações no padrão JSON.</p>
+<p>@RequestMapping: Irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
+<p>@RequestMapping: Irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
+<p>@Autowired: Que fará a injeção de dependência da classe Service, usamos a injenção de dependência para evitarmos o Acoplamento, um aspecto importante podemos apenas fazer a injeção nas classes que possuem as anotações:  @Compenent, @Service, @Repository, @Controller, @RestController que serão mapeadas na iniciliazação da aplicação pelo Spring Boot</p>
+<p>@PostMapping: Indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
+
+	
+<p><b>Service: Package com a classe responsável em delegar para as classes de Negócio</p> 
 <p><b>Respository</p> 
 <p><b>Config</p>
 <p><b>Model</p> 
