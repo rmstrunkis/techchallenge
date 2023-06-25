@@ -261,19 +261,31 @@
 <p>Startar uma aplicação: mvn spring-boot:run</p>
 
 <p></p>
-<h3><strong>Separação de Camadas, Padrões de Projeto e DDD</strong></h3>
+<h3><strong>Separação de Camadas, Padrões de Projeto, Anotações, Classes  e DDD</strong></h3>
 <p></p>
-<p>Em nosso projeto, pensando na separação de responsabilidades e na arquitetura MCV, criamos os pacotes\pastas abaixo: </p> 
+<p>Em nosso projeto, pensando na separação de responsabilidades, melhores práticas e na arquitetura MCV, criamos os pacotes\pastas abaixo: </p> 
 
-<p><b></b>Controller:<b> Que será a responsável por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo chamadas via metódo POST</p> 
+<p><b>Controller:</b>  Contêm as classes PessoaController,EnderecoController e EletrodomesticoController que serão as responsaveis por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo serviço com chamada via metódo POST</p> 
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-<p>@RestController: Que indica que é esta é camada de controller do tipo Rest com informações no padrão JSON.</p>
-<p>@RequestMapping: Irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
-<p>@RequestMapping: Irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
-<p>@Autowired: Que fará a injeção de dependência da classe Service, usamos a injenção de dependência para evitarmos o Acoplamento, um aspecto importante podemos apenas fazer a injeção nas classes que possuem as anotações:  @Compenent, @Service, @Repository, @Controller, @RestController que serão mapeadas na iniciliazação da aplicação pelo Spring Boot</p>
-<p>@PostMapping: Indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
+<p>Anotação @RestController: Que indica que é esta é camada de controller do tipo Rest com informações no padrão JSON.</p>
+<p>Anotação @RequestMapping: Irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
+<p>Anotação @Autowired: Que fará a injeção de dependência da classe Service, usamos a injenção de dependência para evitarmos o Acoplamento, um aspecto importante podemos apenas fazer a injeção nas classes que possuem as anotações:  @Component, @Service, @Repository, @Controller e @RestController  que serão mapeadas na inicialização da aplicação pelo Spring Boot</p>
+<p>Anotação @PostMapping: Indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
+<p>Anotação @PostMapping: Indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
+<p>Anotação @RequestBody: indica que o valor do objeto virá do corpo da requisição, em nosso projeto usamos como paramêtro de entrada para o método que estamos vinculando ao verbo POST da requisição</p>
+<p>Classe ResponseEntity: representa toda a resposta HTTP: código de status, cabeçalhos e corpo, em nosso projeto estamos utilizando no retorno do método que estamos vinculado ao método POST mas poderia na ser resposta de qualquer outro tipo de requisição</p>
+<p></p>
 
-	
+<p><b>Config:</b>Criamos esta package como boa prática para termos as classes de infra-estrutura da nossa aplicação, nesta fase do projeto, estamos utilizando duas:</p>
+<p>ValidatorBean:   Esta classe possui apenas um método com a anotação @Bean que retorna uma factory (padrão de software) de Bean Validations para que possamos, validar os dados das requisições.</p>
+<p>SpringFoxConfig: Esta classe possui apenas um método com a anotação @Bean retorna uma factory (padrão de software) de Docket para que possamos documentar e testar nossa API com a ferramenta Swagger</p>
+<p></p>
+<p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
+<p>Anotação @Configuration:</p>
+<p></p>
+<p></p>
+<p></p>
+
 <p><b>Service: Package com a classe responsável em delegar para as classes de Negócio</p> 
 <p><b>Respository</p> 
 <p><b>Config</p>
@@ -282,29 +294,6 @@
 <p><b>DTO</p> GRASP\SOLID - nesta fase o S.
 <p><b>Padrao de nome de classes e metodos com linguagem Ubiqua.</p> 
    
-<p></p>
-<h3><strong>Classes e Anotações utulizadas da Framework Spring Boot</strong></h3> 
-<p></p>
-<p><b>@SpringBootApplication</p> Main em aplicações web....
-<p><b>@RestController</p>  padrão json
-<p><b>@RequestMapping</p> 
-<p><b>@Configuration</p> 
-<p><b>@Repository</p> 
-<p><b>@Service</p> 
-<p><b>RequestBody</p> 
-<p><b>@Autowired</p> injeção de dependencias
-<p><b>@Bean</p> injeção de dependencias
-<p><b>@PostMapping</p> 
-<p><b>@RequestParam</p> 
-<p><b>@RequestBody</p> 
-<p><b>Biblioteca default Jackson :   anotações:  @JsonIgnore,@JsonFormat</p> 
-<p><b>ResponseEntity</p> 
-<p><b>HTTP Status</p> 
-<p><b>Enum</p> 
-<p><b>Collections - Set</p> 
-<p><b>MAP</p> 
-<p><b>Generics</p> 
-<p></p>
 
 <p></p>
 <h3><strong>JMapper vs ToObject </strong></h3>
@@ -329,13 +318,7 @@
   <p><b>@Past</p> 
   <p><b>@Email</p> 
 
-<p></p>
-<h3><strong>Testes</strong></h3>
-<p></p>
-<p><b>Postman</b> -- collections, variaveis... 
-<p><b>CURL</b>
-<p><b>ARC</b>
-<p><b>Swagger</b>
+
 
 <p></p>  
 <h2><strong>Pessoas Desenvolvedoras do Projeto</strong></h2>
