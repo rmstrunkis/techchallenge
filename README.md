@@ -324,7 +324,7 @@
 <p></p>
 <h3><strong>LOMBOK</strong></h3>
 <p></p>
-<p>Que utilizamos e o motivo</p> BODERPOILITE codigos comuns...
+<p>Que utilizamos e o motivo</> BODERPOILITE codigos comuns...
 <p><b>@Getter</p> 
 <p><b>@AllArgsConstructor</p> 
 <p><b>@EqualsAndHashCode</p> 
