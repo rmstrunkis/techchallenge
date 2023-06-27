@@ -345,7 +345,30 @@
 <p>O Bean Validation é uma biblioteca para apoiar na validação dos valores preenchidos em campos de entrada de dados e é extremamente importante em aplicações. O procedimento evita que armazenemos sujeira em nossas bases de dados e, dependendo do caso, pode até mesmo ter impacto na segurança do sistema.</p>
 <p>Um dos mecanismos que podemos utilizar para realizar esta verificação surgiu com a liberação da plataforma Java EE 6, na qual foi introduzida a especificação Bean Validation 1.0.</p>
 <p>O objetivo principal da biblioteca foi auxiliar os programadores nesta tarefa, que muitas vezes toma bastante tempo durante o desenvolvimento.</p>
-<p>As boas práticas indicam que devemos inserir as anotações de validações desta biblioteca na camada de DTO evitando assim que tenham em diversas p
+<p>As boas práticas indicam que devemos inserir as anotações de validações desta biblioteca na camada de DTO evitando assim que tenhamos em diversas partes do código estas regras, auxiliando até na manutenção do projeto<p>
+<p>Em nosso projeto usamos esta biblioteca e suas anotações nos atribuitos das classes da camada de DTO, passando também o parâmetro da mensagem de erro a ser retornada na response</p>
+<p>Principais anotações que utulizamos:</p>
+<p>@NotNull: valida se o valor é diferente de nulo.
+<p>@AssertTrue: valida se o valor é verdadeiro.
+<p>@Size: valida se a variável possui o tamanho entre valores mínimo
+(parâmetro min) e máximo (parâmetro max). Você pode utilizar essa
+annotation em campos de tipo String, Collection, Map e array.
+<p>@Min: valida se o valor da variável é maior que o passado no parâmetro
+value.
+<p>@Email: valida se o valor da variável é um e-mail válido.
+@NotEmpty valida se o valor do campo não está vazio; pode ser utilizado em
+variáveis de tipo o String, Collection, Map ou Array.
+@NotBlank: valida se o valor do campo não é nulo ou com espaços em branco;
+pode ser utilizado em variáveis de tipo de texto.
+@Positive e @PositiveOrZero: valida se o valor do campo é positivo ou
+positivo incluindo o 0; pode ser utilizado em variáveis numéricas.
+@Negative e @NegativeOrZero: valida se o valor do campo é negativo ou
+negativo incluindo o 0; pode ser utilizado em variáveis numéricas.
+@Past e @PastOrPresent: valida se o valor do campo de tipo de data está
+somente no passado ou no passado e no presente.
+@Future e @FutureOrPresent: valida se o valor do campo de tipo de data
+está somente no futuro ou no futuro ou no presente.
+
 
 
 
