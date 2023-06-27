@@ -32,19 +32,19 @@
 <p>JSON de Exemplo de Entrada:</p>
 <p> Observação: O Campo de IdUsuario abstraímos neste momento que iremos receber da aplicação que irá consumir o cadastro de pessoas informando a qual usuário as pessoas estarão reclacionadas.</p>
 <p></p>
-<p style="font-family:courier;" style="font-size:3px;">{</p>
-   <p style="font-family:courier;" style="font-size:3px;"> "idUsuario": "1",</p>
-   <p> "cpf":"49397364073" ,</p>
-   <p> "nome": "Zezinho",</p>
-   <p> "nomePai": "Ze",</p>
-   <p> "nomeMae": "Zinha",</p>
-   <p> "telefone": "11 32585303",</p>
-   <p> "senha": "123",</p>
-   <p> "dataNascimento": "01/07/1977",</p>
-   <p> "email": "arlei_lepiani@hotmail.com",</p>
-   <p> "parentesco": "FILHOS",</p>
-   <p> "sexo":"MASCULINO"</p>
-<p>}</p>
+<pre>{
+    "idUsuario": "1",
+   "cpf":"49397364073" ,
+   "nome": "Zezinho",
+   "nomePai": "Ze",
+    "nomeMae": "Zinha",
+   "telefone": "11 32585303",
+    "senha": "123",
+    "dataNascimento": "01/07/1977",
+    "email": "arlei_lepiani@hotmail.com",
+    "parentesco": "FILHOS",
+ "sexo":"MASCULINO"
+}</pre>
 <p></p>
 <p>Retorno:</p>
 <p> O Campo de Id será gerado de forma automática a cada novo cadastro, porém não permitimos que um mesmo CPF seja relacionado mais de uma vez ao mesmo usuário, mas permitimos em outro usuário, assumindo que nesta fase uma mesma pessoa pode estar relacionada a N usuários</p>
