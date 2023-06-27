@@ -324,12 +324,20 @@
 <p></p>
 <h3><strong>LOMBOK</strong></h3>
 <p></p>
-<p>Em tópicos anteriores, falamos sobre algumas das anotações que utilizamos desta biblioteca, sendo que esta surgiu da necessidade de reutilizarmos códigos comuns as mais diversas aplicações, como a criação de construtores, metodos getters e setters (polimorfismos OO).</p>
+<p>Em tópicos anteriores, falamos sobre algumas das anotações que utilizamos desta biblioteca, sendo que esta surgiu da necessidade de reutilizarmos códigos comuns as mais diversas aplicações, chamados de boilerplate (alusão a contratos juridicos com clausulas comuns) como a criação de construtores, metodos getters e setters (polimorfismos OO).</p>
 <p>Porém devemos tomar cuidados em usar sempre todas as anotações de forma indiscriminada, vendo a real necessidade sempre.</p> 
 <p>Para utilizarmos esta biblioteca, devemos adicionar a sua dependência no arquivo POM do gerenciador Maven.</p>	
 <p>Principais anotações:</p> 
-<p><b>@EqualsAndHashCode</p> 
-<p>Passar pelas demais não utilizadas e porque</p>
+<p>@NoArgsConstructor:</p> 
+<p>@AllArgsConstructor:</p> 
+<p>@RequiredArgsConstructor:</p> 
+<p>@NoArgsConstructor:</p> 
+<p>@AllArgsConstructor:</p> 
+<p>@RequiredArgsConstructor:</p> 
+<p>@NonNull:</p> 
+<p>@Getter:</p>  
+<p>@Setter:</p> 
+<p>@EqualsAndHashCode:</p> 
 
 <p></p>
 <h3><strong>Bean Validation</strong></h3>
