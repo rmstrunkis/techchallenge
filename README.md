@@ -328,16 +328,13 @@
 <p>Porém devemos tomar cuidados em usar sempre todas as anotações de forma indiscriminada, vendo a real necessidade sempre.</p> 
 <p>Para utilizarmos esta biblioteca, devemos adicionar a sua dependência no arquivo POM do gerenciador Maven.</p>	
 <p>Principais anotações:</p> 
-<p>@NoArgsConstructor:</p> 
-<p>@AllArgsConstructor:</p> 
-<p>@RequiredArgsConstructor:</p> 
-<p>@NoArgsConstructor:</p> 
-<p>@AllArgsConstructor:</p> 
-<p>@RequiredArgsConstructor:</p> 
-<p>@NonNull:</p> 
-<p>@Getter:</p>  
-<p>@Setter:</p> 
-<p>@EqualsAndHashCode:</p> 
+<p>@NoArgsConstructor: nível de classe para criar  construtores  sem  nenhum  parâmetro</p> 
+<p>@AllArgsConstructor:nível de classe para criar  construtores   com   todos   os parâmetros   da   classe</p> 
+<p>@RequiredArgsConstructor:nível de classe para criar   construtores   com   alguns  parâmetros   da   classe </p> 
+<p>@NonNull:nível de atributo, em conjunto com @RequiredArgsConstructor, para  determinar  qual  parâmetro  deve  ser  utilizado no construtor, o Lombok pede para que você o declare como tipo final sem inicialização ou com a annotation @NonNull sem inicialização.</p> 
+<p>@Getter:nível de classe e atributo para implementação de métodos getters, nesta casos temos o o nivel de permissão </p>  
+<p>@Setter:nível de classe e atributo para</p> 
+<p>@EqualsAndHashCode:nível de classe para</p> 
 
 <p></p>
 <h3><strong>Bean Validation</strong></h3>
