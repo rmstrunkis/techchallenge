@@ -342,12 +342,10 @@
 <p></p>
 <h3><strong>Bean Validation</strong></h3>
 <p></p>
-<p><b>Validação na camada de DTO</b>
-  <p><b>@NotNull</p> 
-  <p><b>@CPF</p> 
-  <p><b>@NotBlank</p> 
-  <p><b>@Past</p> 
-  <p><b>@Email</p> 
+<p>O Bean Validation é uma biblioteca para apoiar na validação dos valores preenchidos em campos de entrada de dados e é extremamente importante em aplicações. O procedimento evita que armazenemos sujeira em nossas bases de dados e, dependendo do caso, pode até mesmo ter impacto na segurança do sistema.</p>
+<p>Um dos mecanismos que podemos utilizar para realizar esta verificação surgiu com a liberação da plataforma Java EE 6, na qual foi introduzida a especificação Bean Validation 1.0.</p>
+<p>O objetivo principal da biblioteca foi auxiliar os programadores nesta tarefa, que muitas vezes toma bastante tempo durante o desenvolvimento.</p>
+<p>As boas práticas indicam que devemos inserir as anotações de validações desta biblioteca na camada de DTO evitando assim que tenham em diversas p
 
 
 
