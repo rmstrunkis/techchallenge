@@ -86,18 +86,18 @@
 <p>3 - Spring Boot Autocofigurator: Gerencia as configurações de uma aplicação</p>
 <p>4 - Spring Boot Acutator: Prover o endpoints e as métricas da aplicação</p>
 <p></p>
-<p> APIs (Application Programming Interface) é o meio utilizado para diversas aplicações possam se comunicar e para isto algumas regras são necessárias de acordo com cada tipo : SOAP, RPC, WebSocket e REST.</p>
+<p> APIs (Application Programming Interface) é o meio utilizado para que diversas aplicações possam se comunicar e para isto algumas regras são necessárias de acordo com cada tipo : SOAP, RPC, WebSocket e REST.</p>
 <p>No nosso caso optamos pela padrão REST (Representational State Transfer), por ser hoje o modelo mais utilizado e simples, utilizando o protocolo HTTP e o formato JSON (JavaScript Object Notation - Notação de Objetos JavaScript) para trafegar as informações, sendo uma formatação leve e com muitas bibiliotecas para utilização nas mais diversas linguagens de progração</p>
 <p> O Padrão REST é statelles, ou seja, enviamos uma request e recebemos uma response do servidor, sem a necessidade de gerenciar o estado que o cliente ou servidor possui.</p>
-<p>Outro ponto importante do tipo REST é que podemos utilizar a mesma url para o diferentes verbos HTTPs (GEP,POST,DELETE,PUT e etc).</p>
+<p>Outro ponto importante do tipo REST é que podemos utilizar a mesma url para os diferentes verbos HTTPs (GEP,POST,DELETE,PUT e etc).</p>
 
 <p></p> 
 
 <h3><strong>Spring Initializer</strong></h3>
 <p></p> 
-<p>Utilizamos em nosso projeto da ferramenta Spring Initializer que facilita a configuração do nosso projeto e agiliza o desenvolvimento, adicionando todas as depedências que necessiatmos e formatando toda a sequência inicial do nosso build. </p>
+<p>Utilizamos em nosso projeto da ferramenta Spring Initializer que facilita a configuração do nosso projeto e agiliza o desenvolvimento, adicionando todas as depedências que necessitamos e formatando toda a sequência inicial do nosso build. </p>
 <p>Acessamos a ferramenta através do site: https://start.spring.io/, porém caso queira poderá instalar na sua máquina e fazer de forma local.</p>
-<p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagem: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC) e Tipos de Empacotamento: .JAR (Não iremos fazer deploy em Conteiners) ou .WAR (Iremos fazer deploy em Conteiners) </p>
+<p>No momento que estamos utilizando a ferramenta, precisamos definir a linguagem: Java ou Kotlin, Versão da Linguagem, Padrão de Projeto e Gerenciador de Dependência, Versão do Spring Boot, Dependências (quase sempre iremos usar a MVC, pois já irá outras como a WEB) e Tipos de Empacotamento: .JAR (Não iremos fazer deploy em Conteiners) ou .WAR (Iremos fazer deploy em Conteiners) </p>
 <p>Em nosso projeto estamos utilizando o padrão de deploy .JAR, mesmo o arquivo sendo um pouco maior, não iremos necessitar que o servidor tenha o Conteiner TOMCAT instalado e configurado</p>
 
 <p></p>
@@ -110,14 +110,14 @@
 <p>No nosso caso optamos pela ferramenta Maven pelas seguintes questões: </p>
 <p></p>
 <p>* Estamos usando a liguagem JAVA;</p>
-<p>* Não é necessário aprender uma tecnologia de programação adicional como no caso do Gradle que precisa ser escrite em Groove; </p>
+<p>* Não é necessário aprender uma tecnologia de programação adicional como no caso do Gradle que precisa ser escrito em Groove; </p>
 <p>* OPEN source da APACHE; </p>
 <p>* Estimula e auxilia na adoção de boas práticas, utilizando-se do conceito de programação por convenção (Estrutura de diretórios por padrão); </p>
-<p>* Gerencia todos os downloads das dependências das dependências que estamos utilizando; </p>
+<p>* Gerencia todos os downloads das dependências das dependências que estamos utilizando (antes do Maven era muito trabalhoso importar os .jar e adicionar ao build path); </p>
 <p>* Facilita e organiza o build da nossa aplicação; </p>
 <p>* Pode incorporar novas dependências através do arquivo POM.XML, podemos pesquisar no site : https://mvnrepository.com/ que é um repositório central;</p>
 <p>* Arquivo XML de fácil leitura;</p>
-<p>* Usando a ferramenta sprting initializer com algumas poucas configurações ficamos com todas as dependências já copnfiguradas e com a definição do arquétipo para o padrão\framework do Spring Boot;</p>
+<p>* Usando a ferramenta spring initializer com algumas poucas configurações ficamos com todas as dependências já configuradas e com a definição do arquétipo para o padrão\framework do Spring Boot;</p>
 <p>* Familiaridade do time de desenvolvimento.</p>
 <p></p>
 <p>Citamos acima os principais motivações para a utilização do Maven no nosso projeto, mas existem algumas desvantagens nos seguintes aspectos: </p>
@@ -134,18 +134,18 @@
 <p>* Podemos confirmar a instalação, executando o comando no prompt do sistema operacional : mvn - version</p>
 
 <p></p>
-<p>Observação: Na primeira utilização do Mavens alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
+<p>Observação: Na primeira utilização do Maven alguns diretórios são criados na máquina local, sendo o principal deles a pasta M2 que é aonde ficam armazenadas fisicamente os arquivos .jar que estamos utilizando em nossos projetos</p>
 <p></p>
-<h4><strong>Estutura de pastas no Projeto Maven</strong>strong></h4>
+<h4><strong>Estutura de pastas no Projeto Maven</strong></h4>
 <p></p>
-<p>Quando optamos por usar o Maven em nosso projeto, além de gerenciar as dependências e o build, ele também como foi mencionado aplica conceito de programação por convenção (Estrutura de diretórios por padrão) e facilita a vida do desenvolvoder padronizando também os projetos,seguindo no padrão básico teremos as principais estruturas listadas abaixo (o que foi abordado até fase atual do curso): </p>
+<p>Quando optamos por usar o Maven em nosso projeto, além de gerenciar as dependências e o build, ele também como foi mencionado aplica conceito de programação por convenção (Estrutura de diretórios por padrão) e facilita a vida do desenvolvoder padronizando também os projetos,seguindo no padrão do arquétipo Spring Boot teremos as principais estruturas listadas abaixo (o que foi abordado até fase atual do curso): </p>
 <p></p>
-<p><b>src/main/java -</b>    Diretório onde está o código fonte Java da Aplicação e/ou Biblioteca</p>
+<p><b>src/main/java -</b>    Diretório onde está o(s) código(s) fonte(s) Java da Aplicação e/ou Biblioteca(s)</p>
 <p><b>src/main/resources -</b> Arquivos de configuração e outros arquivos devem ficar nesta pasta, como o application property (que veremos nas próximas fases do curso, especialmente na configuração com banco de dados)</p>
 <p><b>src/test/java -</b> Pasta que contém os arquivos de testes unitários</p>
 <p><b>src/test/resources -</b> Pasta com arquivos que serão utilizados pelas classes de testes unitários</p>
 <p><b>target -</b> As classes javas compiladas do nosso projeto</p>
-<p><b>pom.xml -</b> Arquivo de Configuração do Maven com dados sobre o build e dependências</p>
+<p><b>pom.xml -</b> Arquivo de Configuração do Maven com dados sobre o build e dependências, abaixo iremos detalhar.</p>
 <p><b>README.md -</b> Arquivo que fala de como configurar e os recursos utilizados no projeto</p>
 <p></p>
 <h4><strong>Configuração do Projeto Maven - POM.xml</strong></h4>
@@ -158,12 +158,12 @@
 <p></p>
 <p>As principais tags são:</p>
 <p></p>
-<p><b>groupId:</b> nome do pacote e comum em quase todas as demais como dependências e build</p>
-<p><b>artifactId:</b> nome do projeto e comum em quase todas as demais como dependências e build</p>
-<p><b>version:</b> versão e comum em quase todas as demais como dependências e build</p>
+<p><b>groupId:</b> nome do pacote e comum em quase todas as demais tags como dependências e build</p>
+<p><b>artifactId:</b> nome do projeto e comum em quase todas as demais tags como dependências e build</p>
+<p><b>version:</b> versão e comum em quase todas as demais tags como dependências e build</p>
 <p><b>parent:</b> Arquétipo Pai de nosso projeto</p>
 <p><b>properties-java.version: </b> com a versão do Java utilizada em nosso projeto</p>
-<p><b>dependencies-dependency: </b> com as dependências que serão caregadas em nosso projeto, aqui vale mencionar que o arquivo setting.xml irá consultar o repositório para buscar estas dependências, por padrão estamos neste projeto usandoi o default que é o repositório oficial do Maven e quando baixadas os arquivos ficarão na pasta M2 do usuário na nossa máquina local.</p>
+<p><b>dependencies-dependency: </b> com as dependências que serão caregadas em nosso projeto, aqui vale mencionar que o arquivo settings.xml irá consultar o repositório para buscar estas dependências, por padrão estamos neste projeto usando o default que é o repositório oficial do Maven e quando baixadas os arquivos ficarão na pasta M2 do usuário na nossa máquina local.</p>
 <p><b>build-builds-plugins: </b>Informações para o build de nossa aplicação que segue um conceito de fases,  podemos informar quais fases serão executadas ou serão ignoradas. As fases seguem uma ordem predefinida, você informa apenas quem será a última fase do build. Também é possível adicionar novas fases utilizando plugins, que precisam apenas ser configurados</p>
 
 <p></p>
@@ -184,7 +184,7 @@
 <p></p>
 <p></p>
 <p>Seguem as dependências que também adicionamos durante a utilização da ferramenta Spring Initializer, lembrando que como explicado anteriormente, caso nossas dependências possuam outras dependências o Maven já faz todo este gerenciamento</p>
-<p> Outro aspecto interessante é que na configuração de nosso projeto nesta fase optamos inicialmente em utilizar 4 dependências: Spring Web (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone e o padrão MVC), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação e Execução) </p>        
+<p> Outro aspecto interessante é que na configuração de nosso projeto nesta fase optamos inicialmente em utilizar 4 dependências: Spring MVC (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone ), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação) </p>        
 <p></p>
 			
 	   
@@ -263,57 +263,56 @@
 <p></p>
 <h3><strong>Separação de Camadas, Padrões de Projeto, Anotações, Classes  e DDD</strong></h3>
 <p></p>
-<p>Em nosso projeto, pensando na separação de responsabilidades, melhores práticas e na arquitetura MCV, criamos os pacotes\pastas abaixo em negrito: </p> 
+<p>Em nosso projeto, pensando na separação de responsabilidades, melhores práticas e na arquitetura MVC, criamos os pacotes\pastas (algumas padrões do Maven para o arquétipo escolhido) abaixo em negrito: </p> 
 
-<p><b>Pasta: Controller:</b>  Contêm as classes PessoaController,EnderecoController e EletrodomesticoController que serão as responsaveis por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo serviço com chamada via metódo POST</p> 
+<p><b>Pasta: Controller:</b>  Contêm as classes PessoaController,EnderecoController e EletrodomesticoController que serão as responsáveis por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo serviço com chamada via metódo POST</p> 
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-<p>Anotação @RestController: anotação no nível de classe que indica que é esta é camada de controller do tipo Rest com informações no padrão JSON.</p>
+<p>Anotação @RestController: anotação no nível de classe que indica que  esta é camada de controller do tipo Rest com dados no padrão JSON.</p>
 <p>Anotação @RequestMapping: anotação no nível de classe\ atributo que irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
-<p>Anotação @Autowired: Que fará a injeção de dependência da classe Service, usamos a injenção de dependência para evitarmos o Acoplamento, um aspecto importante podemos apenas fazer a injeção nas classes que possuem as anotações:  @Component, @Service, @Repository, @Controller e @RestController  que serão mapeadas na inicialização da aplicação pelo Spring Boot</p>
+<p>Anotação @Autowired: Que fará a injeção de dependência da classe Service, usamos a injeção de dependência para evitarmos o Acoplamento e separarmos bem as responsabilidades, um aspecto importante podemos apenas fazer a injeção nas classes que possuem as anotações:  @Component, @Service, @Repository, @Controller e @RestController  que serão mapeadas para serem instanciadas na inicialização da aplicação pelo Spring Boot</p>
 <p>Anotação @PostMapping: anotação no nível de método que indica qual método irá executar a chamada de uma requisição do verbo POST na URL definida na anotação @RequestMapping da classe, mas podemos também nesta anotação definir uma URL caso tenhamos necessidade.
-<p>Anotação @RequestBody: anotação no nível de parametros de método que indica que o valor do objeto virá do corpo da requisição, em nosso projeto usamos como paramêtro de entrada para o método que estamos vinculando ao verbo POST da requisição</p>
+<p>Anotação @RequestBody: anotação no nível de parâmetros dos métodos que indica que o valor do objeto virá do corpo da requisição, em nosso projeto usamos como parâmetro de entrada para o método que estamos vinculando ao verbo POST da requisição</p>
 <p>Classe ResponseEntity: representa toda a resposta HTTP: código de status, cabeçalhos e corpo, em nosso projeto estamos utilizando no retorno do método que estamos vinculado ao método POST mas poderia na ser resposta de qualquer outro tipo de requisição</p>
 <p></p>
 
-<p><b>Pasta: Config:</b>Criamos esta package como boa prática para termos as classes de infra-estrutura da nossa aplicação, nesta fase do projeto, estamos utilizando duas:</p>
+<p><b>Pasta: Config:</b>Criamos esta package como boa prática para termos as classes de infra-estrutura da nossa aplicação bem identificadas, nesta fase do projeto, estamos utilizando duas:</p>
 <p>ValidatorBean:   Esta classe possui apenas um método com a anotação @Bean que retorna uma factory (padrão de software) de Bean Validations para que possamos, validar os dados das requisições.</p>
-<p>SpringFoxConfig: Esta classe possui apenas um método com a anotação @Bean retorna uma factory (padrão de software) de Docket para que possamos documentar e testar nossa API com a ferramenta Swagger</p>
+<p>SpringFoxConfig: Esta classe possui apenas um método com a anotação @Bean retorna uma factory (padrão de software) de Docket para que possamos documentar e executar nossa API com a ferramenta Swagger</p>
 <p></p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-<p>Anotação @Configuration: anotação no nível de classe que indica que uma classe declara um ou mais @Bean-métodos e pode ser processada pelo contêiner Spring para gerar definições de bean e solicitações de serviço para esses beans em tempo de execução</p>
+<p>Anotação @Configuration: anotação no nível de classe que indica que uma classe declara um ou mais @Bean-métodos e pode ser processada pelo contêiner Spring para gerar definições de bean e solicitações de serviços para esses beans em tempo de execução</p>
 <p>Anotação @Bean: Essa anotação é no nível do Método e indica que esse cria e retorna um “bean” que pode ser usado como dependência em outras classes.</p>
 <p>Classe Validation: Classe que possui diversos métodos estáticos, sendo que usamos um deles no projeto para o retorno de Validators que iremos utilizar para a valdiação de nossos objetos do tipo DTO, centralizando assim na entrada dos dados as regras de validações antes do processamento e persistência.</p>
-<p>Sobre o Swagger nesta fase do projeto não iremos detalhaer ainda.</p>
-<p><b>Pasta: DTO</p> 
+<p>Sobre o Swagger nesta fase do projeto não iremos detalhar ainda.</p>
+<p><b>Pasta: DTO</b></p> 
 <p>Nesta pasta temos as classes que irão representar as Entidades que irão ser utilizadas nas interações entra a camada View e Controller, tendo apenas esta responsabilidade de trafegar os dados (Seguindo o que é conhecido como padrão de software DTO) e aqui podemos falar que aplicamos a 1º especificação do SOLID (Single Responsability Principle (Princípio da Responsabilidade Única); Open/Closed Principle (Princípio do “Aberto para Extensão/Fechado para Implementação); Liskov Substitution Principle (Princípio da Substituição de Liskov)), estas classes são muito similares as classes de entidade do negócio nos atributos, mas aqui podemos tirar alguns atributos que não devem ser expostos por questões de segurança, aplicamos as validações e no nosso caso utilizando as anotações do bean validation</p>
-<p> Para realizar o mapeamento dos atributos das classes DTO e das classes de Dominio que estão na nossa pasta MODEL, podemos utilizar diversas Classes, dentre elas a mais recomendada pela questão de performance e com o JMapper mas em nosso projeto pela simplicidade, criamos uma método na classe de DTO que retorna um objeto da nossa classe de Dominio\Negócio</p>
+<p> Para realizar o mapeamento dos atributos das classes DTO e das classes de Dominio que estão na nossa pasta MODEL, podemos utilizar diversas Classes, dentre elas a mais recomendada pela questão de performance e com o JMapper mas em nosso projeto pela simplicidade, criamos uma método na classe de DTO que retorna um objeto da nossa classe de Dominio\Negócio (Padrão de software Creator)</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-<p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
-<p>Anotação @ApiModelProperty: nível de atributo e classe para descrever as regras da nossa entidade ou atributo na documentação do swagger </p>
-<p>Anotação @NotBlank: anotação no nível de atributo do bean validation que não permite espaços em brancos ou não preenchimento do atributo, teremos também uma explcicação mais detalhada sobre o Bean validation em um novo tópico abaixo</p>
+<p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
+<p>Anotação @ApiModelProperty: nível de atributo ou classe para descrever a especificação, exemplos de utilização na documentação do swagger </p>
+<p>Anotação @NotBlank: anotação no nível de atributo do bean validation que não permite espaços em brancos ou não preenchimento do atributo, teremos também uma explicação mais detalhada sobre o Bean validation em um novo tópico abaixo</p>
 <p>Anotação @Past: anotação no nível de atributo do bean validation que não permite que uma data seja menor que a data atual, ideal para preenchimento de datas de nascimento</p>
 <p>Anotação @JsonFormat: anotação em nível de atributo do jackson que já vem de maneira deafult em projetos Spring Boot que podemos usar parametrizações de padrões como no nosso caso de data</p>
 <p>Anotação @Email: anotação no nível de atributo do bean validation que valida se o email é válido</p>
 <p>Anotação @NotNull: anotação no nível de atributo do bean validation que valida se o campo esta nulo, cuidado na utilização em conjunto com a anotação @NotBlank, que irá apresentar uma exceção</p>
 <p></p>
 <p></p>
-<p><b>Pasta</b>: MODEL</p> 
-<p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estão falando do M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos de DDD (Domain Divre Design) devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo e etc</p>
-<p>Estas classes deveriam ser chamadas a partir das classes da pasta Service e nas demais pastas que compõe o Model como Respository</p>
+<p><b>Pasta: MODEL</b></p> 
+<p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estamos falando que faz parte do  M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos de DDD (Domain Divre Design) devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo, Endereco e etc</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
-<p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
-<p>Anotação @AllArgsConstructor: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa um construtor com todos os atributos da classe, podemos usar esta anotação no nível da  classe.</p>
-<p>Anotação @EqualsAndHashCode: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capitulo mais abaixo, mas a priori esta anotação implementa os metodos equals e hashcode sobrescritos de Object (podemos definir quais atributos devem ou não ser utilizados, através de parametros), podemos usar esta anotação no nível da classe</p>
+<p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
+<p>Anotação @AllArgsConstructor: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa um construtor com todos os atributos da classe, podemos usar esta anotação no nível da classe.</p>
+<p>Anotação @EqualsAndHashCode: Iremos falar sobre o Lombok que é a biblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa os métodos equals e hashcode sobrescritos de Object (podemos definir quais atributos devem ou não ser utilizados, através de parâmetros), podemos usar esta anotação no nível da classe</p>
 <p></p>
 <p></p>
 <p><b>Pasta: Respository</b></p> 
-<p>Nesta pasta temos as classes que irão representar as Classes de persistências e relacionamento com o banco de dados, dentro da arquitetura MVC estamos indicando que pertence ao M-Model também,  seguindo os conceitos de DDD  devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como PessoaRepository, Salvar, Buscar e etc. Nesta fase do projeto ainda não estamos usando JPA e mesmo banco de dados não estava obrigatório, mas em alguns APIS deste projeto persistimos em banco H2 e em outras seguimos a persistência em Collections do tipo Set.</p>
+<p>Nesta pasta temos as classes que irão representar as Classes de persistências e relacionamento com o banco de dados, dentro da arquitetura MVC estamos indicando que pertence ao M-Model também,  seguindo os conceitos de DDD  devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como PessoaRepository, Métodos : Salvar, Buscar e etc. Nesta fase do projeto ainda não estamos usando JPA e mesmo banco de dados não estava obrigatório, mas em algumas APIS deste projeto persistimos em banco H2 e em outras seguimos a persistência em Collections do tipo Set.</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
 <p></p>
-<p>Anotação @Repository: Indica que uma classe anotada é um Repositório, originalmente definido por DDD como  um mecanismo para encapsular armazenamento, recuperação e comportamento de pesquisa que representa uma coleção de objetos", com base nesta anotação e seguindo o objetivo de evitarmos acomplamento pela injeção de dependências e inversão de controle, injetamos estas classes nas classes da pasta Service.</p>
+<p>Anotação @Repository: Indica que uma classe anotada é um Repositório, originalmente definido por DDD como  um mecanismo para encapsular armazenamento, recuperação e comportamento de pesquisa que representa uma coleção de objetos, com base nesta anotação e seguindo o objetivo de evitarmos acomplamento pela injeção de dependências e inversão de controle, injetamos estas classes nas classes da pasta Service.</p>
 <p></p>
 <p></p>
-<p><b>Pasta: Service:</b> Pasta com as classes de serviço que contêm as regras de negócios comuns e as responsáveis em delegar para as classes de Negócioa s requisições da Controller, em nosso projeto ela é injetada na Controller e recebe a injeção das classes de negócio.</p> 
+<p><b>Pasta: Service:</b> Pasta com as classes de serviço que contêm as regras de negócios comuns e são responsáveis em delegar para as classes de Negócios as requisições da Controller, em nosso projeto ela é injetada na Controller e recebe a injeção das classes de negócio.</p> 
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
 <p></p>
 <p>Anotação @Service: Indica que uma classe anotada é um Serviço</p>
