@@ -332,9 +332,9 @@
 <p>@AllArgsConstructor:nível de classe para criar  construtores   com   todos   os parâmetros   da   classe</p> 
 <p>@RequiredArgsConstructor:nível de classe para criar   construtores   com   alguns  parâmetros   da   classe </p> 
 <p>@NonNull:nível de atributo, em conjunto com @RequiredArgsConstructor, para  determinar  qual  parâmetro  deve  ser  utilizado no construtor, o Lombok pede para que você o declare como tipo final sem inicialização ou com a annotation @NonNull sem inicialização.</p> 
-<p>@Getter:nível de classe e atributo para implementação de métodos getters, nesta casos temos o o nivel de permissão </p>  
-<p>@Setter:nível de classe e atributo para</p> 
-<p>@EqualsAndHashCode:nível de classe para</p> 
+<p>@Getter:nível de classe (todos os atributos) e atributo para implementação de métodos getters, neste caso temos o  nível de permissão como parâmetro: PUBLIC,PROTECTED,PACKAGE  ou PRIVATE </p>  
+<p>@Setter:nível de classe (todos os atributos) e atributo para implementação de métodos setters, neste caso temos o  nível de permissão como parâmetro: PUBLIC,PROTECTED,PACKAGE  ou PRIVATE</p> 
+<p>@EqualsAndHashCode:nível de classe para  verificar se dois objetos de uma mesma classe são iguais comparando as variáveis. Com essa annotation, o Lombok cria os métodos equals() e hashCode() que podem ser utilizados nessa comparação. Podemos usar@EqualsAndHashCode.Include e @EqualsAndHashCode.Exclude para adicionar ou excluir algum atributo da classe  conforme nossa necessidade</p> 
 
 <p></p>
 <h3><strong>Bean Validation</strong></h3>
