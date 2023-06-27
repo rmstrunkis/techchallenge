@@ -324,7 +324,7 @@
 <p></p>
 <h3><strong>LOMBOK</strong></h3>
 <p></p>
-<p>Que utilizamos e o motivo</> BODERPOILITE codigos comuns...
+<p>Em ´tpicos anteiores, falamos sobre algumas das anotações que utilizamos desta biblioteca, sendo que esta surgiu da necessidade de reutilizarmos códigos comuns as mais diversas aplicações, como a criação de construtores, metodos getters e setters</p>
 <p><b>@Getter</p> 
 <p><b>@AllArgsConstructor</p> 
 <p><b>@EqualsAndHashCode</p> 
