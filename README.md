@@ -334,7 +334,10 @@
 <p>@NonNull:nível de atributo, em conjunto com @RequiredArgsConstructor, para  determinar  qual  parâmetro  deve  ser  utilizado no construtor, o Lombok pede para que você o declare como tipo final sem inicialização ou com a annotation @NonNull sem inicialização.</p> 
 <p>@Getter:nível de classe (todos os atributos) e atributo para implementação de métodos getters, neste caso temos o  nível de permissão como parâmetro: PUBLIC,PROTECTED,PACKAGE  ou PRIVATE </p>  
 <p>@Setter:nível de classe (todos os atributos) e atributo para implementação de métodos setters, neste caso temos o  nível de permissão como parâmetro: PUBLIC,PROTECTED,PACKAGE  ou PRIVATE</p> 
-<p>@EqualsAndHashCode:nível de classe para  verificar se dois objetos de uma mesma classe são iguais comparando as variáveis. Com essa annotation, o Lombok cria os métodos equals() e hashCode() que podem ser utilizados nessa comparação. Podemos usar@EqualsAndHashCode.Include e @EqualsAndHashCode.Exclude para adicionar ou excluir algum atributo da classe  conforme nossa necessidade</p> 
+<p>@EqualsAndHashCode: nivel de classe, com essa annotation, o Lombok cria os métodos equals() e hashCode() que podem ser utilizados em comparação. Podemos usar@EqualsAndHashCode.Include e @EqualsAndHashCode.Exclude para adicionar ou excluir algum atributo da classe  conforme nossa necessidade</p>
+<p>@Data:nível de classe é para implementarmos as seguintes anotações de forma implicita : @Getter, @Setter, @ToString, @EqualsAndHashCode e @RequiredArgsConstructor na classe (exceto que nenhum construtor será gerado se já existir algum construtor explicitamente escrito). </p>  
+<p>@ToString:nível de class(todos os atributos) e atributo para implementação do método ToString  </p>  
+<p>@Value:nível de classe é a variante imutável de @Data; todos os campos são privados e finais por padrão, e os setters não são gerados. A própria classe também é finalizada por padrão, porque a imutabilidade não é algo que pode ser forçado em uma subclasse. Como @Data, métodos úteis toString(), equals() e hashCode() também são gerados, cada campo recebe um método getter e um construtor que cobre todos os argumentos (exceto os campos finais que são inicializados na declaração do campo) também é gerado .</p>  
 
 <p></p>
 <h3><strong>Bean Validation</strong></h3>
