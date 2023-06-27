@@ -348,30 +348,30 @@
 <p>As boas práticas indicam que devemos inserir as anotações de validações desta biblioteca na camada de DTO evitando assim que tenhamos em diversas partes do código estas regras, auxiliando até na manutenção do projeto<p>
 <p>Em nosso projeto usamos esta biblioteca e suas anotações nos atribuitos das classes da camada de DTO, passando também o parâmetro da mensagem de erro a ser retornada na response</p>
 <p>Principais anotações que utulizamos:</p>
-<p>@NotNull: valida se o valor é diferente de nulo.
-<p>@AssertTrue: valida se o valor é verdadeiro.
+<p>@NotNull: valida se o valor é diferente de nulo.</p>
+<p>@AssertTrue: valida se o valor é verdadeiro.</p>
 <p>@Size: valida se a variável possui o tamanho entre valores mínimo
 (parâmetro min) e máximo (parâmetro max). Você pode utilizar essa
-annotation em campos de tipo String, Collection, Map e array.
+annotation em campos de tipo String, Collection, Map e array.</p>
 <p>@Min: valida se o valor da variável é maior que o passado no parâmetro
-value.
-<p>@Email: valida se o valor da variável é um e-mail válido.
-@NotEmpty valida se o valor do campo não está vazio; pode ser utilizado em
-variáveis de tipo o String, Collection, Map ou Array.
-@NotBlank: valida se o valor do campo não é nulo ou com espaços em branco;
-pode ser utilizado em variáveis de tipo de texto.
-@Positive e @PositiveOrZero: valida se o valor do campo é positivo ou
-positivo incluindo o 0; pode ser utilizado em variáveis numéricas.
-@Negative e @NegativeOrZero: valida se o valor do campo é negativo ou
-negativo incluindo o 0; pode ser utilizado em variáveis numéricas.
-@Past e @PastOrPresent: valida se o valor do campo de tipo de data está
-somente no passado ou no passado e no presente.
-@Future e @FutureOrPresent: valida se o valor do campo de tipo de data
-está somente no futuro ou no futuro ou no presente.
+value.</p>
+<p>@Email: valida se o valor da variável é um e-mail válido.</p>
+<p>@NotEmpty valida se o valor do campo não está vazio; pode ser utilizado em
+variáveis de tipo o String, Collection, Map ou Array.</p>
+<p>@NotBlank: valida se o valor do campo não é nulo ou com espaços em branco;
+pode ser utilizado em variáveis de tipo de texto.</p>
+<p>@Positive e @PositiveOrZero: valida se o valor do campo é positivo ou
+positivo incluindo o 0; pode ser utilizado em variáveis numéricas.</p>
+<p>@Negative e @NegativeOrZero: valida se o valor do campo é negativo ou
+negativo incluindo o 0; pode ser utilizado em variáveis numéricas.</p>
+<p>@Past e @PastOrPresent: valida se o valor do campo de tipo de data está
+somente no passado ou no passado e no presente.</p>
+<p>@Future e @FutureOrPresent: valida se o valor do campo de tipo de data
+está somente no futuro ou no futuro ou no presente.</p>
 
 
 
-
+<p></p>  
 <p></p>  
 <h2><strong>Pessoas Desenvolvedoras do Projeto</strong></h2>
 <p>Grupo 38</p>
