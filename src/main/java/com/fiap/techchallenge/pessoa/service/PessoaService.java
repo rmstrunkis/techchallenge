@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 public class PessoaService {
     @Autowired
     PessoaRepository pessoaRepository;
-    @Autowired
-    private Validator validator;
     public ResponseEntity<String> criarNovaPessoa(PessoaRequest pessoaRequest)
     {
 
@@ -47,16 +45,5 @@ public class PessoaService {
 
         }
 
-    }
-
-    public <T> Map<Path, String> validar(T dto) {
-        Set<ConstraintViolation<T>> violacoes
-                = validator.validate(dto);
-
-        Map<Path, String>  violacoesToMap = violacoes
-                .stream()
-                .collect(Collectors.toMap(
-                        violacao ->violacao.getPropertyPath(), ConstraintViolation::getMessage));
-        return violacoesToMap;
     }
 }
