@@ -1,8 +1,8 @@
 package com.fiap.techchallenge.pessoa.service;
 
-import com.fiap.techchallenge.pessoa.dto.PessoaDTO;
-import com.fiap.techchallenge.pessoa.model.Pessoa;
-import com.fiap.techchallenge.pessoa.repository.RepositorioPessoa;
+import com.fiap.techchallenge.pessoa.domain.request.PessoaRequest;
+import com.fiap.techchallenge.pessoa.domain.Pessoa;
+import com.fiap.techchallenge.pessoa.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,29 +20,29 @@ import java.util.stream.Collectors;
 @Service
 public class PessoaService {
     @Autowired
-    RepositorioPessoa repositorioPessoa;
+    PessoaRepository pessoaRepository;
     @Autowired
     private Validator validator;
-    public ResponseEntity<String> criarNovaPessoa(PessoaDTO pessoaDTO)
+    public ResponseEntity<String> criarNovaPessoa(PessoaRequest pessoaRequest)
     {
 
         String retorno;
-        Optional<Pessoa> pessoaOptional = repositorioPessoa.buscar(pessoaDTO.getIdUsuario(), pessoaDTO.getCpf());
+        Optional<Pessoa> pessoaOptional = pessoaRepository.buscar(pessoaRequest.getIdUsuario(), pessoaRequest.getCpf());
 
         if(pessoaOptional.isEmpty())
         {
             Long id;
             id = new Random().nextLong();
-            pessoaDTO.SetId(id);
+            pessoaRequest.SetId(id);
 
-            Pessoa pessoa = pessoaDTO.toPessoa();
-            repositorioPessoa.salvar(pessoa);
+            Pessoa pessoa = pessoaRequest.toPessoa();
+            pessoaRepository.salvar(pessoa);
             retorno = "Pessoa cadastrada com ID:" + pessoa.getId();
             return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
         }
         else
         {
-            retorno =  "Pessoa ja cadastrada, com o ID:" + pessoaOptional.get().getId() + " para o usuário: " + pessoaDTO.getIdUsuario() ;
+            retorno =  "Pessoa ja cadastrada, com o ID:" + pessoaOptional.get().getId() + " para o usuário: " + pessoaRequest.getIdUsuario() ;
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(retorno);
 
         }

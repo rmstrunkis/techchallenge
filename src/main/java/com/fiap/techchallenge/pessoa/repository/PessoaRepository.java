@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.pessoa.repository;
 
-import com.fiap.techchallenge.pessoa.model.Pessoa;
+import com.fiap.techchallenge.pessoa.domain.Pessoa;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
@@ -8,9 +8,9 @@ import java.util.Optional;
 import java.util.Set;
 
 @Repository
-public class RepositorioPessoa {
+public class PessoaRepository {
     private Set<Pessoa> pessoas;
-    public RepositorioPessoa(){
+    public PessoaRepository(){
         pessoas = new HashSet<>();
     }
 
