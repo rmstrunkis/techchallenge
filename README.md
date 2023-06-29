@@ -33,17 +33,17 @@
 <p> Observação: O Campo de IdUsuario abstraímos neste momento que iremos receber da aplicação que irá consumir o cadastro de pessoas informando a qual usuário as pessoas estarão reclacionadas.</p>
 <p></p>
 <pre>{
-    "idUsuario": "1",
+   "idUsuario": "1",
    "cpf":"49397364073" ,
    "nome": "Zezinho",
    "nomePai": "Ze",
-    "nomeMae": "Zinha",
+   "nomeMae": "Zinha",
    "telefone": "11 32585303",
-    "senha": "123",
-    "dataNascimento": "01/07/1977",
-    "email": "arlei_lepiani@hotmail.com",
-    "parentesco": "FILHOS",
- "sexo":"MASCULINO"
+   "senha": "123",
+   "dataNascimento": "01/07/1977",
+   "email": "arlei_lepiani@hotmail.com",
+   "parentesco": "FILHOS",
+   "sexo":"MASCULINO"
 }</pre>
 <p></p>
 <p>Retorno:</p>
@@ -62,7 +62,7 @@
    <p>"Pessoa ja cadastrada, com o ID:-4427849907557628080 para o usuário: 2
 <p></p>
 <h3>API Enderecos</h3>
-<h2>Funcionalidade : Cadastro de Enderecos</h2>
+<p>Funcionalidade : Cadastro de Enderecos</p>
 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p>
 
@@ -116,8 +116,7 @@
     "rua": "O nome da rua nao pode ser vazio ou nulo."
 }
 </pre>
-Copiar
-Mensagem recebida. Sure, I can help you with that. Here is the
+
 <h2><strong>Tecnologias Utilizadas</strong></h2>
 <p>Liguagem: Java versão 11</p>
 <p>Padrão de Modelagem do Sistema: DDD (Driven Domin Design)</p>
