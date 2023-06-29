@@ -116,6 +116,40 @@
     "rua": "O nome da rua nao pode ser vazio ou nulo."
 }
 </pre>
+Here is the text transformed into HTML:
+
+<h1>API Eletrodomesticos</p>
+<p>Funcionalidade: Cadastro de Eletrodomesticos</h2>
+<p>Baixar via GIT: git clone https://github.com/rmstrunkis/tech_challenge.git</p>
+<p>Executar em máquina local: na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p>
+<p>Utilizamos nesta fase apenas o método (verbo): POST</p>
+<p>URL Local: http://localhost:8080/eletrodomestico</p>
+<p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
+<p>Body da Requisição: Formato JSON, exemplo abaixo:</p>
+<pre><code>{
+   "nome": "Microondas",
+   "modelo":"LG" ,
+   "potencia": "900w",
+   "serialNumber": "GN20142B530"
+}
+</code></pre>
+<p>Retorno:</p>
+<p>O Campo de Id será gerado de forma automática a cada novo cadastro.</p>
+<p>Ocorrendo o cadastro do eletrodomestico receberemos o HTTP STATUS 201 - CREATED, caso não seja criado o eletrodomestico por algum erro no preecnhimento do JSON será retornado o Status HTTP 401 com a mensagem do(s) campo(s) que foram preenchidos de forma errada.</p>
+<h3>Sucesso na Criação do Eletrodomestico</h3>
+<pre><code>{
+   "id": "1",
+   "nome": "Microondas",
+   "modelo":"LG" ,
+   "potencia": "900w",
+   "serialNumber": "GN20142B530"
+}
+</code></pre>
+<h3>Falha na Criação por erro em preenchimento de campo, informando o(s) campo(s) validados e a mensagem da regra utilizada:</h3>
+<pre><code>{
+"nome": "O nome do eletrodomestico nao pode ser vazio ou nulo."
+}
+</code></pre>
 
 <h2><strong>Tecnologias Utilizadas</strong></h2>
 <p>Liguagem: Java versão 11</p>
