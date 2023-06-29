@@ -61,6 +61,63 @@
 <p></p>
    <p>"Pessoa ja cadastrada, com o ID:-4427849907557628080 para o usuário: 2
 <p></p>
+<h3>API Enderecos</h3>
+<h2>Funcionalidade : Cadastro de Enderecos</h2>
+
+<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p>
+
+<p>Utilizamos nesta fase apenas o método (verbo): POST</p>
+
+<p>URL Local:http://localhost:8080/enderecos</p>
+
+<p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
+
+<p>Body da Requisição: Formato JSON, exemplo abaixo:</p>
+
+<p>JSON de Exemplo de Entrada:</p>
+
+<pre>
+{
+   "rua": "rua da liberdade",
+   "numero":"1625" ,
+   "cep": "60000100",
+   "bairro": "Dos sonhos",
+   "cidade": "Iluminda",
+   "estado": "Amazonas"
+    
+}
+</pre>
+
+<p>Retorno:</p>
+
+<p>O Campo de Id será gerado de forma automática a cada novo cadastro.</p>
+
+<p>Ocorrendo o cadastro do endereço receberemos o HTTP STATUS 201 - CREATED, caso não seja criado o endereço por algum erro no preecnhimento do JSON será retornado o Status HTTP 401 com a mensagem do(s) campo(s) que foram preenchidos de forma errada.</p>
+
+<p>Sucesso na Criação do Endereço</p>
+
+<pre>
+{
+   "id": "1",
+   "rua": "rua da liberdade",
+   "numero":"1625" ,
+   "cep": "60000100",
+   "bairro": "Dos sonhos",
+   "cidade": "Iluminda",
+   "estado": "Amazonas"
+    
+}
+</pre>
+ 
+<p>Falha na Criação por erro em preenchimento de campo, informando o(s) campo(s) validados e a mensagem da regra utilizada:</p>
+
+<pre>
+{
+    "rua": "O nome da rua nao pode ser vazio ou nulo."
+}
+</pre>
+Copiar
+Mensagem recebida. Sure, I can help you with that. Here is the
 <h2><strong>Tecnologias Utilizadas</strong></h2>
 <p>Liguagem: Java versão 11</p>
 <p>Padrão de Modelagem do Sistema: DDD (Driven Domin Design)</p>
