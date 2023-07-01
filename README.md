@@ -32,19 +32,19 @@
 <p>JSON de Exemplo de Entrada:</p>
 <p> Observação: O Campo de IdUsuario abstraímos neste momento que iremos receber da aplicação que irá consumir o cadastro de pessoas informando a qual usuário as pessoas estarão reclacionadas.</p>
 <p></p>
-<p style="font-family:courier;" style="font-size:3px;">{</p>
-   <p style="font-family:courier;" style="font-size:3px;"> "idUsuario": "1",</p>
-   <p> "cpf":"49397364073" ,</p>
-   <p> "nome": "Zezinho",</p>
-   <p> "nomePai": "Ze",</p>
-   <p> "nomeMae": "Zinha",</p>
-   <p> "telefone": "11 32585303",</p>
-   <p> "senha": "123",</p>
-   <p> "dataNascimento": "01/07/1977",</p>
-   <p> "email": "arlei_lepiani@hotmail.com",</p>
-   <p> "parentesco": "FILHOS",</p>
-   <p> "sexo":"MASCULINO"</p>
-<p>}</p>
+<pre>{
+   "idUsuario": "1",
+   "cpf":"49397364073" ,
+   "nome": "Zezinho",
+   "nomePai": "Ze",
+   "nomeMae": "Zinha",
+   "telefone": "11 32585303",
+   "senha": "123",
+   "dataNascimento": "01/07/1977",
+   "email": "arlei_lepiani@hotmail.com",
+   "parentesco": "FILHOS",
+   "sexo":"MASCULINO"
+}</pre>
 <p></p>
 <p>Retorno:</p>
 <p> O Campo de Id será gerado de forma automática a cada novo cadastro, porém não permitimos que um mesmo CPF seja relacionado mais de uma vez ao mesmo usuário, mas permitimos em outro usuário, assumindo que nesta fase uma mesma pessoa pode estar relacionada a N usuários</p>
@@ -61,6 +61,114 @@
 <p></p>
    <p>"Pessoa ja cadastrada, com o ID:-4427849907557628080 para o usuário: 2
 <p></p>
+<h3>API Enderecos</h3>
+<p>Funcionalidade : Cadastro de Enderecos</p>
+
+<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p>
+
+<p>Utilizamos nesta fase apenas o método (verbo): POST</p>
+
+<p>URL Local:http://localhost:8080/enderecos</p>
+
+<p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
+
+<p>Body da Requisição: Formato JSON, exemplo abaixo:</p>
+
+<p>JSON de Exemplo de Entrada:</p>
+
+<pre>
+{
+   "rua": "rua da liberdade",
+   "numero":"1625" ,
+   "cep": "60000100",
+   "bairro": "Dos sonhos",
+   "cidade": "Iluminda",
+   "estado": "Amazonas"
+    
+}
+</pre>
+
+<p>Retorno:</p>
+
+<p>O Campo de Id será gerado de forma automática a cada novo cadastro.</p>
+
+<p>Ocorrendo o cadastro do endereço receberemos o HTTP STATUS 201 - CREATED, caso não seja criado o endereço por algum erro no preecnhimento do JSON será retornado o Status HTTP 401 com a mensagem do(s) campo(s) que foram preenchidos de forma errada.</p>
+
+<p>Sucesso na Criação do Endereço</p>
+
+<pre>
+{
+   "id": "1",
+   "rua": "rua da liberdade",
+   "numero":"1625" ,
+   "cep": "60000100",
+   "bairro": "Dos sonhos",
+   "cidade": "Iluminda",
+   "estado": "Amazonas"
+    
+}
+</pre>
+ 
+<p>Falha na Criação por erro em preenchimento de campo, informando o(s) campo(s) validados e a mensagem da regra utilizada:</p>
+
+<pre>
+{
+    "rua": "O nome da rua nao pode ser vazio ou nulo."
+}
+</pre>
+<h3>API Eletrodomesticos</h3>
+<p>Funcionalidade : Cadastro de Eletrodomesticos</p>
+
+<p>Baixar via GIT : git clone https://github.com/rmstrunkis/tech_challenge.git</p>
+
+<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p>
+
+<p>Utilizamos nesta fase apenas o método (verbo): POST</p>
+
+<p>URL Local:http://localhost:8080/eletrodomestico</p>
+
+<p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
+
+<p>Body da Requisição: Formato JSON, exemplo abaixo:</p>
+
+<pre>
+{
+   "nome": "Microondas",
+   "modelo":"LG" ,
+   "potencia": "900w",
+   "serialNumber": "GN20142B530"
+   
+}
+</pre>
+
+<p>Retorno:</p>
+
+<p>O Campo de Id será gerado de forma automática a cada novo cadastro.</p>
+
+<p>Ocorrendo o cadastro do eletrodomestico receberemos o HTTP STATUS 201 - CREATED, caso não seja criado o eletrodomestico por algum erro no preecnhimento do JSON será retornado o Status HTTP 401 com a mensagem do(s) campo(s) que foram preenchidos de forma errada.</p>
+
+<p>Sucesso na Criação do Eletrodomestico</p>
+
+<pre>
+{  
+   
+   "id": "1",
+   "nome": "Microondas",
+   "modelo":"LG" ,
+   "potencia": "900w",
+   "serialNumber": "GN20142B530"
+   
+} 
+</pre>
+
+<p>Falha na Criação por erro em preenchimento de campo, informando o(s) campo(s) validados e a mensagem da regra utilizada:</p>
+
+<pre>
+{
+    "nome": "O nome do eletrodomestico nao pode ser vazio ou nulo."
+}
+</pre>
+
 <h2><strong>Tecnologias Utilizadas</strong></h2>
 <p>Liguagem: Java versão 11</p>
 <p>Padrão de Modelagem do Sistema: DDD (Driven Domin Design)</p>
@@ -373,10 +481,3 @@ está somente no futuro ou no futuro ou no presente.</p>
 
 <p></p>  
 <p></p>  
-<h2><strong>Pessoas Desenvolvedoras do Projeto</strong></h2>
-<p>Grupo 38</p>
-<p></p>
-
-<h2><strong>Conclusão</strong></h2>
- </body>
-</html>
