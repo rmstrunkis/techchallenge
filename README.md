@@ -70,6 +70,7 @@
 <p>Utilizamos nesta fase apenas o método (verbo): POST</p>
 
 <p>URL Local:http://localhost:8080/enderecos</p>
+<p>Swagger da aplicação: http://localhost:8080/swagger-ui/#/endereco-controller/cadastrarEnderecoUsingPOST</p>
 
 <p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
 
@@ -127,6 +128,7 @@
 <p>Utilizamos nesta fase apenas o método (verbo): POST</p>
 
 <p>URL Local:http://localhost:8080/eletrodomestico</p>
+<p>Swagger da aplicação: http://localhost:8080/swagger-ui/#/eletrodomestico-controller/cadastrarEletrodomesticoUsingPOST</p>
 
 <p>Header da Requisição: ApplicattionType/JSON demais atributos vazios</p>
 
