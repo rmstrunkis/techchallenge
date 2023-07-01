@@ -481,3 +481,10 @@ está somente no futuro ou no futuro ou no presente.</p>
 
 <p></p>  
 <p></p>  
+<h2><strong>Pessoas Desenvolvedoras do Projeto</strong></h2>
+<p>Grupo 38</p>
+<p></p>
+
+<h2><strong>Conclusão</strong></h2>
+ </body>
+</html>
