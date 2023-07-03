@@ -1,10 +1,10 @@
-package com.fiap.techchallenge.pessoa.dto;
+package com.fiap.techchallenge.pessoa.domain.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fiap.techchallenge.pessoa.model.Pessoa;
-import com.fiap.techchallenge.pessoa.model.PessoaParentesco;
-import com.fiap.techchallenge.pessoa.model.PessoaSexo;
+import com.fiap.techchallenge.pessoa.domain.Pessoa;
+import com.fiap.techchallenge.pessoa.domain.PessoaParentesco;
+import com.fiap.techchallenge.pessoa.domain.PessoaSexo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -18,11 +18,9 @@ import java.time.LocalDate;
 
 @Getter
 @ApiModel(description = "Representa um objeto de requisicao de pessoas")
-public class PessoaDTO {
-
+public class PessoaRequest {
     @JsonIgnore
     private Long id;
-
     @ApiModelProperty(value = "Informacao do ID do Usuário ao qual a pessoa estará vinculada", example = "1", position = 1)
     @NotNull(message = "Usuário é Obrigatório")
     private Long idUsuario;
