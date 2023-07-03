@@ -82,7 +82,7 @@
 {
    "rua": "rua da liberdade",
    "numero":"1625" ,
-   "cep": "60000100",
+   "cep": "60000-100",
    "bairro": "Dos sonhos",
    "cidade": "Iluminda",
    "estado": "Amazonas"
