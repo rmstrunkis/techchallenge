@@ -174,7 +174,7 @@
 
 <h2><strong>Tecnologias Utilizadas</strong></h2>
 <p>Liguagem: Java versão 11</p>
-<p>Padrão de Modelagem do Sistema: DDD (Driven Domin Design)</p>
+
 <p>Arquitetura: MVC - Model View Controller</p>
 <p>Frameworks e Bibliotecas: Spring Boot versão: 2.7.12 , LOMBOK versão default para a versão do Spring, Bean Validation versão default para a versão do Spring</p>
 <p>Ferramentas Colaborativas: Postman,GIT,Maven e Swagger</p>
@@ -372,7 +372,7 @@
 <p>Startar uma aplicação: mvn spring-boot:run</p>
 
 <p></p>
-<h3><strong>Separação de Camadas, Padrões de Projeto, Anotações, Classes  e DDD</strong></h3>
+<h3><strong>Separação de Camadas, Padrões de Projeto, Principais: Anotações e Classes </strong></h3>
 <p></p>
 <p>Em nosso projeto, pensando na separação de responsabilidades, melhores práticas e na arquitetura MVC, criamos os pacotes\pastas (algumas padrões do Maven para o arquétipo escolhido) abaixo em negrito: </p> 
 
@@ -409,7 +409,7 @@
 <p></p>
 <p></p>
 <p><b>Pasta: MODEL</b></p> 
-<p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estamos falando que faz parte do  M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos de DDD (Domain Divre Design) devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo, Endereco e etc</p>
+<p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estamos falando que faz parte do  M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos inciais que estamos apredendo de DDD (Domain Divre Design) devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo, Endereco e etc</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
 <p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
 <p>Anotação @AllArgsConstructor: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa um construtor com todos os atributos da classe, podemos usar esta anotação no nível da classe.</p>
