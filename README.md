@@ -21,7 +21,7 @@
 <h3><strong>API Pessoas</strong></h3>
 <p></p>
 <p>Funcionalidade : Cadastro de Pessoas relacionadas ao usuário</p>
-<p>Baixar via GIT : git clone https://github.com/rmstrunkis/tech_challenge.git </p> 
+<p>Baixar via GIT : git clone https://github.com/rmstrunkis/techchallenge.git </p> 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn compile.</p> 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p> 
 <p>Swagger da aplicação local: http://localhost:8080/swagger-ui/#/pessoa-controller/criarNovaPessoaUsingPOST </p>
