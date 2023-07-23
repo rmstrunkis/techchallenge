@@ -56,7 +56,7 @@
 <p></p>
 <p>Falha na Criação por erro em preenchimento de campo, informando o(s) campo(s) validados e a mensagem da regra utilizada:</p>
 <pre>{
-   <p>"cpf": "CPF deve ser válido"
+   "cpf": "CPF deve ser válido"
 }</pre>
 <p>Falha na Criação por duplicidade:</p>
 <p></p>
