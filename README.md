@@ -55,9 +55,9 @@
    <p>Pessoa cadastrada com ID:-4427849907557628080
 <p></p>
 <p>Falha na Criação por erro em preenchimento de campo, informando o(s) campo(s) validados e a mensagem da regra utilizada:</p>
-<p>{</p>
+<pre>{
    <p>"cpf": "CPF deve ser válido"
-<p>}</p>
+}</pre>
 <p>Falha na Criação por duplicidade:</p>
 <p></p>
    <p>"Pessoa ja cadastrada, com o ID:-4427849907557628080 para o usuário: 2
