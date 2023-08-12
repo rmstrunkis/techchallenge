@@ -1,17 +1,14 @@
 package com.fiap.techchallenge.pessoa.controller;
 
-import com.fiap.techchallenge.pessoa.config.ValidatorBean;
+
 import com.fiap.techchallenge.pessoa.domain.request.PessoaRequest;
+import com.fiap.techchallenge.pessoa.domain.response.dto.PessoaResponseDto;
 import com.fiap.techchallenge.pessoa.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Path;
-import java.util.Map;
+
 
 @RestController
 @RequestMapping("/pessoas")
@@ -19,15 +16,25 @@ public class PessoaController {
     @Autowired
     PessoaService pessoaService;
 
-    @Autowired
-    private ValidatorBean validator;
+    @PostMapping("/cadastrar")
+    public ResponseEntity cadastrarPessoa(@RequestBody PessoaRequest pessoaRequest){
 
-    @PostMapping
-    public ResponseEntity criarNovaPessoa(@RequestBody PessoaRequest pessoaRequest){
+        return pessoaService.cadastrarPessoa(pessoaRequest);
+    }
 
-        Map<Path, String> validar = validator.validar(pessoaRequest);
-        if(!validar.isEmpty()) return ResponseEntity.badRequest().body(validar);
+    @GetMapping("/consultar/{id}")
+    public ResponseEntity consultarPessoa(@PathVariable Long id){
 
-        return pessoaService.criarNovaPessoa(pessoaRequest);
+        return ResponseEntity.ok(pessoaService.consultarPessoa(id));
+    }
+
+    @PutMapping("/atualizar")
+    public ResponseEntity<PessoaResponseDto> atualizarPessoa(@RequestBody PessoaRequest pessoaRequest, @RequestParam Long id){
+        return pessoaService.atualizarPessoa(pessoaRequest, id);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<PessoaResponseDto> deletePessoa(@RequestParam Long id){
+        return pessoaService.deletarPessoa(id);
     }
 }
