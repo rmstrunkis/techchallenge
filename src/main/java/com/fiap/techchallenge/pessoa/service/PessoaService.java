@@ -65,7 +65,7 @@ public class PessoaService {
         if (!pessoaEncontrada.isEmpty()) {
             List<PessoaResponseDto> listaPessoa = pessoaEncontrada.stream().map(PessoaResponseDto::new).collect(Collectors.toList());
 
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok(listaPessoa);
         }
         return ResponseEntity.noContent().build();
     }

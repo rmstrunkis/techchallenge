@@ -45,9 +45,9 @@ public class PessoaResponse {
     private String email;
 
     @ApiModelProperty(value = "Informacao do Parentesco da pessoa com, o usuario", example = "FILHOS", position = 1)
-    private PessoaParentesco parentesco;
+    private String parentesco;
 
     @ApiModelProperty(value = "Informacao do Sexo da pessoa", example = "MASCULINO", position = 1)
-    private PessoaSexo sexo;
+    private String sexo;
 
 }

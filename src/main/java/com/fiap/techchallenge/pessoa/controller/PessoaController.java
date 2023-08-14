@@ -22,8 +22,8 @@ public class PessoaController {
         return pessoaService.cadastrarPessoa(pessoaRequest);
     }
 
-    @GetMapping("/consultar/{id}")
-    public ResponseEntity consultarPessoa(@PathVariable Long id){
+    @GetMapping("/consultar")
+    public ResponseEntity consultarPessoa(@RequestParam Long id){
 
         return ResponseEntity.ok(pessoaService.consultarPessoa(id));
     }
