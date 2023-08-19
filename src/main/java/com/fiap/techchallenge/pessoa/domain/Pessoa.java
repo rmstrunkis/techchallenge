@@ -1,31 +1,45 @@
 package com.fiap.techchallenge.pessoa.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-@Getter
+@Data
+@Entity
+@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = {"cpf","idUsuario"})
-public class Pessoa  {
+@Table(name = "PESSOA")
+public abstract class Pessoa  {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    private Long idUsuario;
+
+    @Column(name = "cpf")
     private String cpf;
+
+    @Column(name = "nome")
     private String nome;
-    private String nomePai;
-    private String nomeMae;
+
+    @Column(name = "telefone")
     private String telefone;
-    private String senha;
-    private LocalDate dataNascimento;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "senha")
+    private String senha;
+
+    @Column(name = "parentesco")
     private PessoaParentesco parentesco;
+
+    @Column(name = "dataNascimento")
+    private LocalDate dataNascimento;
+
+    @Column(name = "sexo")
     private PessoaSexo sexo;
 
-    public boolean identificadaPor(Long idUsuario, String cpf) {
-        return  this.cpf.equals(cpf)
-                && this.idUsuario.equals(idUsuario);
-    }
+
 }
