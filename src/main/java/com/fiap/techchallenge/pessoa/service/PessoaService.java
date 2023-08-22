@@ -8,42 +8,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Path;
-import javax.validation.Validator;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class PessoaService {
     @Autowired
     PessoaRepository pessoaRepository;
-    public ResponseEntity<String> criarNovaPessoa(PessoaRequest pessoaRequest)
-    {
+    public List<Pessoa> findAll() {
+        return pessoaRepository.findAll();
+    }
 
-        String retorno;
-        Optional<Pessoa> pessoaOptional = pessoaRepository.buscar(pessoaRequest.getIdUsuario(), pessoaRequest.getCpf());
+    public Optional<Pessoa> findById(Long id) {
+        return pessoaRepository.findById(id);
+    }
 
-        if(pessoaOptional.isEmpty())
-        {
-            Long id;
-            id = new Random().nextLong();
-            pessoaRequest.SetId(id);
+    public Pessoa save(Pessoa pessoa) {
+        return pessoaRepository.save(pessoa);
+    }
 
-            Pessoa pessoa = pessoaRequest.toPessoa();
-            pessoaRepository.salvar(pessoa);
-            retorno = "Pessoa cadastrada com ID:" + pessoa.getId();
-            return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
-        }
-        else
-        {
-            retorno =  "Pessoa ja cadastrada, com o ID:" + pessoaOptional.get().getId() + " para o usuário: " + pessoaRequest.getIdUsuario() ;
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(retorno);
-
-        }
-
+    public void deleteById(Long id) {
+        pessoaRepository.deleteById(id);
     }
 }
