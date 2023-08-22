@@ -13,14 +13,13 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "PESSOA_TITULAR")
-public class PessoaTutular extends Pessoa {
+public class PessoaTitular extends Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "idTitular")
+    @OneToMany(mappedBy = "titular")
     private Set<Pessoa> dependentes;
 
     @Column(name = "idTitular")
