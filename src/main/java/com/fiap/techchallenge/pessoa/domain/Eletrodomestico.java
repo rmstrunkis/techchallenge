@@ -30,4 +30,8 @@ public class Eletrodomestico {
     @Column(name = "serialnumber")
     private String serialNumber;
 
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
+
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -29,5 +30,9 @@ public class EletrodomesticoRequest {
     @NotBlank(message = "O serial number do eletrodomestico nao pode ser vazio ou nulo.")
     @ApiModelProperty(value = "Informacao do serial number do eletrodomestico", example = "GN20142B530", position = 1)
     private String serialNumber;
+
+    @NotNull(message = "O id do endereco deve ser preenchido")
+    @ApiModelProperty(value = "Informar o id do endereco onde o eletrodomestico está", example = "1", position = 1)
+    private Long idEndereco;
 
 }

@@ -8,6 +8,7 @@ import com.fiap.techchallenge.pessoa.domain.request.EnderecoRequest;
 import com.fiap.techchallenge.pessoa.domain.response.dto.EletrodomesticoResponseDto;
 import com.fiap.techchallenge.pessoa.domain.response.dto.EnderecoResponseDto;
 import com.fiap.techchallenge.pessoa.repository.EletrodomesticoRepository;
+import com.fiap.techchallenge.pessoa.repository.EnderecoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,18 +33,21 @@ public class EletrodomesticoService {
     @Autowired
     private ValidatorBean validator;
 
+    @Autowired
+    private EnderecoRepository enderecoRepository;
+
     public ResponseEntity cadastrarEletrodomestico (EletrodomesticoRequest eletrodomesticoRequest){
 
         final var validar = validator.validar(eletrodomesticoRequest);
-        final var enderecoEncontrado = eletrodomesticoRepository.findByNomeAndModeloAndSerialNumber(
-                eletrodomesticoRequest.getNome(), eletrodomesticoRequest.getModelo(), eletrodomesticoRequest.getSerialNumber());
+        final var enderecoEncontrado = enderecoRepository.findById(eletrodomesticoRequest.getIdEndereco());
 
-        if(enderecoEncontrado.isEmpty() && validar.isEmpty()) {
+        if(!enderecoEncontrado.isEmpty() && validar.isEmpty()) {
             Eletrodomestico eletrodomestico = new Eletrodomestico();
             eletrodomestico.setNome(eletrodomesticoRequest.getNome());
             eletrodomestico.setModelo(eletrodomesticoRequest.getModelo());
             eletrodomestico.setPotencia(eletrodomesticoRequest.getPotencia());
             eletrodomestico.setSerialNumber(eletrodomesticoRequest.getSerialNumber());
+            eletrodomestico.setEndereco(enderecoEncontrado.get());
 
             Eletrodomestico eletrodomesticoSalvo = eletrodomesticoRepository.save(eletrodomestico);
 
@@ -51,20 +55,21 @@ public class EletrodomesticoService {
             return ResponseEntity.status(HttpStatus.CREATED).body(new EletrodomesticoResponseDto(eletrodomesticoSalvo));
         } else {
             logger.info(BAD_REQUEST_VAZIO);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(BAD_REQUEST_VAZIO + validar.toString());
+            if(enderecoEncontrado.isEmpty()){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Endereço informado não existe!");
+            }else{
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(BAD_REQUEST_VAZIO + validar.toString());
+            }
         }
 
     }
 
-    public ResponseEntity<List<EletrodomesticoResponseDto>> consultarEletrodomestico (Long id) {
+    public ResponseEntity<EletrodomesticoResponseDto> consultarEletrodomestico (Long id) {
 
         final var eletrodomesticoEncontrado = eletrodomesticoRepository.findById(id);
 
         if (!eletrodomesticoEncontrado.isEmpty()) {
-
-            List<EletrodomesticoResponseDto> listaEletrodomesticoEncontrado = eletrodomesticoEncontrado.stream().map(EletrodomesticoResponseDto::new).collect(Collectors.toList());
-
-            return ResponseEntity.ok(listaEletrodomesticoEncontrado);
+            return ResponseEntity.ok(new EletrodomesticoResponseDto(eletrodomesticoEncontrado.get()));
         }
         return ResponseEntity.noContent().build();
     }
