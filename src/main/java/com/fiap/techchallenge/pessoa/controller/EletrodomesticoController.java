@@ -28,6 +28,19 @@ public class EletrodomesticoController {
         return eletrodomesticoService.consultarEletrodomestico(id);
     }
 
+    @GetMapping("/pesquisar")
+    public ResponseEntity pesquisarEletrodomestico(@RequestParam(required = false) String nome, @RequestParam(required = false) String modelo, @RequestParam(required = false) String potencia, @RequestParam(required = false) String serialNumber){
+
+        if((nome == null || nome.isBlank())
+                && (modelo == null || modelo.isBlank())
+                && (potencia == null || potencia.isBlank())
+                && (serialNumber == null || serialNumber.isBlank())){
+            return ResponseEntity.badRequest().body("Preencha pelo menos um dos filtos!");
+        }
+
+        return eletrodomesticoService.pesquisarEletrodomestico(nome, modelo, potencia, serialNumber);
+    }
+
     @PutMapping("/atualizar")
     public ResponseEntity<EletrodomesticoResponseDto> atualizarEletrodomestico(@RequestBody EletrodomesticoRequest eletrodomesticoRequest, @RequestParam Long id) {
         return eletrodomesticoService.atualizarEletrodomestico(eletrodomesticoRequest, id);

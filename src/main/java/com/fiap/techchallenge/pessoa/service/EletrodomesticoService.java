@@ -2,21 +2,21 @@ package com.fiap.techchallenge.pessoa.service;
 
 import com.fiap.techchallenge.pessoa.config.ValidatorBean;
 import com.fiap.techchallenge.pessoa.domain.Eletrodomestico;
-import com.fiap.techchallenge.pessoa.domain.Endereco;
 import com.fiap.techchallenge.pessoa.domain.request.EletrodomesticoRequest;
-import com.fiap.techchallenge.pessoa.domain.request.EnderecoRequest;
 import com.fiap.techchallenge.pessoa.domain.response.dto.EletrodomesticoResponseDto;
-import com.fiap.techchallenge.pessoa.domain.response.dto.EnderecoResponseDto;
 import com.fiap.techchallenge.pessoa.repository.EletrodomesticoRepository;
 import com.fiap.techchallenge.pessoa.repository.EnderecoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import javax.persistence.criteria.Predicate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,6 +70,36 @@ public class EletrodomesticoService {
 
         if (!eletrodomesticoEncontrado.isEmpty()) {
             return ResponseEntity.ok(new EletrodomesticoResponseDto(eletrodomesticoEncontrado.get()));
+        }
+        return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity<List<EletrodomesticoResponseDto>> pesquisarEletrodomestico (String nome, String modelo, String potencia, String serialNumber){
+
+        Specification<Eletrodomestico> spec = (root, query, criteriaBuilder) -> {
+            // create a list of predicates
+            List<Predicate> predicates = new ArrayList<>();
+
+            // add a predicate for each search parameter
+            if (nome != null) {
+                predicates.add(criteriaBuilder.like(root.get("nome"), nome));
+            }
+            if (modelo != null) {
+                predicates.add(criteriaBuilder.equal(root.get("modelo"), modelo));
+            }
+            if (potencia != null) {
+                predicates.add(criteriaBuilder.equal(root.get("potencia"), potencia));
+            }
+            if (serialNumber != null) {
+                predicates.add(criteriaBuilder.equal(root.get("serialNumber"), serialNumber));
+            }
+
+            // combine the predicates into a single query
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        };
+      List<Eletrodomestico> listaRetorno =  eletrodomesticoRepository.findAll(spec);
+        if (!listaRetorno.isEmpty()) {
+            return ResponseEntity.ok(listaRetorno.stream().map(EletrodomesticoResponseDto::new).collect(Collectors.toList()));
         }
         return ResponseEntity.noContent().build();
     }
