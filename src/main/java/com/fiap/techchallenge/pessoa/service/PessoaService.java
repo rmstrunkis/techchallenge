@@ -1,5 +1,7 @@
 package com.fiap.techchallenge.pessoa.service;
 
+import com.fiap.techchallenge.pessoa.domain.PessoaDependente;
+import com.fiap.techchallenge.pessoa.domain.PessoaTitular;
 import com.fiap.techchallenge.pessoa.domain.request.PessoaRequest;
 import com.fiap.techchallenge.pessoa.domain.Pessoa;
 import com.fiap.techchallenge.pessoa.repository.PessoaRepository;
@@ -25,6 +27,11 @@ public class PessoaService {
     }
 
     public Pessoa save(Pessoa pessoa) {
+        if (pessoa instanceof PessoaDependente) {
+            // lógica para lidar com um objeto PessoaDependente
+        } else if (pessoa instanceof PessoaTitular) {
+            // lógica para lidar com um objeto PessoaTitular
+        }
         return pessoaRepository.save(pessoa);
     }
 
