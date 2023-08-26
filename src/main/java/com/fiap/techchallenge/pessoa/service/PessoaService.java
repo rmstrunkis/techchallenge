@@ -1,35 +1,40 @@
 package com.fiap.techchallenge.pessoa.service;
 
 import com.fiap.techchallenge.pessoa.domain.Pessoa;
+import com.fiap.techchallenge.pessoa.domain.Usuario;
+import com.fiap.techchallenge.pessoa.dto.pessoa.PessoaUsuarioDTO;
 import com.fiap.techchallenge.pessoa.repository.PessoaRepository;
+import com.fiap.techchallenge.pessoa.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
 
 
 @Service
 public class PessoaService {
 
     private final PessoaRepository pessoaRepository;
-    private final Usuario usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Autowired
-    public PessoaService(PessoaRepository pessoaRepository, Usuario usuarioRepository) {
+    public PessoaService(PessoaRepository pessoaRepository, UsuarioRepository usuarioRepository) {
         this.pessoaRepository = pessoaRepository;
         this.usuarioRepository = usuarioRepository;
     }
     @Transactional(readOnly = true)
-    public Page<PessoaEnderecoUsuarioDTO> findAll(PageRequest pageRequest) {
+    public Page<PessoaUsuarioDTO> findAll(PageRequest pageRequest) {
         var enderecos = pessoaRepository.findAll(pageRequest);
-        return enderecos.map(PessoaEnderecoUsuarioDTO::fromEntity);
+        return enderecos.map(PessoaUsuarioDTO::fromEntity);
     }
     @Transactional(readOnly = true)
-    public PessoaEnderecoUsuarioDTO findById(Long id) {
+    public PessoaUsuarioDTO findById(Long id) {
         var endereco = pessoaRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Endereço não encontrado")
+                () -> new RuntimeException("Pessoa não encontrada")
         );
 
-        return PessoaEnderecoUsuarioDTO.fromEntity(endereco);
+        return PessoaUsuarioDTO.fromEntity(endereco);
     }
     @Transactional
     public PessoaUsuarioDTO save(PessoaUsuarioDTO dto) {

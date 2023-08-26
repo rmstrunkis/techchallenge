@@ -1,5 +1,7 @@
 package com.fiap.techchallenge.pessoa.domain;
 
+import com.fiap.techchallenge.pessoa.dto.pessoa.PessoaDTO;
+import com.fiap.techchallenge.pessoa.dto.pessoa.PessoaUsuarioDTO;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -47,6 +49,7 @@ public class Pessoa {
             LocalDate dataNascimento,
             String sexo,
             String parentesco
+
     ) {
         this.id = id;
         this.cpf = cpf;
@@ -69,6 +72,7 @@ public class Pessoa {
         this.dataNascimento = dto.dataNascimento();
         this.sexo = dto.sexo();
         this.parentesco = dto.parentesco();
+
     }
 
     public Pessoa(PessoaUsuarioDTO dto, Usuario usuario) {
@@ -89,8 +93,9 @@ public class Pessoa {
         return id;
     }
 
-    public void setId(Long id) {
+    public Pessoa setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getCpf() {
@@ -105,16 +110,18 @@ public class Pessoa {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public Pessoa setNome(String nome) {
         this.nome = nome;
+        return this;
     }
 
     public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public Pessoa setTelefone(String telefone) {
         this.telefone = telefone;
+        return this;
     }
 
     public String getEmail() {
@@ -137,24 +144,27 @@ public class Pessoa {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public Pessoa setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+        return this;
     }
 
     public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public Pessoa setSexo(String sexo) {
         this.sexo = sexo;
+        return this;
     }
 
     public String getParentesco() {
         return parentesco;
     }
 
-    public void setParentesco(String parentesco) {
+    public Pessoa setParentesco(String parentesco) {
         this.parentesco = parentesco;
+        return this;
     }
     public Set<Endereco> getEnderecos() {
         return enderecos;
