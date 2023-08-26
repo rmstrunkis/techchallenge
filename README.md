@@ -421,15 +421,21 @@ está somente no futuro ou no futuro ou no presente.</p>
 <p>Qual seria um SGDB adequado para nosso projeto e optamos pelo POSTGRES que possui todas as caracteristicas mencionadas e pelo site do DockerHub também vimos a versão com menos vulnerabildiades e estável e decidimos pela 9.4</p>
 <p></p>
 <p> Com base nos requisitos apresentados e na modelagem do comportamento dos registros em anexo ([Tabelas_atualizadas.xlsx](https://github.com/rmstrunkis/techchallenge/files/12446765/Tabelas_atualizadas.xlsx)), começamos a estruturar nossas tabelas com os comandos DDL (Data Definition Language) abaixo:</p>
+<p>Adicionaos comentários no bloco para explicarmos as motivações que nos indicaram a utilização de alguns comandos</p>
 <p></p>
 <pre>
-
+ --- Comentário: Tabela que irá representar os usuários do sistema e que conterá as pessoas
+ --- São comanddos DDL e em nosso caso, como a criação das tabelas ocorreá de forma automática através de um docker-compose (tema - 
+ --- que temos um tópico abaixo com mais detalhes), realizamos uma verificação se a tabela existe e apenas criamos senão existirem - 
+ --- no banco de dados	, o tipo SERIAL indica que será autoincrementado valor do campo do tipo INT, a palavra PRIMARY KEY indica a 
+ --- coluna que será a chave primária e pode haver composição, NOT NULL siginifa que o campo não aceitará valores NULOS, ocasionando 
+ --- uma exceção 
  CREATE TABLE IF NOT exists tb_usuario(
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(255) NOT NULL,
 	senha VARCHAR(255) NOT NULL);
 
-
+--- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por ---- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependecia ---mesmo, já que poderemos ter apenas pessoas com usuários que já existam no banco de dados.
 CREATE table IF NOT exists  tb_pessoa(
         id 		SERIAL       PRIMARY KEY,
         cpf	 	 VARCHAR(14)  NOT NULL,
