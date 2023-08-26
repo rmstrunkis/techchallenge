@@ -16,7 +16,7 @@
 <p>Neste momento as APIs irão fornecer todos os métodos de um CRUD, Relacionamentos entre si, Filtros diversos de pesquisas sobre os dados de Endereços, Pessoas e Eletrodomésticos.</p>
 
 
-<p> Após construimos na 1º Fase do projeto 3 APIs apenas com ações do método\verbo POST, sendo que 2 estavam persistindo em  banco de memória H2 e uma em collection do tipo SET, nesta 2º Fase estamos agora persistindo em um banco de dados relacional confiável, criamos em todas as APIs os demais métodos que compõe um CRUD (GET,UPDATE,DELETE), relacionamentos entre as entidades utlizando a framework do JPA e o ambiente de execução com Docker, para estes temas adicionais acrescentamos em nosso README os capitulos\tópicos abaixo com os detalhes do que utilizamos, motivações e dificuldades :</p>
+<p> Após construimos na 1º Fase do projeto 3 APIs apenas com ações do método\verbo POST, sendo que 2 estavam persistindo em  banco de memória H2 e uma em collection do tipo SET, nesta 2º Fase estamos agora persistindo em um banco de dados relacional confiável, criamos em todas as APIs os demais métodos que compõe um CRUD (GET,POST,UPDATE,DELETE), relacionamentos entre as entidades utlizando a framework do JPA e o ambiente de execução com Docker, para estes temas adicionais acrescentamos em nosso README os capitulos\tópicos abaixo com os detalhes do que utilizamos, motivações e dificuldades :</p>
 
 <p> * Banco de Dados</p>
 <p> * JPA</p>
@@ -379,6 +379,15 @@ negativo incluindo o 0; pode ser utilizado em variáveis numéricas.</p>
 somente no passado ou no passado e no presente.</p>
 <p>@Future e @FutureOrPresent: valida se o valor do campo de tipo de data
 está somente no futuro ou no futuro ou no presente.</p>
+<p></p>
+<h3><strong>Banco de Dados</strong></h3>
+<p></p>
+<p></p>
+<h3><strong>JPA</strong></h3>
+<p></p>
+<p></p>
+<h3><strong>Docker</strong></h3>
+<p></p>
 
 
 
