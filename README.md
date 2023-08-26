@@ -195,11 +195,11 @@
 <p></p>
 <p></p>
 <p>Seguem as dependências que também adicionamos durante a utilização da ferramenta Spring Initializer, lembrando que como explicado anteriormente, caso nossas dependências possuam outras dependências o Maven já faz todo este gerenciamento</p>
-<p> Outro aspecto interessante é que na configuração de nosso projeto nesta fase optamos inicialmente em utilizar 4 dependências: Spring MVC (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone ), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação) </p>        
+<p> Outro aspecto interessante é que na configuração de nosso projeto na 1º fase optamos inicialmente em utilizar 4 dependências: Spring MVC (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone ), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação), porém nesta 2º fase para trabalharmos efetivamente com um banco de dados e a framework mais adequada para isto, acrescentamos a depedência do JPA. </p>        
 <p></p>
 			
 	   
-
+<pre>
 		
   
    	<dependencies>
@@ -241,8 +241,16 @@
 			<p><version>3.0.0</version></p>
 		<p></dependency></p>
 
+                 <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
 	</dependencies>
+  </pre>
  <p></p>
+
+	
 <p>Também temos as configurações de Plugin para o Build:</p>
  <p></p>
 
@@ -285,6 +293,17 @@
 <p>Anotação @RequestBody: anotação no nível de parâmetros dos métodos que indica que o valor do objeto virá do corpo da requisição, em nosso projeto usamos como parâmetro de entrada para o método que estamos vinculando ao verbo POST da requisição</p>
 <p>Classe ResponseEntity: representa toda a resposta HTTP: código de status, cabeçalhos e corpo, em nosso projeto estamos utilizando no retorno do método que estamos vinculado ao método POST mas poderia na ser resposta de qualquer outro tipo de requisição</p>
 <p></p>
+<p>Nesta 2º Fase com as necessidades de termos um CRUD completo, acrescetamos mais algumas anotações e classes, explicados logo abaixo:</p>
+<p></p>
+<p>@GetMapping:anotação no nível de método que indica qual método irá executar a chamada de uma requisição do verbo GET, aqui podemos acrecentar um atributo que irá recuperar o(s) parametro(s) ou variaveis para uma chamada que necessite de uma pesquisa mais especifica, recuperadas através das anotações: @PathVariable entendemos a forma mais adequada para a semantica do padrão Rest ou através  @RequestParam que viria como QueryString e no casos mais indicada para tratarmos com o solicitante quer paginar uma resposta com muitos registros</p>
+<p>@PutMapping:anotação no nível de método que indica qual método irá executar a chamada de uma requisição do verbo PUT, recebendo normalmente a variável que sofrerá alteração, conforme explicado no verbo GET.</p>
+<p>@DeleteMapping:anotação no nível de método que indica qual método irá executar a chamada de uma requisição do verbo DELETE, recebendo normalmente a variável que sofrerá aa exclusão, conforme explicado no verbo GET.</p>
+<p>@RequestParam:anotação no nível de parametro,  podemos ter vários parametros passados por url mas que não são parte da url em sí, conceito da QueryString, podemos também definir se o parametro é obrigatório ou não.</p>
+<p>@PathVariable:anotação no nível de parametro, é utilizada quando o valor da variável é passada diretamente na URL, mas não como um parametro que você passa após o sinal de interrogação (?) mas sim quando o valor faz parte da url.</p>
+<p>Classe PageRequest: Classe que define os atributos para paginação dentro de um Objeto Page</p>
+<p>Classe Page: é uma sublista de uma lista de objetos. Permite obter informações sobre a posição do mesmo na lista inteira que o contém, usamos para termos um interface adequada com o front end</p>
+
+ 
 
 <p><b>Pasta: Config:</b>Criamos esta package como boa prática para termos as classes de infra-estrutura da nossa aplicação bem identificadas, nesta fase do projeto, estamos utilizando duas:</p>
 <p>ValidatorBean:   Esta classe possui apenas um método com a anotação @Bean que retorna uma factory (padrão de software) de Bean Validations para que possamos, validar os dados das requisições.</p>
@@ -295,7 +314,7 @@
 <p>Anotação @Bean: Essa anotação é no nível do Método e indica que esse cria e retorna um “bean” que pode ser usado como dependência em outras classes.</p>
 <p>Classe Validation: Classe que possui diversos métodos estáticos, sendo que usamos um deles no projeto para o retorno de Validators que iremos utilizar para a valdiação de nossos objetos do tipo DTO, centralizando assim na entrada dos dados as regras de validações antes do processamento e persistência.</p>
 <p>Sobre o Swagger nesta fase do projeto não iremos detalhar ainda.</p>
-<p><b>Pasta: DTO</b></p> 
+<p><b>Pasta: Domain - DTO</b></p> 
 <p>Nesta pasta temos as classes que irão representar as Entidades que irão ser utilizadas nas interações entra a camada View e Controller, tendo apenas esta responsabilidade de trafegar os dados (Seguindo o que é conhecido como padrão de software DTO) e aqui podemos falar que aplicamos a 1º especificação do SOLID (Single Responsability Principle (Princípio da Responsabilidade Única); Open/Closed Principle (Princípio do “Aberto para Extensão/Fechado para Implementação); Liskov Substitution Principle (Princípio da Substituição de Liskov)), estas classes são muito similares as classes de entidade do negócio nos atributos, mas aqui podemos tirar alguns atributos que não devem ser expostos por questões de segurança, aplicamos as validações e no nosso caso utilizando as anotações do bean validation</p>
 <p> Para realizar o mapeamento dos atributos das classes DTO e das classes de Dominio que estão na nossa pasta MODEL, podemos utilizar diversas Classes, dentre elas a mais recomendada pela questão de performance e com o JMapper mas em nosso projeto pela simplicidade, criamos uma método na classe de DTO que retorna um objeto da nossa classe de Dominio\Negócio (Padrão de software Creator)</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
@@ -308,7 +327,7 @@
 <p>Anotação @NotNull: anotação no nível de atributo do bean validation que valida se o campo esta nulo, cuidado na utilização em conjunto com a anotação @NotBlank, que irá apresentar uma exceção</p>
 <p></p>
 <p></p>
-<p><b>Pasta: MODEL</b></p> 
+<p><b>Pasta: Domain-Entitie</b></p> 
 <p>Nesta pasta temos as classes que irão representar as Classes e Entidades de negócio, dentro da arquitetura MVC estamos falando que faz parte do  M-Model, que dentro dos sistemas corporativos deveria ser a camada mais importante e que não deveria ter implementações de classes relacionadas a infra-estrutura, seguindo os conceitos inciais que estamos apredendo de DDD (Domain Divre Design) devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como Pessoa, PessoaSexo, Endereco e etc</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
 <p>Anotação @Getter: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa os métodos Getters (Encapsulamento OO) , podemos usar esta anotação na classe ou nos atributos.</p>
