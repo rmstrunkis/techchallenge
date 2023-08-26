@@ -435,9 +435,9 @@ está somente no futuro ou no futuro ou no presente.</p>
 	username VARCHAR(255) NOT NULL,
 	senha VARCHAR(255) NOT NULL);
 
---- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por --- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependecia
+--- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por ---- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependecia
 --- mesmo, já que poderemos ter apenas pessoas com usuários que já existam no banco de dados.
---- Também temos a informação que caso o registro na tabela Pai seja exlcuido o mesmo deverá ocorrer na tabela filha com o comando ----- CASCADE ON DELETE.
+--- Também temos a informação que caso o registro na tabela Pai seja exlcuido o mesmo deverá ocorrer na tabela filha com o comando ----- CASCADE ON DELETE, sem a necessidade da aplicação gestionar, isto é um ponto muito importate de sempre avaliarmos em qualquer ------ sistema que formos trabalhar.
 CREATE table IF NOT exists  tb_pessoa(
         id 		SERIAL       PRIMARY KEY,
         cpf	 	 VARCHAR(14)  NOT NULL,
@@ -452,7 +452,7 @@ CREATE table IF NOT exists  tb_pessoa(
    	FOREIGN KEY (idUsuario) REFERENCES tb_usuario (id) ON DELETE CASCADE
 );
 
-
+-- Comentário: Tabela que irá representar endereços do sistema e que possui uma relação de N para N com a tabela de usuários
 CREATE TABLE IF NOT exists  tb_endereco
 (
     	id 	     SERIAL       PRIMARY KEY,
@@ -466,7 +466,7 @@ CREATE TABLE IF NOT exists  tb_endereco
 
 
 
-
+-- Comentário: Tabela que irá representar o relacionamento e muitos para muitos entre e usuários, na aplicação usamos a anotação -- --- @ManyToMany, neste caso o ideal é termos tabela que será criada de forma atuomatica no POST de endereço para auxuliar nesta -- ----relação
 CREATE TABLE IF NOT exists  tb_pessoa_endereco
 (
     idPessoa     SERIAL NOT NULL,
