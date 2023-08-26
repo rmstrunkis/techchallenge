@@ -466,7 +466,7 @@ CREATE TABLE IF NOT exists  tb_endereco
 
 
 
--- Comentário: Tabela que irá representar o relacionamento e muitos para muitos entre e usuários, na aplicação usamos a anotação -- --- @ManyToMany, neste caso o ideal é termos tabela que será criada de forma atuomatica no POST de endereço para auxuliar nesta -- ----relação
+-- Comentário: Tabela que irá representar o relacionamento e muitos para muitos entre e usuários, na aplicação usamos a anotação -- --- @ManyToMany, neste caso o ideal é termos tabela que será criada de forma atuomatica no POST de endereço para auxiliar nesta -- ----- relação, caso ou Endereço ou Pessoa for excluido , a exclusão nesta tabela também será automática, conforme ja mencionamos sobre --- o DELETE ON CASCADE
 CREATE TABLE IF NOT exists  tb_pessoa_endereco
 (
     idPessoa     SERIAL NOT NULL,
@@ -477,7 +477,7 @@ CREATE TABLE IF NOT exists  tb_pessoa_endereco
  
 );
 
-
+-- Comentário: Tabela que irá representar os eletrodomesticos de uma casa sendo N para 1 com o endereço (@ManyToOne) e que será ----excluida de forma automatica, caso o endereço seja excluido
 CREATE TABLE IF NOT exists  tb_eletrodomestico
 (
     id 		 	         SERIAL       PRIMARY KEY,
