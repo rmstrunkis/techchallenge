@@ -332,9 +332,9 @@
 <p></p>
 <p>@Entity: anotação a nível de classe, utulizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
 <p>@Table: anotação a nível de classe, podemos especificar detalhes em seus 4 tipos de atributos (nome, sobrescrever seu catálogo, seu esquema e assegurar restrições de unicidade nas colunas) da tabela que serão utilizados para persistir as nossas entidades na base de dados. Caso essa anotação seja omitida, não teremos um erro como resultado, porém será utilizado o nome da classe como valor default. Dessa forma, apenas definimos a anotação se quisermos sobrescrever algo do foi mencionado na parametrização de seus atributos.</p>
-<p>@Column - Name </p>
-<p>@GeneratedValue</p>
-<p>@Id</p>
+<p>@Column: anotação a nível de atributo, podemosespecificar os detalhes da coluna que um campo ou propriedade, alguns detalhes são relacionados com o esquema e, portanto aplicados apenas quando um esquema for gerado. A anotação @Column é opcional, possuindo valores default já configurados. </p>
+<p>@GeneratedValue: anotação a nível de atributo  utilizada para indicar que a geração do valor do identificador único da entidade será gerenciada pelo provedor de persistência. Essa anotação deve ser adicionada logo após a anotação @Id. Quando não anotamos o campo com essa opção, significa que a responsabilidade de gerar e gerenciar as chaves primárias será da nossa aplicação</p>
+<p>@Id: anotação a nível de atributo  utilizada para indicar que será a chave primária de nossa entidade</p>
 <p>@OneToOne</p>
 @OneToMany
 @ManyToOne 
@@ -345,6 +345,7 @@
         joinColumns = @JoinColumn(name = "pizza_id"),
         inverseJoinColumns = @JoinColumn(name = "ingrediente_id"),
     )
+MappedBy
 
 <p></p>
 <p><b>Pasta: Respository</b></p> 
