@@ -1,49 +1,68 @@
 package com.fiap.techchallenge.pessoa.service;
 
-import com.fiap.techchallenge.pessoa.domain.request.PessoaRequest;
 import com.fiap.techchallenge.pessoa.domain.Pessoa;
 import com.fiap.techchallenge.pessoa.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Path;
-import javax.validation.Validator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
+
 
 @Service
 public class PessoaService {
+
+    private final PessoaRepository pessoaRepository;
+    private final Usuario usuarioRepository;
+
     @Autowired
-    PessoaRepository pessoaRepository;
-    public ResponseEntity<String> criarNovaPessoa(PessoaRequest pessoaRequest)
-    {
+    public PessoaService(PessoaRepository pessoaRepository, Usuario usuarioRepository) {
+        this.pessoaRepository = pessoaRepository;
+        this.usuarioRepository = usuarioRepository;
+    }
+    @Transactional(readOnly = true)
+    public Page<PessoaEnderecoUsuarioDTO> findAll(PageRequest pageRequest) {
+        var enderecos = pessoaRepository.findAll(pageRequest);
+        return enderecos.map(PessoaEnderecoUsuarioDTO::fromEntity);
+    }
+    @Transactional(readOnly = true)
+    public PessoaEnderecoUsuarioDTO findById(Long id) {
+        var endereco = pessoaRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Endereço não encontrado")
+        );
 
-        String retorno;
-        Optional<Pessoa> pessoaOptional = pessoaRepository.buscar(pessoaRequest.getIdUsuario(), pessoaRequest.getCpf());
-
-        if(pessoaOptional.isEmpty())
-        {
-            Long id;
-            id = new Random().nextLong();
-            pessoaRequest.SetId(id);
-
-            Pessoa pessoa = pessoaRequest.toPessoa();
-            pessoaRepository.salvar(pessoa);
-            retorno = "Pessoa cadastrada com ID:" + pessoa.getId();
-            return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
-        }
-        else
-        {
-            retorno =  "Pessoa ja cadastrada, com o ID:" + pessoaOptional.get().getId() + " para o usuário: " + pessoaRequest.getIdUsuario() ;
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(retorno);
-
+        return PessoaEnderecoUsuarioDTO.fromEntity(endereco);
+    }
+    @Transactional
+    public PessoaUsuarioDTO save(PessoaUsuarioDTO dto) {
+        try {
+            var usuario = usuarioRepository.getReferenceById(dto.usuario().id());
+            var entity = PessoaUsuarioDTO.toEntity(dto, usuario);
+            var enderecoSaved = pessoaRepository.save(entity);
+            return PessoaUsuarioDTO.fromEntity(enderecoSaved);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
     }
+    @Transactional
+    public PessoaUsuarioDTO update(Long id, PessoaUsuarioDTO dto) {
+        try {
+            var usuario = usuarioRepository.getReferenceById(dto.usuario().id());
+            Pessoa entity = pessoaRepository.getReferenceById(id);
+            PessoaUsuarioDTO.mapperDtoToEntity(dto, entity, usuario);
+            entity = pessoaRepository.save(entity);
+            return PessoaUsuarioDTO.fromEntity(entity);
+
+        }  catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Transactional
+    public void delete(Long id)  {
+        try {
+            pessoaRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

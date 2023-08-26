@@ -4,28 +4,179 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-@Getter
-@AllArgsConstructor
-@EqualsAndHashCode(of = {"cpf","idUsuario"})
-public class Pessoa  {
 
+@Table(name = "tb_pessoa")
+@Entity
+@EqualsAndHashCode(of = {"id"})
+public class Pessoa {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idUsuario;
+
     private String cpf;
     private String nome;
-    private String nomePai;
-    private String nomeMae;
     private String telefone;
+    private String email;
     private String senha;
     private LocalDate dataNascimento;
-    private String email;
-    private PessoaParentesco parentesco;
-    private PessoaSexo sexo;
+    private String sexo;
+    private String parentesco;
+    @OneToMany(mappedBy = "pessoa")
+    private Set<Endereco> enderecos = new HashSet<>();
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-    public boolean identificadaPor(Long idUsuario, String cpf) {
-        return  this.cpf.equals(cpf)
-                && this.idUsuario.equals(idUsuario);
+    public Pessoa() {
+    }
+
+    public Pessoa(
+            Long id,
+            String cpf,
+            String nome,
+            String telefone,
+            String email,
+            String senha,
+            LocalDate dataNascimento,
+            String sexo,
+            String parentesco
+    ) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.parentesco = parentesco;
+    }
+
+    public Pessoa(PessoaDTO dto) {
+        this.id = dto.id();
+        this.cpf = dto.cpf();
+        this.nome = dto.nome();
+        this.telefone = dto.telefone();
+        this.email = dto.email();
+        this.senha = dto.senha();
+        this.dataNascimento = dto.dataNascimento();
+        this.sexo = dto.sexo();
+        this.parentesco = dto.parentesco();
+    }
+
+    public Pessoa(PessoaUsuarioDTO dto, Usuario usuario) {
+        this.id = dto.id();
+        this.cpf = dto.cpf();
+        this.nome = dto.nome();
+        this.telefone = dto.telefone();
+        this.email = dto.email();
+        this.senha = dto.senha();
+        this.dataNascimento = dto.dataNascimento();
+        this.sexo = dto.sexo();
+        this.parentesco = dto.parentesco();
+        this.usuario = usuario;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getParentesco() {
+        return parentesco;
+    }
+
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
+    }
+    public Set<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", sexo='" + sexo + '\'' +
+                ", parentesco='" + parentesco + '\'' +
+                '}';
     }
 }
