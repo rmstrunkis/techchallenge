@@ -409,10 +409,20 @@ somente no passado ou no passado e no presente.</p>
 está somente no futuro ou no futuro ou no presente.</p>
 <p></p>
 <h3><strong>Banco de Dados</strong></h3>
-<p>nosso script e explicar um pouco sobre ele.... </p>
 <p></p>
+<p>O nosso projeto a partir da 2º Fase apresentou a necessidade de persistirmos os dados em um banco de dados confiável, com isto fomos pesquisar através dos requisitos:</p>
+<p>Armazenamento de Objeto
+<p>Possibilidade Implementar comportamento no banco de dados</p>
+<p>Controle de concorrência</p>
+<p>Controle de Transação</p>
+<p>Aplicar integridade referencial</p>
+<p>Open Source</p>
+<p></p>
+<p>Qual seria um SGDB adequado para nosso projeto e optamos pelo POSTGRES que possui todas as caracteristicas mencionadas e pelo site do DockerHub também vimos a versão com menos vulnerabildiades e estável e decidimos pela 9.4</p>
+
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
+
 <p></p>
 <p>@Entity: anotação a nível de classe, utilizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
 <p>@Table: anotação a nível de classe, podemos especificar detalhes em seus 4 tipos de atributos (nome, sobrescrever seu catálogo, seu esquema e assegurar restrições de unicidade nas colunas) da tabela que serão utilizados para persistir as nossas entidades na base de dados. Caso essa anotação seja omitida, não teremos um erro como resultado, porém será utilizado o nome da classe como valor default. Dessa forma, apenas definimos a anotação se quisermos sobrescrever algo do foi mencionado na parametrização de seus atributos.</p>
