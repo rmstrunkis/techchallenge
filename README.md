@@ -335,10 +335,10 @@
 <p>@Column: anotação a nível de atributo, podemosespecificar os detalhes da coluna que um campo ou propriedade, alguns detalhes são relacionados com o esquema e, portanto aplicados apenas quando um esquema for gerado. A anotação @Column é opcional, possuindo valores default já configurados. </p>
 <p>@GeneratedValue: anotação a nível de atributo  utilizada para indicar que a geração do valor do identificador único da entidade será gerenciada pelo provedor de persistência. Essa anotação deve ser adicionada logo após a anotação @Id. Quando não anotamos o campo com essa opção, significa que a responsabilidade de gerar e gerenciar as chaves primárias será da nossa aplicação</p>
 <p>@Id: anotação a nível de atributo  utilizada para indicar que será a chave primária de nossa entidade</p>
-<p>@OneToOne</p>
-@OneToMany
-@ManyToOne 
-@ManyToMany
+<p>@OneToOne: anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de um-para-um</p>
+<p>@OneToMany: anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade  um-para-muitos</p>
+<p>@ManyToOne:anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de muitos-para-um</p> 
+<p>@ManyToMany:anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de muitos-para-muitos</p> 
 @JoinColumn
 @JoinTable(
         name = 
@@ -346,6 +346,7 @@
         inverseJoinColumns = @JoinColumn(name = "ingrediente_id"),
     )
 MappedBy
+@Transactional
 
 <p></p>
 <p><b>Pasta: Respository</b></p> 
