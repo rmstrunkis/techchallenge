@@ -328,7 +328,7 @@
 <p>Anotação @AllArgsConstructor: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa um construtor com todos os atributos da classe, podemos usar esta anotação no nível da classe.</p>
 <p>Anotação @EqualsAndHashCode: Iremos falar sobre o Lombok que é a biblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa os métodos equals e hashcode sobrescritos de Object (podemos definir quais atributos devem ou não ser utilizados, através de parâmetros), podemos usar esta anotação no nível da classe</p>
 <p></p>
-<p>Nesta 2º Fase com as necessidades de termos um CRUD completo e em especial as persistência a camada de dados, acrescetamos mais algumas anotações e classes, explicados logo abaixo:</p>
+<p>Nesta 2º Fase com as necessidades de termos um CRUD completo e em especial as persistência a camada de dados, acrescetamos mais algumas anotações e classes, explicados logo abaixo de forma sucinta, pois temos uma tópico mais especifico sobre JPA\Hibernate:</p>
 <p></p>
 <p>@Entity: anotação a nível de classe, utulizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
 <p>@Table: anotação a nível de classe, podemos especificar detalhes em seus 4 tipos de atributos (nome, sobrescrever seu catálogo, seu esquema e assegurar restrições de unicidade nas colunas) da tabela que serão utilizados para persistir as nossas entidades na base de dados. Caso essa anotação seja omitida, não teremos um erro como resultado, porém será utilizado o nome da classe como valor default. Dessa forma, apenas definimos a anotação se quisermos sobrescrever algo do foi mencionado na parametrização de seus atributos.</p>
@@ -339,14 +339,10 @@
 <p>@OneToMany: anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade  um-para-muitos</p>
 <p>@ManyToOne:anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de muitos-para-um</p> 
 <p>@ManyToMany:anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de muitos-para-muitos</p> 
-@JoinColumn
-@JoinTable(
-        name = 
-        joinColumns = @JoinColumn(name = "pizza_id"),
-        inverseJoinColumns = @JoinColumn(name = "ingrediente_id"),
-    )
-MappedBy
-@Transactional
+<p>@JoinColumn: anotação a nível de atributo: é usado para especificar o mapeamento de uma coluna de chave estrangeira em um relacionamento entre duas entidades. A anotação @JoinColumn é aplicada no lado proprietário da associação para definir o nome da coluna de chave estrangeira e outros atributos relacionados à coluna de junção.</p> 
+<p>@JoinTable: anotação a nível de atributo, usada para mapear uma relação ManyToMany entre duas entidades</p> 
+<p>@Transactional: anotação a nível de classe, criar uma transação na persistencia de nosso dados para evitar erros de constraints</p> 
+
 
 <p></p>
 <p><b>Pasta: Respository</b></p> 
@@ -414,8 +410,22 @@ está somente no futuro ou no futuro ou no presente.</p>
 <h3><strong>Banco de Dados</strong></h3>
 <p></p>
 <p></p>
-<h3><strong>JPA</strong></h3>
+<h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
+<p></p>
+<p>@Entity: anotação a nível de classe, utulizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
+<p>@Table: anotação a nível de classe, podemos especificar detalhes em seus 4 tipos de atributos (nome, sobrescrever seu catálogo, seu esquema e assegurar restrições de unicidade nas colunas) da tabela que serão utilizados para persistir as nossas entidades na base de dados. Caso essa anotação seja omitida, não teremos um erro como resultado, porém será utilizado o nome da classe como valor default. Dessa forma, apenas definimos a anotação se quisermos sobrescrever algo do foi mencionado na parametrização de seus atributos.</p>
+<p>@Column: anotação a nível de atributo, podemosespecificar os detalhes da coluna que um campo ou propriedade, alguns detalhes são relacionados com o esquema e, portanto aplicados apenas quando um esquema for gerado. A anotação @Column é opcional, possuindo valores default já configurados. </p>
+<p>@GeneratedValue: anotação a nível de atributo  utilizada para indicar que a geração do valor do identificador único da entidade será gerenciada pelo provedor de persistência. Essa anotação deve ser adicionada logo após a anotação @Id. Quando não anotamos o campo com essa opção, significa que a responsabilidade de gerar e gerenciar as chaves primárias será da nossa aplicação</p>
+<p>@Id: anotação a nível de atributo  utilizada para indicar que será a chave primária de nossa entidade</p>
+<p>@OneToOne: anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de um-para-um</p>
+<p>@OneToMany: anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade  um-para-muitos</p>
+<p>@ManyToOne:anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de muitos-para-um</p> 
+<p>@ManyToMany:anotação a nível de atributo, que define uma associação com outra entidade que tenha a multiplicidade de muitos-para-muitos</p> 
+<p>@JoinColumn: anotação a nível de atributo: é usado para especificar o mapeamento de uma coluna de chave estrangeira em um relacionamento entre duas entidades. A anotação @JoinColumn é aplicada no lado proprietário da associação para definir o nome da coluna de chave estrangeira e outros atributos relacionados à coluna de junção.</p> 
+<p>@JoinTable: anotação a nível de atributo, usada para mapear uma relação ManyToMany entre duas entidades</p> 
+<p>@Transactional: anotação a nível de classe, criar uma transação na persistencia de nosso dados para evitar erros de constraints</p> 
+
 <p></p>
 <h3><strong>Docker</strong></h3>
 <p></p>
