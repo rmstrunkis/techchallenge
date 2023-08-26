@@ -152,7 +152,7 @@
 <p>Quando optamos por usar o Maven em nosso projeto, além de gerenciar as dependências e o build, ele também como foi mencionado aplica conceito de programação por convenção (Estrutura de diretórios por padrão) e facilita a vida do desenvolvoder padronizando também os projetos,seguindo no padrão do arquétipo Spring Boot teremos as principais estruturas listadas abaixo (o que foi abordado até fase atual do curso): </p>
 <p></p>
 <p><b>src/main/java -</b>    Diretório onde está o(s) código(s) fonte(s) Java da Aplicação e/ou Biblioteca(s)</p>
-<p><b>src/main/resources -</b> Arquivos de configuração e outros arquivos devem ficar nesta pasta, como o application property (que veremos nas próximas fases do curso, especialmente na configuração com banco de dados)</p>
+<p><b>src/main/resources -</b> Arquivos de configuração e outros arquivos devem ficar nesta pasta, como o application property (utilziada na configuração de acesso aos bancos de dados)</p>
 <p><b>src/test/java -</b> Pasta que contém os arquivos de testes unitários</p>
 <p><b>src/test/resources -</b> Pasta com arquivos que serão utilizados pelas classes de testes unitários</p>
 <p><b>target -</b> As classes javas compiladas do nosso projeto</p>
@@ -278,7 +278,7 @@
 <p></p>
 <p>Em nosso projeto, pensando na separação de responsabilidades, melhores práticas e na arquitetura MVC, criamos os pacotes\pastas (algumas padrões do Maven para o arquétipo escolhido) abaixo em negrito: </p> 
 
-<p><b>Pasta: Controller:</b>  Contêm as classes PessoaController,EnderecoController e EletrodomesticoController que serão as responsáveis por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, nesta fase projeto estamos apenas expondo serviço com chamada via metódo POST</p> 
+<p><b>Pasta: Controller:</b>  Contêm as classes PessoaController,EnderecoController e EletrodomesticoController que serão as responsáveis por atender as requisições da camada View e direcionar as ações para as classes de Negócio, nesta camada que é o C - Controller da arquitetura MVC, estamos fazendo a injeção de dependência da nossa classe de Serviço que esta no pacote Service, na classe da Controller temos a exposição dos serviços disponiveis no servidor com base no verbos HTTP, na fase 1 deste projeto estamos apenas expondo serviço com chamada via metódo POST, um pouco mais abaixo expomos novas necessidades da utilização de outras anotações e classes com a evolução das fases.</p> 
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
 <p>Anotação @RestController: anotação no nível de classe que indica que  esta é camada de controller do tipo Rest com dados no padrão JSON.</p>
 <p>Anotação @RequestMapping: anotação no nível de classe\ atributo que irá indicar a URL principal da API que no nosso casos teremos: Pessoa, Eletrodomestico e Endereço.</p>
