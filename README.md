@@ -419,6 +419,12 @@ está somente no futuro ou no futuro ou no presente.</p>
 <p>Open Source</p>
 <p></p>
 <p>Qual seria um SGDB adequado para nosso projeto e optamos pelo POSTGRES que possui todas as caracteristicas mencionadas e pelo site do DockerHub também vimos a versão com menos vulnerabildiades e estável e decidimos pela 9.4</p>
+<p></p>
+<p> Com base nos requisitos apresentados e na modelagem do comportamento dos registros em anexo, começamos a estruturar nossas tabelas com os comandos DDL (Data Definition Language) abaixo:</p>
+
+[Tabelas_atualizadas.xlsx](https://github.com/rmstrunkis/techchallenge/files/12446765/Tabelas_atualizadas.xlsx)
+
+
 
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
