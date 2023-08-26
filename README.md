@@ -435,7 +435,9 @@ está somente no futuro ou no futuro ou no presente.</p>
 	username VARCHAR(255) NOT NULL,
 	senha VARCHAR(255) NOT NULL);
 
---- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por ---- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependecia ---mesmo, já que poderemos ter apenas pessoas com usuários que já existam no banco de dados.
+--- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por --- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependecia
+--- mesmo, já que poderemos ter apenas pessoas com usuários que já existam no banco de dados.
+--- Também temos a informação que caso o registro na tabela Pai seja exlcuido o mesmo deverá ocorrer na tabela filha com o comando ----- CASCADE ON DELETE.
 CREATE table IF NOT exists  tb_pessoa(
         id 		SERIAL       PRIMARY KEY,
         cpf	 	 VARCHAR(14)  NOT NULL,
