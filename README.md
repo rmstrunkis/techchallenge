@@ -409,10 +409,93 @@ somente no passado ou no passado e no presente.</p>
 está somente no futuro ou no futuro ou no presente.</p>
 <p></p>
 <h3><strong>Banco de Dados</strong></h3>
-<p>nosso script e explicar um pouco sobre ele.... </p>
 <p></p>
+<p>O nosso projeto a partir da 2º Fase apresentou a necessidade de persistirmos os dados em um banco de dados confiável, com isto fomos pesquisar através dos requisitos:</p>
+<p>Armazenamento de Objeto
+<p>Possibilidade Implementar comportamento no banco de dados</p>
+<p>Controle de concorrência</p>
+<p>Controle de Transação</p>
+<p>Aplicar integridade referencial</p>
+<p>Open Source</p>
+<p></p>
+<p>Qual seria um SGDB adequado para nosso projeto e optamos pelo POSTGRES que possui todas as caracteristicas mencionadas e pelo site do DockerHub também vimos a versão com menos vulnerabildiades e estável e decidimos pela 9.4</p>
+<p></p>
+<p> Com base nos requisitos apresentados e na modelagem do comportamento dos registros em anexo ([Tabelas_atualizadas.xlsx](https://github.com/rmstrunkis/techchallenge/files/12446765/Tabelas_atualizadas.xlsx)), começamos a estruturar nossas tabelas com os comandos DDL (Data Definition Language) abaixo:</p>
+<p>Adicionaos comentários no bloco para explicarmos as motivações que nos indicaram a utilização de alguns comandos</p>
+<p></p>
+<pre>
+ --- Comentário: Tabela que irá representar os usuários do sistema e que conterá as pessoas
+ --- São comanddos DDL e em nosso caso, como a criação das tabelas ocorreá de forma automática através de um docker-compose (tema - 
+ --- que temos um tópico abaixo com mais detalhes), realizamos uma verificação se a tabela existe e apenas criamos senão existirem - 
+ --- no banco de dados	, o tipo SERIAL indica que será autoincrementado valor do campo do tipo INT, a palavra PRIMARY KEY indica a 
+ --- coluna que será a chave primária e pode haver composição, NOT NULL siginifa que o campo não aceitará valores NULOS, ocasionando 
+ --- uma exceção 
+ CREATE TABLE IF NOT exists tb_usuario(
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(255) NOT NULL,
+	senha VARCHAR(255) NOT NULL);
+
+--- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por ---- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependecia
+--- mesmo, já que poderemos ter apenas pessoas com usuários que já existam no banco de dados.
+--- Também temos a informação que caso o registro na tabela Pai seja exlcuido o mesmo deverá ocorrer na tabela filha com o comando ----- CASCADE ON DELETE, sem a necessidade da aplicação gestionar, isto é um ponto muito importate de sempre avaliarmos em qualquer ------ sistema que formos trabalhar.
+CREATE table IF NOT exists  tb_pessoa(
+        id 		SERIAL       PRIMARY KEY,
+        cpf	 	 VARCHAR(14)  NOT NULL,
+   	nome	 	 VARCHAR(255) NOT NULL,
+   	telefone 	 VARCHAR(30) ,
+   	email 	         VARCHAR(30)  NOT NULL,
+   	senha 	         VARCHAR(255) NOT NULL,
+   	dataNascimento    DATE       NOT NULL,
+   	sexo 		  VARCHAR(9)  NOT NULL,
+   	parentesco        VARCHAR(30)  NOT null,
+   	idUsuario         BIGINT       NOT null,
+   	FOREIGN KEY (idUsuario) REFERENCES tb_usuario (id) ON DELETE CASCADE
+);
+
+-- Comentário: Tabela que irá representar endereços do sistema e que possui uma relação de N para N com a tabela de usuários
+CREATE TABLE IF NOT exists  tb_endereco
+(
+    	id 	     SERIAL       PRIMARY KEY,
+    	pais	     VARCHAR(255)  NOT NULL,
+   	estado	     CHAR(2)       NOT NULL,
+   	municipio     VARCHAR(255),
+   	bairro 	     VARCHAR(255)  NOT NULL,
+   	cep 	     VARCHAR(30)   NOT NULL,
+   	complemento   VARCHAR(30)
+);
+
+
+
+-- Comentário: Tabela que irá representar o relacionamento e muitos para muitos entre e usuários, na aplicação usamos a anotação -- --- @ManyToMany, neste caso o ideal é termos tabela que será criada de forma atuomatica no POST de endereço para auxiliar nesta -- ----- relação, caso ou Endereço ou Pessoa for excluido , a exclusão nesta tabela também será automática, conforme ja mencionamos sobre --- o DELETE ON CASCADE
+CREATE TABLE IF NOT exists  tb_pessoa_endereco
+(
+       idPessoa     SERIAL NOT NULL,
+	idEndereco   SERIAL NOT NULL,
+	PRIMARY KEY (idPessoa, idEndereco),
+	FOREIGN KEY (idPessoa) REFERENCES tb_pessoa (id) ON DELETE CASCADE,
+	FOREIGN KEY (idEndereco) REFERENCES tb_endereco (id) ON DELETE CASCADE
+ 
+);
+
+-- Comentário: Tabela que irá representar os eletrodomesticos de uma casa sendo N para 1 com o endereço (@ManyToOne) e que será ------- excluida de forma automatica, caso o endereço seja excluido
+CREATE TABLE IF NOT exists  tb_eletrodomestico
+(
+    id 		 	         SERIAL       PRIMARY KEY,
+    nome	 	         VARCHAR(255) NOT NULL,
+   	potencia 	 		 INTEGER ,
+   	serialNumber 	     VARCHAR(30)  NOT NULL,
+   	idEndereco   		 SERIAL 	  NOT null unique ,
+    FOREIGN KEY (idEndereco) REFERENCES tb_endereco (id) ON DELETE CASCADE
+);
+</pre>
+
+<p></p>
+
+
+
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
+
 <p></p>
 <p>@Entity: anotação a nível de classe, utilizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
 <p>@Table: anotação a nível de classe, podemos especificar detalhes em seus 4 tipos de atributos (nome, sobrescrever seu catálogo, seu esquema e assegurar restrições de unicidade nas colunas) da tabela que serão utilizados para persistir as nossas entidades na base de dados. Caso essa anotação seja omitida, não teremos um erro como resultado, porém será utilizado o nome da classe como valor default. Dessa forma, apenas definimos a anotação se quisermos sobrescrever algo do foi mencionado na parametrização de seus atributos.</p>
