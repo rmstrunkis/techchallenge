@@ -346,10 +346,11 @@
 
 <p></p>
 <p><b>Pasta: Respository</b></p> 
-<p>Nesta pasta temos as classes que irão representar as Classes de persistências e relacionamento com o banco de dados, dentro da arquitetura MVC estamos indicando que pertence ao M-Model também,  seguindo os conceitos de DDD  devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como PessoaRepository, Métodos : Salvar, Buscar e etc. Nesta fase do projeto ainda não estamos usando JPA e mesmo banco de dados não estava obrigatório, mas em algumas APIS deste projeto persistimos em banco H2 e em outras seguimos a persistência em Collections do tipo Set.</p>
+<p>Nesta pasta temos as classes que irão representar as Classes de persistências e relacionamento com o banco de dados, dentro da arquitetura MVC estamos indicando que pertence ao M-Model também,  seguindo os conceitos de DDD  devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como PessoaRepository, Métodos : Salvar, Buscar e etc. Na fase 1 do projeto ainda não usamos JPA e mesmo banco de dados não estava obrigatório, mas em algumas APIS deste projeto já estavmos persistindo em banco H2 e em outras seguimos a persistência em Collections do tipo Set. Porém após a fase 1 começamos a persistir os dados em um banco de dados confiável e um pouco mais abaixo, estamos expondo a utilização de uma nova classe.</p>
 <p>As principais Classes e Anotações que estamos utilizando nesta package são:<p>
 <p></p>
 <p>Anotação @Repository: Indica que uma classe anotada é um Repositório, originalmente definido por DDD como  um mecanismo para encapsular armazenamento, recuperação e comportamento de pesquisa que representa uma coleção de objetos, com base nesta anotação e seguindo o objetivo de evitarmos acomplamento pela injeção de dependências e inversão de controle, injetamos estas classes nas classes da pasta Service.</p>
+<p>JPARespository: módulo contém uma camada Repositórios (JpaRepository) que dá suporte à criação de repositórios estendendo interfaces do Spring Data. A infraestrutura é compartilhada pelos bancos e o JPA Provider que implementa o JPA, aonde ja temos implementados diversos metodos como por exemplo de Crud que recebem uma Generic da Entidade que queremos persistir.</p>
 <p></p>
 <p></p>
 <p><b>Pasta: Service:</b> Pasta com as classes de serviço que contêm as regras de negócios comuns e são responsáveis em delegar para as classes de Negócios as requisições da Controller, em nosso projeto ela é injetada na Controller e recebe a injeção das classes de negócio.</p> 
@@ -408,7 +409,7 @@ somente no passado ou no passado e no presente.</p>
 está somente no futuro ou no futuro ou no presente.</p>
 <p></p>
 <h3><strong>Banco de Dados</strong></h3>
-<p></p>
+<p>nosso script e explicar um pouco sobre ele.... </p>
 <p></p>
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
