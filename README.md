@@ -198,10 +198,6 @@
 <p> Outro aspecto interessante é que na configuração de nosso projeto na 1º fase optamos inicialmente em utilizar 4 dependências: Spring MVC (Que ja traz todas as dependências necessárias para um API Rest - Web Stand Alone ), Validation (para utilizarmos o Validation Bean), Lombok (reutilização de códigos comuns) e Swagger(Documentação), porém nesta 2º fase para trabalharmos efetivamente com um banco de dados e a framework mais adequada para isto, acrescentamos a depedência do JPA. </p>        
 <p></p>
 			
-	   
-<pre>
-		
-  
    	<dependencies>
                 <dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -247,15 +243,13 @@
 		</dependency>
 
 	</dependencies>
-  </pre>
+
  <p></p>
 
 	
 <p>Também temos as configurações de Plugin para o Build:</p>
  <p></p>
-
-		
-
+	
                 <build>
 		<plugins>
 			<plugin>
@@ -334,6 +328,24 @@
 <p>Anotação @AllArgsConstructor: Iremos falar sobre o Lombok que é a blblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa um construtor com todos os atributos da classe, podemos usar esta anotação no nível da classe.</p>
 <p>Anotação @EqualsAndHashCode: Iremos falar sobre o Lombok que é a biblioteca que nos fornece esta anotação, em um capítulo mais abaixo, mas a priori esta anotação implementa os métodos equals e hashcode sobrescritos de Object (podemos definir quais atributos devem ou não ser utilizados, através de parâmetros), podemos usar esta anotação no nível da classe</p>
 <p></p>
+<p>Nesta 2º Fase com as necessidades de termos um CRUD completo e em especial as persistência a camada de dados, acrescetamos mais algumas anotações e classes, explicados logo abaixo:</p>
+<p></p>
+<p>@Entity: anotação a nível de classe, utulizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
+<p>@Table: anotação a nível de classe, podemos especificar detalhes em seus 4 tipos de atributos (nome, sobrescrever seu catálogo, seu esquema e assegurar restrições de unicidade nas colunas) da tabela que serão utilizados para persistir as nossas entidades na base de dados. Caso essa anotação seja omitida, não teremos um erro como resultado, porém será utilizado o nome da classe como valor default. Dessa forma, apenas definimos a anotação se quisermos sobrescrever algo do foi mencionado na parametrização de seus atributos.</p>
+<p>@Column - Name </p>
+<p>@GeneratedValue</p>
+<p>@Id</p>
+<p>@OneToOne</p>
+@OneToMany
+@ManyToOne 
+@ManyToMany
+@JoinColumn
+@JoinTable(
+        name = 
+        joinColumns = @JoinColumn(name = "pizza_id"),
+        inverseJoinColumns = @JoinColumn(name = "ingrediente_id"),
+    )
+
 <p></p>
 <p><b>Pasta: Respository</b></p> 
 <p>Nesta pasta temos as classes que irão representar as Classes de persistências e relacionamento com o banco de dados, dentro da arquitetura MVC estamos indicando que pertence ao M-Model também,  seguindo os conceitos de DDD  devemos padronizar classes e metódos com nomes que fazem referência ao negócio com linguagem ubíqua, em nosso projeto estamos usando nomes que facilitam o entendimento do que representa como PessoaRepository, Métodos : Salvar, Buscar e etc. Nesta fase do projeto ainda não estamos usando JPA e mesmo banco de dados não estava obrigatório, mas em algumas APIS deste projeto persistimos em banco H2 e em outras seguimos a persistência em Collections do tipo Set.</p>
@@ -349,8 +361,6 @@
 <p>Anotação @Autowired: Que fará a injeção de dependência da classe Repositório e da Config - Bean validation, usamos a injenção de dependência para evitarmos o Acoplamento.</p>
 
  
-
-
 <p></p>
 <h3><strong>LOMBOK</strong></h3>
 <p></p>
