@@ -104,24 +104,39 @@ public class EletrodomesticoService {
         return ResponseEntity.noContent().build();
     }
 
-    public ResponseEntity<EletrodomesticoResponseDto> atualizarEletrodomestico(EletrodomesticoRequest eletrodomesticoRequest, Long id) {
+    public ResponseEntity atualizarEletrodomestico(EletrodomesticoRequest eletrodomesticoRequest, Long id) {
 
         if (!ObjectUtils.isEmpty(id)) {
 
             final var eletrodomesticoEncontrado = eletrodomesticoRepository.findById(id);
+            final var validar = validator.validar(eletrodomesticoRequest);
 
-            if (!eletrodomesticoEncontrado.isEmpty()) {
+            if (!eletrodomesticoEncontrado.isEmpty() && validar.isEmpty()) {
 
                 eletrodomesticoEncontrado.get().setNome(eletrodomesticoRequest.getNome());
                 eletrodomesticoEncontrado.get().setModelo(eletrodomesticoRequest.getModelo());
                 eletrodomesticoEncontrado.get().setPotencia(eletrodomesticoRequest.getPotencia());
                 eletrodomesticoEncontrado.get().setSerialNumber(eletrodomesticoRequest.getSerialNumber());
 
+                if(!eletrodomesticoEncontrado.get().getEndereco().getId().equals(eletrodomesticoRequest.getIdEndereco())){
+                    final var enderecoEncontrado = enderecoRepository.findById(eletrodomesticoRequest.getIdEndereco());
+                    if(!enderecoEncontrado.isEmpty()){
+                        eletrodomesticoEncontrado.get().setEndereco(enderecoEncontrado.get());
+                    } else {
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Endereço informado não encontrado");
+                    }
+                }
+
                 Eletrodomestico eletrodomesticoAtualizado = eletrodomesticoRepository.save(eletrodomesticoEncontrado.get());
 
                 return ResponseEntity.ok(new EletrodomesticoResponseDto(eletrodomesticoAtualizado));
             }
-            return ResponseEntity.notFound().build();
+            if(!validar.isEmpty()){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validar);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Eletrodomestico não encontrado");
+            }
+
         }
         return ResponseEntity.badRequest().build();
     }
@@ -143,4 +158,17 @@ public class EletrodomesticoService {
         return ResponseEntity.badRequest().build();
     }
 
+    public ResponseEntity retornarConsumo(Long id, Long hora) {
+        if (!ObjectUtils.isEmpty(id)) {
+
+            final var eletrodomesticoEncontrado = eletrodomesticoRepository.findById(id);
+
+            if (!eletrodomesticoEncontrado.isEmpty()) {
+                Double potencia = Double.valueOf(eletrodomesticoEncontrado.get().getPotencia().replace("W",""));
+                Double consumo = (potencia / 1000) * (hora/60);
+                return ResponseEntity.ok().body("O eletrodomestico " + eletrodomesticoEncontrado.get().getNome() + " consumiu " + consumo + "kwh");
+            }
+        }
+        return ResponseEntity.badRequest().build();
+    }
 }

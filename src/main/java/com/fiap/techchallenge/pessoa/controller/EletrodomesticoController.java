@@ -41,6 +41,11 @@ public class EletrodomesticoController {
         return eletrodomesticoService.pesquisarEletrodomestico(nome, modelo, potencia, serialNumber);
     }
 
+    @GetMapping("/calcularConsumo")
+    public ResponseEntity calcularConsumo(@RequestParam Long id, @RequestParam Long hora){
+    return eletrodomesticoService.retornarConsumo(id, hora);
+    }
+
     @PutMapping("/atualizar")
     public ResponseEntity<EletrodomesticoResponseDto> atualizarEletrodomestico(@RequestBody EletrodomesticoRequest eletrodomesticoRequest, @RequestParam Long id) {
         return eletrodomesticoService.atualizarEletrodomestico(eletrodomesticoRequest, id);
