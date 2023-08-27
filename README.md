@@ -526,21 +526,23 @@ virtualização.</p>
 <p>Em nosso caso aplicamos os passos e configurações abaixo:</p>
 <p></p>
 <pre>
-* Copiar o arquivo Dockerfile em anexo [Uploading Dockerfile…]() na pasta raiz do nosso projeto.
-* Tivemos que gerar o . JAR da nossa aplicação.
+* Copiamos o arquivo Dockerfile (Padrão de nome que deve ser respeitado) na pasta raiz do nosso projeto.
+* Geramos o . JAR da nossa aplicação.
 * Fomos na pasta TARGET a partir da raiz do nosso projeto e executamos mvn packge -DskipTests = true pelo terminal no proprio Intelij
-* No terminal voltamos a pasta raiz do nosso projeto e executamos docker build -t tech:2.0 ** irá criar a imagem no docker local
-* Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o arquivo docker-compose.yml [Uploading docker-compose.yml…]() , deve estar na raiz destes 2 diretórios criados.
-* Copiar o arquivo .sql  na pasta script.
+* No terminal executamos talbém o comando docker build -t tech:2.0 ** irá criar a imagem no docker local com as definições do 
+Dockerfile
+* Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o criamos arquivo docker- 
+compose.yml (Padrão de nome que deve ser respeitado).
+* Copiamos o arquivo .sql  na pasta script (temos ele com detalhes no tópico de banco de dados).
 * Fomos pelo terminal, até o diretório que esta o arquivo docker-compose.yml e executamos o comando: docker compose up -d
- Com isto o banco irá subir, criando as tabelas caso não existam e startar a aplicação
+ Com isto o banco irá subir, criando as tabelas caso não existam e startar a nossa aplicação.
 
  
 </pre>
 
 
 <p></p>
-<p>Nosso arquivo Dockerfile,é importante manter este nome , pois é desta forma o software chegarrá no arquvo que deverá ter uma imagem criada.</p>
+<p>Abaixo nosso arquivo Dockerfile: </p>
 
 <p></p>
 <pre>
@@ -554,9 +556,9 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 </pre>
 
 <p></p>  
-<p>Estamos fazendo o download da versão 11 do Java, adiconando o arquivo de extensão .JAR de nossa aplicação a um na igame com nome app.jar , definidno a nossa detrabalho, a porta que nossa aplicação irá utulizar e o comando quando for execurado que irá startar a nossa aplicação.</p>  
+<p>Estamos fazendo o download da versão 11 do Java, adiconando o arquivo de extensão .JAR de nossa aplicação  , definidno a nossa área de trabalho, a porta que nossa aplicação irá utilizar e o comando quando for executada a imagem e que irá startar a nossa aplicação.</p>  
 <p></p> 
-<p> Abaixo esta nosso arquivo docker-compose que irá executar nossa aplicação, mas antes criando uma imagem do banco de dados:</p> 
+<p> Abaixo esta nosso arquivo docker-compose que irá executar nossa projeto, mas antes criando uma imagem do banco de dados:</p> 
 <pre>
 version: '3'
 
