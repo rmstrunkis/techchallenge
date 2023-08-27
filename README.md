@@ -493,27 +493,7 @@ CREATE TABLE IF NOT exists  tb_eletrodomestico
 );
 </pre>
 
-<p></p>
-<pre>
-1) Copiar o arquivo Dockerfile em anexo [Uploading Dockerfile…]() na pasta raiz do nosso projeto.
 
-2) Tivemos que gerar o . JAR da nossa aplicação.
-
-	2.1) fomos na pasta TARGET a partir da raiz do nosso projeto e executamos mvn packge -DskipTests = true pelo terminal no proprio Intelij
-
-	
-3) no terminal voltamos a pasta raiz do nosso projeto e executamos docker build -t tech:2.0 ** irá criar a imagem no docker local
-
-4) Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o arquivo docker-compose.yml [Uploading docker-compose.yml…]() , deve estar na raiz destes 2 diretórios criados.
-
-5) Copiar o arquivo .sql [Uploading createbanco.sql…]()  do anexo do email na pasta script.
-
-6) Fomos pelo terminal, até o diretório que esta o arquivo docker-compose.yml e executamos o comando: docker compose up -d
- Com isto o banco irá subir, criando as tabelas caso não existam e startar a aplicação
-
- 
-</pre>
-<p></p>
 
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
@@ -544,6 +524,27 @@ CREATE TABLE IF NOT exists  tb_eletrodomestico
 virtualização.</p>
 <p></p>  
 <p>Em nosso caso aplicamos os passos e configurações abaixo:</p>
+<p></p>
+<pre>
+1) Copiar o arquivo Dockerfile em anexo [Uploading Dockerfile…]() na pasta raiz do nosso projeto.
+
+2) Tivemos que gerar o . JAR da nossa aplicação.
+
+	2.1) fomos na pasta TARGET a partir da raiz do nosso projeto e executamos mvn packge -DskipTests = true pelo terminal no proprio Intelij
+
+	
+3) no terminal voltamos a pasta raiz do nosso projeto e executamos docker build -t tech:2.0 ** irá criar a imagem no docker local
+
+4) Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o arquivo docker-compose.yml [Uploading docker-compose.yml…]() , deve estar na raiz destes 2 diretórios criados.
+
+5) Copiar o arquivo .sql [Uploading createbanco.sql…]()  do anexo do email na pasta script.
+
+6) Fomos pelo terminal, até o diretório que esta o arquivo docker-compose.yml e executamos o comando: docker compose up -d
+ Com isto o banco irá subir, criando as tabelas caso não existam e startar a aplicação
+
+ 
+</pre>
+<p></p>
 
 
 <p></p>  
