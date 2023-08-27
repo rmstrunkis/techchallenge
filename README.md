@@ -494,17 +494,36 @@ CREATE TABLE IF NOT exists  tb_eletrodomestico
 </pre>
 
 <p></p>
+<pre>
+1) Copiar o arquivo Dockerfile em anexo [Uploading Dockerfile…]() na pasta raiz do nosso projeto.
 
+2) Tivemos que gerar o . JAR da nossa aplicação.
 
+	2.1) fomos na pasta TARGET a partir da raiz do nosso projeto e executamos mvn packge -DskipTests = true pelo terminal no proprio Intelij
+
+	
+3) no terminal voltamos a pasta raiz do nosso projeto e executamos docker build -t tech:2.0 ** irá criar a imagem no docker local
+
+4) Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o arquivo docker-compose.yml [Uploading docker-compose.yml…]() , deve estar na raiz destes 2 diretórios criados.
+
+5) Copiar o arquivo .sql [Uploading createbanco.sql…]()  do anexo do email na pasta script.
+
+6) Fomos pelo terminal, até o diretório que esta o arquivo docker-compose.yml e executamos o comando: docker compose up -d
+ Com isto o banco irá subir, criando as tabelas caso não existam e startar a aplicação
+
+ 
+</pre>
+<p></p>
 
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
 
-<p>A Java Persistence API (JPA) é uma framwework que foi desenvolvida com o conceito de POJO (Plain Old Java Object ou Velho e Simples Objeto Java) para persistir os objetos Java.</p>
+<p>A Java Persistence API (JPA) é uma framework que foi desenvolvida com o conceito de POJO (Plain Old Java Object ou Velho e Simples Objeto Java) para persistir os objetos Java.</p>
 <p></p>
 <p>Existem diversas anotações e propriedades no JPA, em nosso projeto com as necessidades que foram aparecendo, tivemos que usar as anotações\classes e estas que iremos mencionar logo abaixo:</p>
 <p></p>
 <p>* @Entity: anotação a nível de classe, utilizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
+<p></p>
 <p>* @Table: anotação a nível de classe, podemos especificar detalhes em seus 4 tipos de atributos (nome, sobrescrever seu catálogo, seu esquema e assegurar restrições de unicidade nas colunas) da tabela que serão utilizados para persistir as nossas entidades na base de dados. Caso essa anotação seja omitida, não teremos um erro como resultado, porém será utilizado o nome da classe como valor default. Dessa forma, apenas definimos a anotação se quisermos sobrescrever algo do foi mencionado na parametrização de seus atributos.</p>
 <p>* @Column: anotação a nível de atributo, podemos especificar os detalhes da coluna que um campo ou propriedade, alguns detalhes são relacionados com o esquema e, portanto aplicados apenas quando um esquema for gerado. A anotação @Column é opcional, possuindo valores default já configurados. </p>
 <p>* @GeneratedValue: anotação a nível de atributo  utilizada para indicar que a geração do valor do identificador único da entidade será gerenciada pelo provedor de persistência. Essa anotação deve ser adicionada logo após a anotação @Id. Quando não anotamos o campo com essa opção, significa que a responsabilidade de gerar e gerenciar as chaves primárias será da nossa aplicação, um dos seus atributos indica a estratégia de como será gerada o idendificador e a mais comum é de auto-incremento.</p>
@@ -520,7 +539,11 @@ CREATE TABLE IF NOT exists  tb_eletrodomestico
 <p></p>
 <h3><strong>Docker</strong></h3>
 <p></p>
-
+<p>Com o desenvolvimento do projeto e a necessidade de distribuição do projeto para que demais pessoas possam executa-lo, vimos a necessidade de criar um Docker para facilitar este ponto sem que quem desejar utiliza-lo tenha todas as instalações necessárias.</p>
+<p>O que é Docker: é um sistema para desenvolvimento, distribuição ou execução de aplicações. Ele possui um conjunto de funcionalidades que permite que você separe sua aplicação da dependência de infraestrutura, e para isso utiliza-se do conceito de
+virtualização.</p>
+<p></p>  
+<p>Em nosso caso aplicamos os passos e configurações abaixo:</p>
 
 
 <p></p>  
