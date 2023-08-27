@@ -493,7 +493,7 @@ CREATE TABLE IF NOT exists  tb_eletrodomestico
 );
 </pre>
 
-
+<p></p>
 
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
