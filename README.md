@@ -28,8 +28,8 @@
 <p></p>
 <p>Baixar via GIT : git clone https://github.com/rmstrunkis/techchallenge.git</p> 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn compile.</p> 
-<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p> 
-<p>Colocar como utilizar o docker em nossa aplicação .</p> 
+<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar:  docker compose up -d</p> 
+<p>Premisa: Docker instalado na máquina.</p> 
 <p></p>
 
 <h3><strong>API Usuários</strong></h3>
@@ -412,7 +412,7 @@ está somente no futuro ou no futuro ou no presente.</p>
 <p></p>
 <p>O nosso projeto a partir da 2º Fase apresentou a necessidade de persistirmos os dados em um banco de dados confiável, com isto fomos pesquisar através dos requisitos:</p>
 <p>* Armazenamento de Objeto
-<p>* Possibilidade Implementar comportamento no banco de dados</p>
+<p>* Possibilidade de implementação de comportamento no banco de dados</p>
 <p>* Controle de concorrência</p>
 <p>* Controle de Transação</p>
 <p>* Aplicar integridade referencial</p>
@@ -426,7 +426,7 @@ está somente no futuro ou no futuro ou no presente.</p>
 <pre>
 	
  --- Comentário: Tabela que irá representar os usuários do sistema e que conterá as pessoas
- --- São comanddos DDL e em nosso caso, como a criação das tabelas ocorreá de forma automática através de um docker-compose (tema - 
+ --- São comanddos DDL e em nosso caso, como a criação das tabelas ocorrerá de forma automática através de um docker-compose (tema - 
  --- que temos um tópico abaixo com mais detalhes), realizamos uma verificação se a tabela existe e apenas criamos senão existirem - 
  --- no banco de dados	, o tipo SERIAL indica que será autoincrementado valor do campo do tipo INT, a palavra PRIMARY KEY indica a 
  --- coluna que será a chave primária e pode haver composição, NOT NULL siginifa que o campo não aceitará valores NULOS, ocasionando 
@@ -437,9 +437,9 @@ está somente no futuro ou no futuro ou no presente.</p>
 	username VARCHAR(255) NOT NULL,
 	senha VARCHAR(255) NOT NULL);
 
---- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por ---- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependecia
+--- Comentário: Tabela que irá representar as pessoas do sistema e que possui uma relação de N para 1 com a tabela de usuários, por ---- isso da informação das palavras FOREIGN KEY  e REFERENCES quem indicam qual a tabela que ela irá relacionar e uma dependência
 --- mesmo, já que poderemos ter apenas pessoas com usuários que já existam no banco de dados.
---- Também temos a informação que caso o registro na tabela Pai seja exlcuido o mesmo deverá ocorrer na tabela filha com o comando ----- CASCADE ON DELETE, sem a necessidade da aplicação gestionar, isto é um ponto muito importate de sempre avaliarmos em qualquer ------ sistema que formos trabalhar.
+--- Também temos a informação que caso o registro na tabela Pai seja exlcuido o mesmo deverá ocorrer na tabela filha com o comando  ----- CASCADE ON DELETE, sem a necessidade da aplicação gestionar, isto é um ponto muito importate de sempre avaliarmos em qualquer ------ sistema que formos trabalhar.
 
 CREATE table IF NOT exists  tb_pessoa(
         id 		SERIAL       PRIMARY KEY,
@@ -481,7 +481,7 @@ CREATE TABLE IF NOT exists  tb_pessoa_endereco
  
 );
 
--- Comentário: Tabela que irá representar os eletrodomesticos de uma casa sendo N para 1 com o endereço (@ManyToOne) e que será ------- excluida de forma automatica, caso o endereço seja excluido
+-- Comentário: Tabela que irá representar os eletrodomésticos de uma casa sendo N para 1 com o endereço (@ManyToOne) e que será ------- excluida de forma automática, caso o endereço seja excluído
 CREATE TABLE IF NOT exists  tb_eletrodomestico
 (
       id 		 	         SERIAL       PRIMARY KEY,
@@ -500,7 +500,7 @@ CREATE TABLE IF NOT exists  tb_eletrodomestico
 
 <p>A Java Persistence API (JPA) é uma framework que foi desenvolvida com o conceito de POJO (Plain Old Java Object ou Velho e Simples Objeto Java) para persistir os objetos Java.</p>
 <p></p>
-<p>Existem diversas anotações e propriedades no JPA, em nosso projeto com as necessidades que foram aparecendo, tivemos que usar as anotações\classes e estas que iremos mencionar logo abaixo:</p>
+<p>Existem diversas anotações e propriedades no JPA, em nosso projeto com as necessidades que foram aparecendo, tivemos que usar as anotações\classes abaixo:</p>
 <p></p>
 <p>* @Entity: anotação a nível de classe, utilizamos para declarar que uma classe é uma entidade. A partir disso o JPA estabelecerá a ligação entre a entidade e uma tabela de mesmo nome no banco de dados, onde os dados de objetos desse tipo poderão ser persistidos</p>
 <p></p>
