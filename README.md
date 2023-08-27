@@ -29,7 +29,7 @@
 <p>Baixar via GIT : git clone https://github.com/rmstrunkis/techchallenge.git</p> 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn compile.</p> 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn spring-boot:run.</p> 
-<p>Colocar como utilizar o docker .</p> 
+<p>Colocar como utilizar o docker em nossa aplicação .</p> 
 <p></p>
 
 <h3><strong>API Usuários</strong></h3>
