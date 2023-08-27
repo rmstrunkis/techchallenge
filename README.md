@@ -28,7 +28,7 @@
 <p></p>
 <p>Baixar via GIT : git clone https://github.com/rmstrunkis/techchallenge.git</p> 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn compile.</p> 
-<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar:  docker compose up -d</p> 
+<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar:  docker build -t tech:2.0 e depois : docker compose up -d</p> 
 <p>Premisa: Docker instalado na máquina.</p> 
 <p></p>
 
@@ -597,4 +597,5 @@ services:
 <h2><strong>Conclusão</strong></h2>
  </body>
 </html>
+
 
