@@ -526,29 +526,68 @@ virtualização.</p>
 <p>Em nosso caso aplicamos os passos e configurações abaixo:</p>
 <p></p>
 <pre>
-1) Copiar o arquivo Dockerfile em anexo [Uploading Dockerfile…]() na pasta raiz do nosso projeto.
-
-2) Tivemos que gerar o . JAR da nossa aplicação.
-
-	2.1) fomos na pasta TARGET a partir da raiz do nosso projeto e executamos mvn packge -DskipTests = true pelo terminal no proprio Intelij
-
-	
-3) no terminal voltamos a pasta raiz do nosso projeto e executamos docker build -t tech:2.0 ** irá criar a imagem no docker local
-
-4) Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o arquivo docker-compose.yml [Uploading docker-compose.yml…]() , deve estar na raiz destes 2 diretórios criados.
-
-5) Copiar o arquivo .sql [Uploading createbanco.sql…]()  do anexo do email na pasta script.
-
-6) Fomos pelo terminal, até o diretório que esta o arquivo docker-compose.yml e executamos o comando: docker compose up -d
+* Copiar o arquivo Dockerfile em anexo [Uploading Dockerfile…]() na pasta raiz do nosso projeto.
+* Tivemos que gerar o . JAR da nossa aplicação.
+* Fomos na pasta TARGET a partir da raiz do nosso projeto e executamos mvn packge -DskipTests = true pelo terminal no proprio Intelij
+* No terminal voltamos a pasta raiz do nosso projeto e executamos docker build -t tech:2.0 ** irá criar a imagem no docker local
+* Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o arquivo docker-compose.yml [Uploading docker-compose.yml…]() , deve estar na raiz destes 2 diretórios criados.
+* Copiar o arquivo .sql  na pasta script.
+* Fomos pelo terminal, até o diretório que esta o arquivo docker-compose.yml e executamos o comando: docker compose up -d
  Com isto o banco irá subir, criando as tabelas caso não existam e startar a aplicação
 
  
 </pre>
+
+
 <p></p>
+<p>Nosso arquivo Dockerfile,é importante manter este nome , pois é desta forma o software chegarrá no arquvo que deverá ter uma imagem criada.</p>
 
+<p></p>
+<pre>
+FROM openjdk:11-jdk-alpine
+ADD target/*.jar app.jar
+WORKDIR /app
+EXPOSE 8080
+COPY target/*.jar /app/app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+ 
+</pre>
 
 <p></p>  
-<p></p>  
+<p>Estamos fazendo o download da versão 11 do Java, adiconando o arquivo de extensão .JAR de nossa aplicação a um na igame com nome app.jar , definidno a nossa detrabalho, a porta que nossa aplicação irá utulizar e o comando quando for execurado que irá startar a nossa aplicação.</p>  
+<p></p> 
+<p> Abaixo esta nosso arquivo docker-compose que irá executar nossa aplicação, mas antes criando uma imagem do banco de dados:</p> 
+<pre>
+version: '3'
+
+services:
+  db:
+    container_name: Techchallenge
+    image: postgres:9.4
+    restart: always
+    volumes:
+     - ./data:/var/lib/postgresql/data
+     - ./scripts/createbanco.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: dbEnergia
+    ports:
+      - 5432:5432
+  web:
+    image: tech:2.0
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+    environment:
+      - POSTGRES_URL=dbEnergia
+      - POSTGRES_USERNAME=user
+      - POSTGRES_PASSWORD=123456
+</pre>
+<p></p> 
+<p>Criamos um serviço que executará a imagem de um banco POSTGRES, criando também através do nossos script no tópico de banco as tabelas caso não existam e na sequência executando nossa imagem da aplicação que esta dependente do Banco de dados.</p> 
+<p></p> 
 <h2><strong>Pessoas Desenvolvedoras do Projeto</strong></h2>
 <p>Grupo 38</p>
 <p></p>
