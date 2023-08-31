@@ -43,7 +43,7 @@ public class EletrodomesticoController {
 
     @GetMapping("/calcularConsumo")
     public ResponseEntity calcularConsumo(@RequestParam Long id, @RequestParam Long hora){
-    return eletrodomesticoService.retornarConsumo(id, hora);
+        return eletrodomesticoService.retornarConsumo(id, hora);
     }
 
     @PutMapping("/atualizar")
