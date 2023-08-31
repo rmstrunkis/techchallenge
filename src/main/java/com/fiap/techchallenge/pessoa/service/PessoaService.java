@@ -2,6 +2,7 @@ package com.fiap.techchallenge.pessoa.service;
 
 import com.fiap.techchallenge.pessoa.domain.Pessoa;
 import com.fiap.techchallenge.pessoa.domain.Usuario;
+import com.fiap.techchallenge.pessoa.dto.pessoa.PessoaEnderecoUsuarioDTO;
 import com.fiap.techchallenge.pessoa.dto.pessoa.PessoaUsuarioDTO;
 import com.fiap.techchallenge.pessoa.repository.PessoaRepository;
 import com.fiap.techchallenge.pessoa.repository.UsuarioRepository;
@@ -24,17 +25,17 @@ public class PessoaService {
         this.usuarioRepository = usuarioRepository;
     }
     @Transactional(readOnly = true)
-    public Page<PessoaUsuarioDTO> findAll(PageRequest pageRequest) {
+    public Page<PessoaEnderecoUsuarioDTO> findAll(PageRequest pageRequest) {
         var enderecos = pessoaRepository.findAll(pageRequest);
-        return enderecos.map(PessoaUsuarioDTO::fromEntity);
+        return enderecos.map(PessoaEnderecoUsuarioDTO::fromEntity);
     }
     @Transactional(readOnly = true)
-    public PessoaUsuarioDTO findById(Long id) {
+    public PessoaEnderecoUsuarioDTO findById(Long id) {
         var endereco = pessoaRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Pessoa não encontrada")
         );
 
-        return PessoaUsuarioDTO.fromEntity(endereco);
+        return PessoaEnderecoUsuarioDTO.fromEntity(endereco);
     }
     @Transactional
     public PessoaUsuarioDTO save(PessoaUsuarioDTO dto) {

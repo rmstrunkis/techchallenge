@@ -28,7 +28,7 @@ public class PessoaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PessoaUsuarioDTO>> findAll(
+    public ResponseEntity<Page<PessoaEnderecoUsuarioDTO>> findAll(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage
     ) {
@@ -38,7 +38,7 @@ public class PessoaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PessoaUsuarioDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<PessoaEnderecoUsuarioDTO> findById(@PathVariable Long id) {
         var pessoa = pessoaService.findById(id);
         return ResponseEntity.ok(pessoa);
     }
