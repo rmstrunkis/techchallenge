@@ -6,16 +6,16 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class EnderecoDTO {
-    Long id,
+    private Long id;
     @NotBlank(message = "A rua não pode estar em branco")
-    String rua,
+    private String rua;
     @NotBlank(message = "A cidade não pode estar em branco")
 
     @Column(name = "numero")
     private Long numero;
 
     @Pattern(regexp = "\\d{5}-\\d{3}", message = "O CEP deve ertar no formato 00000-000")
-    String cep
+    private String cep;
 
     @Column(name = "bairro")
     private String bairro;

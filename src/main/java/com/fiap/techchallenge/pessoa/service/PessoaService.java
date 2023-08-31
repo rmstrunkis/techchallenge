@@ -52,7 +52,7 @@ public class PessoaService {
     @Transactional
     public PessoaUsuarioDTO update(Long id, PessoaUsuarioDTO dto) {
         try {
-            var usuario = usuarioRepository.getReferenceById(dto.usuario().id());
+            var usuario = usuarioRepository.getReferenceById(id);
             Pessoa entity = pessoaRepository.getReferenceById(id);
             PessoaUsuarioDTO.mapperDtoToEntity(dto, entity, usuario);
             entity = pessoaRepository.save(entity);
