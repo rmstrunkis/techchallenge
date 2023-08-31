@@ -11,7 +11,6 @@ import lombok.Data;
 @AllArgsConstructor
 @ApiModel(description = "Representa um objeto de requisicao de eletrodomestico")
 public class EletrodomesticoResponseDto {
-
     public EletrodomesticoResponseDto(Eletrodomestico eletrodomestico) {
         this.id = eletrodomestico.getId();
         this.nome = eletrodomestico.getNome();
