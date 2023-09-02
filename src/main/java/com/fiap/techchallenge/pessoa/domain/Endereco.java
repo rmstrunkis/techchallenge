@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ENDERECO")
+@Table(name = "tb_endereco")
 public class Endereco {
 
     @Id
@@ -36,7 +36,7 @@ public class Endereco {
     @Column(name = "bairro")
     private String bairro;
 
-    @Column(name = "cidade")
+    @Column(name = "municipio")
     private String cidade;
 
     @Column(name = "estado")

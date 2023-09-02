@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ELETRODOMESTICO")
+@Table(name = "tb_eletrodomestico")
 public class Eletrodomestico {
 
     @Id
@@ -29,5 +29,9 @@ public class Eletrodomestico {
 
     @Column(name = "serialnumber")
     private String serialNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
 }
