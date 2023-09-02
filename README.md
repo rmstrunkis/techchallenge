@@ -28,7 +28,7 @@
 <p></p>
 <p>Baixar via GIT : git clone https://github.com/rmstrunkis/techchallenge.git</p> 
 <p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar: mvn compile.</p> 
-<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar:  docker build -t tech:2.0 e depois : docker compose up -d</p> 
+<p>Executar em máquina local : na linha de comando ir até a pasta que clonou o projeto e no prompt da linha de comando, executar:  <b>docker build -t tech:2.0 . </b> e depois : docker compose up -d</p> 
 <p>Premisa: Docker instalado na máquina.</p> 
 <p></p>
 
@@ -464,7 +464,8 @@ CREATE TABLE IF NOT exists  tb_endereco
    	municipio     VARCHAR(255),
    	bairro 	     VARCHAR(255)  NOT NULL,
    	cep 	     VARCHAR(30)   NOT NULL,
-   	complemento   VARCHAR(30)
+   	complemento   VARCHAR(30),
+        rua 	     VARCHAR(255)  NOT NULL
 );
 
 
@@ -498,7 +499,7 @@ CREATE TABLE IF NOT exists  tb_eletrodomestico
 <h3><strong>JPA\Hibernate</strong></h3>
 <p></p>
 
-<p>A Java Persistence API (JPA) é uma framework que foi desenvolvida com o conceito de POJO (Plain Old Java Object ou Velho e Simples Objeto Java) para persistir os objetos Java.</p>
+<p>A Java Persistence API (JPA) é uma especificação que possue 3 implentações de framework que foram desenvolvida com o conceito de POJO (Plain Old Java Object ou Velho e Simples Objeto Java) para persistir os objetos Java. Em nosso caso usamos a implementação da Hibernate por ser a mais difundida.</p>
 <p></p>
 <p>Existem diversas anotações e propriedades no JPA, em nosso projeto com as necessidades que foram aparecendo, tivemos que usar as anotações\classes abaixo:</p>
 <p></p>
@@ -529,7 +530,7 @@ virtualização.</p>
 * Copiamos o arquivo Dockerfile (Padrão de nome que deve ser respeitado) na pasta raiz do nosso projeto.
 * Geramos o . JAR da nossa aplicação.
 * Fomos na pasta TARGET a partir da raiz do nosso projeto e executamos mvn packge -DskipTests = true pelo terminal no proprio Intelij
-* No terminal executamos talbém o comando docker build -t tech:2.0 ** irá criar a imagem no docker local com as definições do 
+* No terminal executamos talbém o comando docker build -t tech:2.0  e o ponto . ** irá criar a imagem no docker local com as definições do 
 Dockerfile
 * Criamos 2 diretórios na pasta raiz do projeto ** mas poderia ser outra ** sendo: scripts e data, o criamos arquivo docker- 
 compose.yml (Padrão de nome que deve ser respeitado).
@@ -546,7 +547,7 @@ compose.yml (Padrão de nome que deve ser respeitado).
 
 <p></p>
 <pre>
-FROM openjdk:11-jdk-alpine
+FROM adoptopenjdk/maven-openjdk11:latest
 ADD target/*.jar app.jar
 WORKDIR /app
 EXPOSE 8080
